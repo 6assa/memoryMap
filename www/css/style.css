@@ -1,2 +1,6 @@
-/**/
-
+body {
+  color: #3d3d3d;
+  background-color: #fff; }
+  body h1 {
+    size: 2em;
+    color: #3d3d3d; }

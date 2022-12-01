@@ -13,10 +13,14 @@
     },
     "scripts": {
         "monaca:preview": "npm run dev",
-        "dev": "browser-sync start -s www/ --watch --port 8080 --ui-port 8081"
+        "dev": "browser-sync start -s www/ --watch --port 8080 --ui-port 8081",
+        "build": "node_modules/node-sass/bin/node-sass --include-path scss scss/style.scss www/css/style.css",
+        "watch": "node_modules/nodemon/bin/nodemon.js -e scss -x \"npm run build\""
     },
     "devDependencies": {
         "browser-sync": "~2.27.7",
-        "cordova": "^11.0.0"
+        "cordova": "^11.0.0",
+        "node-sass": "^8.0.0",
+        "nodemon": "^2.0.20"
     }
 }

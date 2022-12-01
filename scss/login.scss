@@ -1,0 +1,25 @@
+.main-wrap{
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  padding: 10px;
+}
+.input-wrap{
+  padding-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+.input-wrap input{
+  margin-left: 10px;
+  
+}
+.button{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  
+}
+.button button{
+  padding:10px 20px;
+  cursor: pointer;
+}

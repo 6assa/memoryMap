@@ -14,6 +14,10 @@
   <link rel="stylesheet" href="css/style.css">
 
   <script>
+    window.addEventListener('load', function(){
+    window.location.href='html/login/login.html';
+    });
+
     ons.ready(function() {
       console.log("Onsen UI is ready!");
     });
@@ -25,17 +29,8 @@
   </script>
 </head>
 <body>
-    <div class="main-wrap">
-  <div class="input-wrap">
-    <label>ユーザーID<input id="search-id" type="text"></label>
-  </div>
-  <div class="input-wrap">
-    <label>パスワード<input id="search-password" type="text"></label>
-  </div>
-  <div class="button">
-    <button>ログイン</button>
-  </div>
-  <p id="search-result"></p>
-</div>
+    <div class="title">
+	    <h1>index画面</h1>
+    </div>
 </body>
 </html>

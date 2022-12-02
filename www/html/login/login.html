@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+  <script src="components/loader.js"></script>
+  <script src="lib/onsenui/js/onsenui.min.js"></script>
+  <script src="html/login/login.js"></script>
+
+  <link rel="stylesheet" href="components/loader.css">
+  <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
+  <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <script>
+    ons.ready(function() {
+      console.log("Onsen UI is ready!");
+    });
+
+    if (ons.platform.isIPhoneX()) {
+      document.documentElement.setAttribute('onsflag-iphonex-portrait', '');
+      document.documentElement.setAttribute('onsflag-iphonex-landscape', '');
+    }
+  </script>
+</head>
+<body>
+    <div id="root">
+        <div class="header">
+            <img src="../../img/logo.png" width="200px">
+        </div>
+        <form method="post">
+    	    <input type="text" name="u" 
+                   placeholder="メールアドレス" 
+                   required="required"/>
+            <br>
+            <input type="password" 
+                   name="p" 
+                   placeholder="パスワード" 
+                   required="required"/>
+            <p>パスワードを忘れた方は<a href= "index.html" >こちら</a></p>
+            <button type="submit" 
+                    class="btn btn-primary btn-block btn-large">ログイン
+            </button>
+            <p>アカウントをお持ちでない方は<a href= "index.html" >こちら</a></p>
+        </form>
+    </div>
+</body>
+</html>

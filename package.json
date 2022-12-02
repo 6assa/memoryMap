@@ -3,12 +3,14 @@
     "version": "3.0.0",
     "dependencies": {
         "cordova-plugin-splashscreen": "6.0.0",
-        "monaca-plugin-monaca-core": "3.3.1"
+        "monaca-plugin-monaca-core": "3.3.1",
+        "ncmb-push-monaca-plugin": "3.1.2"
     },
     "cordova": {
         "plugins": {
             "cordova-plugin-splashscreen": {},
-            "monaca-plugin-monaca-core": {}
+            "monaca-plugin-monaca-core": {},
+            "ncmb-push-monaca-plugin": {}
         }
     },
     "scripts": {

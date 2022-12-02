@@ -3,7 +3,7 @@
   <name>Minimum Template</name>
   <description/>
   <author/>
-  <content src="login/login.html"/>
+  <content src="index.html"/>
   <allow-navigation href="*"/>
 
   <preference name="DisallowOverscroll" value="true"/>

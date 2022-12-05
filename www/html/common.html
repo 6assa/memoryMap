@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+    <link rel="stylesheet" href="components/loader.css">
+    <script src="components/loader.js"></script>
+    <script>
+       document.getElementById('home').addEventListener('click',()=>{
+           window.location.href='html/main/main.html';
+       });
+       document.getElementById('search').addEventListener('click',()=>{
+           window.location.href='html/search/search.html';
+       });
+       document.getElementById('post').addEventListener('click',()=>{
+           window.location.href='html/post/post.html';
+       });
+       document.getElementById('map').addEventListener('click',()=>{
+           window.location.href='html/map/map.html';
+       });
+       document.getElementById('profile').addEventListener('click',()=>{
+           window.location.href='html/profile/profile.html';
+       });
+    </script>
+    <style type="text/css">
+    .common-footer li{
+        float:left;
+        list-style: none;
+    }
+
+    </style>
+</head>
+<body>
+    <div class="common-footer">
+        <nav>
+            <li id="home"><img src="img/home.png" alt="home"></li>
+            <li id="search"><img src="img/search.png" alt="search"></li>
+            <li id="post"><img src="img/post.png" alt="post"></li>
+            <li id="map"><img src="img/map.png" alt="map"></li>
+            <li id="profile"><img src="img/profile.png" alt="profile"></li>
+        </nav>
+    </div>
+</body>
+</html>

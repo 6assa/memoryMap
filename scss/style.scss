@@ -8,11 +8,18 @@ body {
 #main {
   color: black;
   .header {
+      position: absolute;
+      top: 0px;
       img {
-          margin-top: 60px;
-          width: 100%;
+          width: 170px;
       }
   }
 }
-  
+
+.footer {
+    position: absolute;
+    bottom: 0px;
+}
+
+
 

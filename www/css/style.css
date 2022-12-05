@@ -6,7 +6,9 @@ body {
   color: black; }
   #main .header {
     position: absolute;
-    top: 0px; }
+    top: 0px;
+    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
     #main .header img {
       width: 170px; }
 

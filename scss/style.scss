@@ -6,6 +6,11 @@ body {
 }
 
 #main {
-  size: 2em;
   color: black;
+  .header {
+      img {
+          margin-top: 60px;
+          width: 100%;
+      }
+  }
 }

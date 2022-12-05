@@ -1,6 +1,9 @@
 body {
   color: #3d3d3d;
   background-color: white; }
-  body h1 {
-    size: 2em;
-    color: black; }
+
+#main {
+  color: black; }
+  #main .header img {
+    margin-top: 60px;
+    width: 100%; }

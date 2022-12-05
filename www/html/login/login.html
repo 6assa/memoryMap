@@ -1,6 +1,6 @@
-<!DOCTYPE HTML>
+0000000000000000000000000000<!DOCTYPE HTML>
 <html>
-<head>
+<head>ｐ
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
   <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
@@ -23,6 +23,11 @@
       document.documentElement.setAttribute('onsflag-iphonex-landscape', '');
     }
   </script>
+  <script>
+      function login(){
+    window.location.href='main/main.html';
+}
+  </script>
 </head>
 <body>
     <div id="root">
@@ -38,8 +43,8 @@
                    name="p" 
                    placeholder="パスワード" 
                    required="required"/>
-            <p>パスワードを忘れた方は<a href= "index.html" >こちら</a></p>
-            <button type="submit" 
+            <p>パスワードを忘れた方は<a href= "../main/main.html" >こちら</a></p>
+            <button type="submit" onsubmit="login()" 
                     class="btn btn-primary btn-block btn-large">ログイン
             </button>
             <p>アカウントをお持ちでない方は<a href= "index.html" >こちら</a></p>

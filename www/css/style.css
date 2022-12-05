@@ -4,6 +4,12 @@ body {
 
 #main {
   color: black; }
-  #main .header img {
-    margin-top: 60px;
-    width: 100%; }
+  #main .header {
+    position: absolute;
+    top: 0px; }
+    #main .header img {
+      width: 170px; }
+
+.footer {
+  position: absolute;
+  bottom: 0px; }

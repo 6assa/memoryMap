@@ -23,6 +23,11 @@
       document.documentElement.setAttribute('onsflag-iphonex-landscape', '');
     }
   </script>
+  <script>
+      function login(){
+    window.location.href='main/main.html';
+}
+  </script>
 </head>
 <body>
     <div id="root">
@@ -38,8 +43,8 @@
                    name="p" 
                    placeholder="パスワード" 
                    required="required"/>
-            <p>パスワードを忘れた方は<a href= "index.html" >こちら</a></p>
-            <button type="submit" 
+            <p>パスワードを忘れた方は<a href= "../main/main.html" >こちら</a></p>
+            <button type="submit" onsubmit="login()" 
                     class="btn btn-primary btn-block btn-large">ログイン
             </button>
             <p>アカウントをお持ちでない方は<a href= "index.html" >こちら</a></p>

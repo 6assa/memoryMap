@@ -6,15 +6,35 @@
     <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
     <link rel="stylesheet" href="components/loader.css">
     <script src="components/loader.js"></script>
-    <script src="js/selection.js"></script>
+    <!--<script src="js/selection.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
     <script>
-        //
-        // TODO: Write JavaScript code here
-        //
+       function previewImage(obj)
+    {
+	    var fileReader = new FileReader();
+	    fileReader.onload = (function() {
+            var img=document.getElementById ('preview');
+		    img.src = fileReader.result;
+            
+            img.height=360;
+            
+            
+	    });
+	    fileReader.readAsDataURL(obj.files[0]);
+    }
     </script>
+    <style type="text/css">
+    .post-img{
+    text-aligh:center;
+    }
+    </style>
 </head>
 <body>
-    <input type="file" id="file" />
+    <div class="post-img">
+    <img id="preview" max-height="40%">
+    <input type="file" id="file" onchange="previewImage(this);" />
+    </div>
+    
 </body>
 </html>

@@ -1,9 +1,10 @@
-var input = document.getElementById('file');
-input.addEventListener('change', function (e) {
-  var file = e.srcElement.files[0];
+
+$('#file').on('change', function (e) {
+    console.log(document.getElementById('file'));
+  var file = e.target.files;
 
   var fr = new FileReader();
-  fr.addEventListener('load', function() {
+  fr.onload= function(fr) {
     var url = fr.result;
 
     // Imageオブジェクトをつくり
@@ -14,6 +15,6 @@ input.addEventListener('change', function (e) {
     img.height = 200;
     // bodyに追加する
     document.body.appendChild(img);
-  });
+  };
   fr.readAsDataURL(file);
 });

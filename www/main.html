@@ -4,25 +4,32 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
   <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
   <script src="components/loader.js"></script>
   <script src="lib/onsenui/js/onsenui.min.js"></script>
-  <script src="html/login/login.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="js/login.js"></script>
+  
 
   <link rel="stylesheet" href="components/loader.css">
   <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
   <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
-  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div id="main">
         <div class="header">
-            <img class="img" src="../../img/logo.png">
+            <img class="img" src="img/logo.png">
         </div>
-        <div class="footer" id="footer"></div>
-        <script>
-            $('#footer').load('../common.html')
-        </script>
+        <div class="common-footer">
+        <nav>
+            <li><a href="main.html"><img id="home" src="img/home.png" alt="home"></a></li>
+            <li><a href="search.html"><img id="search" src="img/search.png" alt="search"></a></li>
+            <li><a href="selection.html"><img id="post" src="img/post.png" alt="post"></a></li>
+            <li><a href="map.html"><img id="map" src="img/map.png" alt="map"></a></li>
+            <li><a href="profile.html"><img id="profile" src="img/profile.png" alt="profile"></a></li>
+            
+        </nav>
+    </div>
     </div>
 </body>
 </html>

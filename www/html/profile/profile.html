@@ -6,32 +6,38 @@
   <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
   <script src="components/loader.js"></script>
   <script src="lib/onsenui/js/onsenui.min.js"></script>
-  <script src="html/profile/profile.js"></script>
+  <script src="html/login/login.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
   <link rel="stylesheet" href="components/loader.css">
   <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
   <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
-  <link rel="stylesheet" href="css/style.css">
-
-  <script>
-    ons.ready(function() {
-      console.log("Onsen UI is ready!");
-    });
-
-    if (ons.platform.isIPhoneX()) {
-      document.documentElement.setAttribute('onsflag-iphonex-portrait', '');
-      document.documentElement.setAttribute('onsflag-iphonex-landscape', '');
-    }
-  </script>
+  <link rel="stylesheet" href="../../css/style.css">
+  <style type="text/css">
+  .header{
+      text-aligh:center;
+  }
+  .img-icon{
+      max-width:30%;
+      max-height:30%;
+  }
+  </style>
 </head>
 <body>
-    <div id="root">
-        <div class="profile-header">
-            <img src="" alt="post-img">
-            <br>
-            <img src="" alt="post-img">
-            <p>username</p>
-    </div>
+    <div id="main">
+        <div class="header">
+            <img class="img-profile" src="../../img/profileimage.png" position="absolute">
+            <div class"user">
+               <img class="img-icon" src="../../img/usericon.png">
+               <p position="absolute">user_name</p> 
+               <p position="absolute">user_detail</p>
+            </div>
+            
+        </div>
+        <div class="footer" id="footer"></div>
+        <script>
+            $('#footer').load('../common.html')
+        </script>
     </div>
 </body>
 </html>

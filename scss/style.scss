@@ -8,9 +8,22 @@ body {
 #main {
   color: black;
   .header {
+      position: absolute;
+      top: 0px;
+      width: 100%;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
       img {
-          margin-top: 60px;
-          width: 100%;
+          width: 170px;
       }
   }
 }
+<<<<<<< HEAD
+=======
+
+.footer {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+>>>>>>> 81e73b1bef7d21095c2b8bcf6fffde56a0199aa4

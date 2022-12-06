@@ -4,6 +4,16 @@ body {
 
 #main {
   color: black; }
-  #main .header img {
-    margin-top: 60px;
-    width: 100%; }
+  #main .header {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+    #main .header img {
+      width: 170px; }
+
+.footer {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  border-top: 1px solid rgba(0, 0, 0, 0.1); }

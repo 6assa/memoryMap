@@ -6,28 +6,7 @@
     <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
     <link rel="stylesheet" href="components/loader.css">
     <script src="components/loader.js"></script>
-    <script>
-       document.getElementById('home').addEventListener('click',function(){
-           window.location.href='../main/main.html';
-           window.open(window.location.href, '_blank');
-       });
-       document.getElementById('search').addEventListener('click',function(){
-           window.location.href='../search/search.html';
-           window.open(window.location.href, '_blank');
-       });
-       document.getElementById('post').addEventListener('click',function(){
-           window.location.href='../post/post.html';
-           window.open(window.location.href, '_blank');
-       });
-       document.getElementById('map').addEventListener('click',function(){
-           window.location.href='../map/map.html';
-           window.open(window.location.href, '_blank');
-       });
-       document.getElementById('profile').addEventListener('click',function(){
-           window.location.href='html/profile/profile.html';
-           window.open(window.location.href, '_blank');
-       });
-    </script>
+    
     <style type="text/css">
     .common-footer nav{
         margin-left:15px;
@@ -45,11 +24,11 @@
 <body>
     <div class="common-footer">
         <nav>
-            <li><img id="home" src="../../img/home.png" alt="home"></li>
-            <li><img id="search" src="../../img/search.png" alt="search"></li>
-            <li><img id="post" src="../../img/post.png" alt="post"></li>
-            <li><img id="map" src="../../img/map.png" alt="map"></li>
-            <li><img id="profile" src="../../img/profile.png" alt="profile"></li>
+            <li><a href="../main/main.html"><img id="home" src="../../img/home.png" alt="home"></a></li>
+            <li><a href="../search/search.html"><img id="search" src="../../img/search.png" alt="search"></a></li>
+            <li><a href="../post/post.html"><img id="post" src="../../img/post.png" alt="post"></a></li>
+            <li><a href="../map/map.html"><img id="map" src="../../img/map.png" alt="map"></a></li>
+            <li><a href="../profile/profile.html"><img id="profile" src="../../img/profile.png" alt="profile"></a></li>
             
         </nav>
     </div>

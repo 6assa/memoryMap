@@ -2,7 +2,7 @@ $my-color: #3d3d3d;
 
 body {
   color: $my-color;
-  background-color: white;
+  background-color: blue;
 }
 
 #main {
@@ -17,6 +17,8 @@ body {
       }
   }
 }
+<<<<<<< HEAD
+=======
 
 .footer {
     position: absolute;
@@ -24,3 +26,4 @@ body {
     width: 100%;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
+>>>>>>> 81e73b1bef7d21095c2b8bcf6fffde56a0199aa4

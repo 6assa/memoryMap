@@ -2,6 +2,23 @@ body {
   color: #3d3d3d;
   background-color: white; }
 
+.common-footer{
+position: absolute;
+    bottom: 0px;
+    width: 100%;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+  .common-footer nav{
+        margin-left:15px;
+    }
+
+    .common-footer li{
+        text-align:center;
+        margin:20px;
+        float:left;
+        list-style: none;
+    }
+
 #main {
   color: black; }
   #main .header {

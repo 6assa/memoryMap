@@ -10,20 +10,20 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
     <script>
-       function previewImage(obj)
-    {
-	    var fileReader = new FileReader();
-	    fileReader.onload = (function() {
-            var img=document.getElementById ('preview');
-		    img.src = fileReader.result;
-            
-            img.height=360;
-            
-            
-	    });
-	    fileReader.readAsDataURL(obj.files[0]);
-    }
-    </script>
+function loadImage(obj)
+{
+	document.getElementById('preview').innerHTML = '<p>プレビュー</p>';
+	for (i = 0; i < obj.files.length; i++) {
+		var fileReader = new FileReader();
+		fileReader.onload = (function (e) {
+			document.getElementById('preview').innerHTML += '<img src="' + e.target.result + '">';
+		});
+		fileReader.readAsDataURL(obj.files[i]);
+	}
+}
+</script>
+
+    
     <style type="text/css">
     .post-img{
     text-aligh:center;
@@ -31,10 +31,18 @@
     </style>
 </head>
 <body>
-    <div class="post-img">
-    <img id="preview" max-height="40%">
-    <input type="file" id="file" onchange="previewImage(this);" />
-    </div>
+    <p>■画像ファイルを選択してください。<br>
+<input type="file" accept='image/*' multiple="multiple" onchange="loadImage(this);"></p>
+
+<p id="preview"></p>
+
+<style>
+#preview img {
+	width:100px;
+    height:100px;
+	border:1px solid #cccccc;
+}
+</style>
     
 </body>
 </html>

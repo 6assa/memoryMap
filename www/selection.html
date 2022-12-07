@@ -12,18 +12,19 @@
     <script>
        function previewImage(obj)
     {
+        document.getElementById('preview').innerHTML = '<p>プレビュー</p>';
+	for (i = 0; i < obj.files.length; i++) {
 	    var fileReader = new FileReader();
-	    fileReader.onload = (function() {
-            var img=document.getElementById ('preview');
-		    img.src = fileReader.result;
-            
+	    fileReader.onload = (function(e) {
+            document.getElementById('preview').innerHTML += '<img src="' + e.target.result + '">';
             img.height=360;
-            
-            
 	    });
-	    fileReader.readAsDataURL(obj.files[0]);
+	    fileReader.readAsDataURL(obj.files[i]);
+    }
     }
     </script>
+
+    
     <style type="text/css">
     .post-img{
     text-aligh:center;
@@ -32,8 +33,8 @@
 </head>
 <body>
     <div class="post-img">
-    <img id="preview" max-height="40%">
-    <input type="file" id="file" onchange="previewImage(this);" />
+    <input type="file" accept='image/*' multiple="multiple" onchange="loadImage(this);"></p>
+    <p id="preview"></p>
     </div>
     
 </body>

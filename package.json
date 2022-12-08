@@ -4,7 +4,9 @@
     "dependencies": {
         "cordova-plugin-splashscreen": "6.0.0",
         "monaca-plugin-monaca-core": "3.3.1",
-        "ncmb-push-monaca-plugin": "3.1.2"
+        "ncmb-push-monaca-plugin": "3.1.2",
+        "onsenui": "^2.12.6",
+        "vue-onsenui": "^3.0.0"
     },
     "cordova": {
         "plugins": {

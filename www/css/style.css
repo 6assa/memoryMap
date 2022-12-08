@@ -5,37 +5,32 @@ body {
 #main {
   color: black; }
   #main .header {
-    position: absolute;
+    position: fixed;
     top: 0px;
+    margin-top: 50px;
     width: 100%;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
-    #main .header img {
-      width: 170px; }
+    #main .header .header-img {
+      height: 40px;
+      display: flex; }
+      #main .header .header-img .logo {
+        margin: auto 0px;
+        width: 160px;
+        height: 33px; }
+      #main .header .header-img .notice {
+        width: 26px;
+        height: 26px;
+        margin: auto 20px auto auto; }
 
 .footer {
-  position: absolute;
+  position: fixed;
   bottom: 0px;
   width: 100%;
-  border-top: 1px solid rgba(0, 0, 0, 0.1); }
 
-  body {
-    padding: 0;
-    margin: 0;
-  position: relative;
-}
-html, body, #map {
-  height: 100%;
-}
-
-.add_button {
-  position: absolute;
-  right: 10%;
-  bottom: 10%;
-  font-size: 2em;
-  border-radius: 1.5em;    
-  border: 1px solid blue;
-  background-color: blue;
-  color: white;
-  width: 1.2em;
-  text-align: center;
-}
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  padding-left: 15px; }
+  .footer li {
+    text-align: center;
+    margin: 20px;
+    float: left;
+    list-style: none; }

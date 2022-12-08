@@ -2,28 +2,44 @@ $my-color: #3d3d3d;
 
 body {
   color: $my-color;
-  background-color: blue;
+  background-color: white;
 }
 
 #main {
   color: black;
   .header {
-      position: absolute;
+      position: fixed;
       top: 0px;
+      margin-top: 50px;
       width: 100%;
       border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-      img {
-          width: 170px;
+      .header-img {
+        height: 40px;
+        display: flex;
+        .logo {
+            margin: auto 0px;
+            width: 160px;
+            height: 33px;
+        }
+        .notice {
+            width: 26px;
+            height: 26px;
+            margin: auto 20px auto auto;
+        }
       }
   }
 }
-<<<<<<< HEAD
-=======
 
 .footer {
-    position: absolute;
+    position: fixed;
     bottom: 0px;
     width: 100%;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding-left: 15px;
+    li {
+        text-align: center;
+        margin: 20px;
+        float: left;
+        list-style: none;
+    }
 }
->>>>>>> 81e73b1bef7d21095c2b8bcf6fffde56a0199aa4

@@ -8,18 +8,27 @@
     <script src="components/loader.js"></script>
     <!--<script src="js/selection.js"></script>-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="js.selection.js"></script>
 
-    <script>
-function loadImage(obj)
+<script>
+    var file;
+    var url;
+    function loadImage(obj)
 {
 	document.getElementById('preview').innerHTML = '<p>プレビュー</p>';
+    file=obj.files[i];
 	for (i = 0; i < obj.files.length; i++) {
 		var fileReader = new FileReader();
 		fileReader.onload = (function (e) {
-			document.getElementById('preview').innerHTML += '<img src="' + e.target.result + '">';
+			document.getElementById('preview').innerHTML += '<img src="' + e.target.result + '">'
+            uri= e.target.result;
 		});
-		fileReader.readAsDataURL(obj.files[i]);
+
+		fileReader.readAsDataURL(file);
 	}
+    localStorage.setItem('name', file.name)
+    localStorage.setItem('type', file.type)
+    localStorage.setItem('uri',  uri)
 }
 </script>
 
@@ -31,15 +40,20 @@ function loadImage(obj)
     </style>
 </head>
 <body>
-    <p>■画像ファイルを選択してください。<br>
-<input type="file" accept='image/*' multiple="multiple" onchange="loadImage(this);"></p>
+     <p><a href= "main.html" >✕</a></p>
+        <h3>写真選択</h3>
+    </div>
+     <p><a href= "post.html" >次へ</a></p>
+    <p><input type="file" accept='image/*' multiple="multiple" onchange="loadImage(this);"></p>
+    
+
+   
 
 <p id="preview"></p>
 
 <style>
 #preview img {
-	width:100px;
-    height:100px;
+    width: 100px;
 	border:1px solid #cccccc;
 }
 </style>

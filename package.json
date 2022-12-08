@@ -5,6 +5,9 @@
         "cordova-plugin-splashscreen": "6.0.0",
         "monaca-plugin-monaca-core": "3.3.1",
         "ncmb-push-monaca-plugin": "3.1.2",
+        "cordova-plugin-geolocation": "4.1.0",
+        "cordova-plugin-device-orientation": "2.0.1",
+        "cordova-plugin-camera": "6.0.0",
         "onsenui": "^2.12.6",
         "vue-onsenui": "^3.0.0"
     },

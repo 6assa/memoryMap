@@ -19,9 +19,7 @@ $('.selection').toggleClass('show');
     var file;
     var url;
     function loadImage(obj)
-{
-	document.getElementById('preview').innerHTML = '<p>プレビュー</p>';
-    
+{    
 	for (i = 0; i < obj.files.length; i++) {
         file=obj.files[i];
 		var fileReader = new FileReader();

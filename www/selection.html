@@ -4,22 +4,35 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <link rel="stylesheet" href="components/loader.css">
     <script src="components/loader.js"></script>
     <!--<script src="js/selection.js"></script>-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="js.selection.js"></script>
 
-    <script>
-function loadImage(obj)
-{
-	document.getElementById('preview').innerHTML = '<p>プレビュー</p>';
+<script>
+window.addEventListener('load',function(){
+$('.selection').toggleClass('show');
+})
+
+    var file;
+    var url;
+    function loadImage(obj)
+{    
 	for (i = 0; i < obj.files.length; i++) {
+        file=obj.files[i];
 		var fileReader = new FileReader();
 		fileReader.onload = (function (e) {
-			document.getElementById('preview').innerHTML += '<img src="' + e.target.result + '">';
+			document.getElementById('preview').innerHTML += '<img src="' + e.target.result + '">'
+            uri= e.target.result;
 		});
-		fileReader.readAsDataURL(obj.files[i]);
+
+		fileReader.readAsDataURL(file);
 	}
+    localStorage.setItem('name', file.name)
+    localStorage.setItem('type', file.type)
+    localStorage.setItem('uri',  uri)
 }
 </script>
 
@@ -31,18 +44,61 @@ function loadImage(obj)
     </style>
 </head>
 <body>
-    <p>■画像ファイルを選択してください。<br>
-<input type="file" accept='image/*' multiple="multiple" onchange="loadImage(this);"></p>
+    <!--画像選択-->
+    <div class="selection" id="selection-container">
+     <p><a href= "main.html" >✕</a></p>
+        <h3>写真選択</h3>
+    
+     <p><a id='post' href= "#post-container" >次へ</a></p>
+    <p><input type="file" accept='image/*' multiple="multiple" onchange="loadImage(this);"></p>
+    </div>
 
-<p id="preview"></p>
+    <!--投稿-->
+    <div class="post" id="post-container">
+    <p><a id="select" href= "#selection-container" >戻る</a></p>
+        <div class="header">
+            <h3>新規投稿</h3>
+    </div>
+    <p><a id="post-submit" href= "selection.html" >シェア</a></p>
+    <hr>
+    <div class="post-main">
+         <p id="preview"></p>
+        <br>
+        <textarea placeholder="キャプションを入力..."></textarea>
+    </div>
+    <hr>
+    <div class="post-option">
+        
+        <ul>
+            <li>タグ付け</li>
+            <li>場所を追加</li>
+        </ul>
+    </div>
+    </div>
 
 <style>
 #preview img {
-	width:100px;
-    height:100px;
+    width: 100px;
 	border:1px solid #cccccc;
+}
+.selection,.post{
+display:none;
+}
+.show{
+    display:inline;
 }
 </style>
     
 </body>
+<script>
+    document.getElementById('select').addEventListener('click',function(){
+        $('#post-container').removeClass('show')
+        $('#selection-container').toggleClass('show')
+    })
+    document.getElementById('post').addEventListener('click',function(){
+        console.log('gg')
+        $('#selection-container').removeClass('show')
+        $('#post-container').toggleClass('show')
+    })
+</script>
 </html>

@@ -9,6 +9,41 @@
   <script src="html/login/login.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
+  <!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="Content-Security-Policy" content="default-src * data:; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+
+  <!-- Google Maps APIを読み込む -->
+  <script src="http://maps.googleapis.com/maps/api/js"></script>
+  <script>
+    // 1. ネイティブ機能を使う準備ができたときの処理
+    document.addEventListener("deviceready",function() {
+      // 2. 現在置情報を取得する
+      navigator.geolocation.getCurrentPosition(onSuccess, onError);
+    });
+    // 3. 現在地取得に成功した場合の処理
+    function onSuccess(position){
+      // 4. Google Maps APIの位置情報オブジェクトを生成
+      var latitude = position.coords.latitude;
+      var longitude = position.coords.longitude
+      var latlng = new google.maps.LatLng(latitude, longitude);
+      // 5. 地図を表示
+      map = new google.maps.Map(document.getElementById("mapCanvas"), {
+        zoom: 14,       // ズームレベル
+        center: latlng  // 中心地を指定
+      });
+      // 6. マーカーを置く
+      var marker = new google.maps.Marker({position: latlng, map: map});
+    }
+    // 7. 現在地取得に失敗した場合の処理
+    function onError(error){
+      console.log(JSON.stringify(error));
+    }
+  </script>
+
   <link rel="stylesheet" href="components/loader.css">
   <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
   <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
@@ -16,9 +51,7 @@
 </head>
 <body>
     <div id="main">
-        <div class="header">
-            <img class="img" src="img/logo.png">
-        </div>
+        <div id="mapCanvas" style="width:100%;height:850px"></div>
         <div class="common-footer">
         <nav>
             <li><a href="main.html"><img id="home" src="img/home.png" alt="home"></a></li>

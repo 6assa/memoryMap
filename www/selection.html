@@ -28,6 +28,10 @@ $('.selection').toggleClass('show');
             uri= e.target.result;
 		});
 
+        if(obj.files.length==0){
+            document.getElementById('preview').innerHTML += '<img src="img/input-img.png">'
+        }
+
 		fileReader.readAsDataURL(file);
 	}
     localStorage.setItem('name', file.name)
@@ -41,35 +45,75 @@ $('.selection').toggleClass('show');
     .post-img{
     text-aligh:center;
     }
+    header{
+        justify-content: space-between;
+        display:flex;
+        padding:5px;
+    }
+    header p{
+        margin-top:10px;
+        margin-bottom:10px;
+        margin-left:5px;
+        margin-right:5px;
+    }
+    .back a{
+        text-decoration:none; 
+        color:black;
+        }
+    .next a{
+        text-decoration:none;
+        color:blue;
+        }
+        .title{
+            padding-left:9px;
+        }
+        input["type=file"]{
+            margin-bottom:5px;
+        }
+        .tag li{
+            text-aligh:left;
+            list-style:none;
+        
+        
     </style>
 </head>
-<body>
+<body style="text-align:center">
+
+    <header>
+        <p  class="selection back"><a href= "main.html" style="color:#000;">✕</a></p>
+        <p  class="post back"><a id="select" href= "#selection-container" >戻る</a></p>
+        <p class="title">新規投稿</p>
+        <p class="selection next"><a id='post' href= "#post-container" >次へ</a></p>
+        <p class="post next"><a id="post-submit" href= "selection.html">シェア</a></p>
+    </header>
+    <hr>
     <!--画像選択-->
     <div class="selection" id="selection-container">
-     <p><a href= "main.html" >✕</a></p>
-        <h3>写真選択</h3>
+        <br>
+        <div class="input-img">
+            <label>
+        <span>
+            <img src="img/input-img.png">
+        </span>
+        <input type="file" accept='image/*' multiple="multiple" onchange="loadImage(this);">
+        <br>
+        </label>
+        </div>
+        <hr>
     
-     <p><a id='post' href= "#post-container" >次へ</a></p>
-    <p><input type="file" accept='image/*' multiple="multiple" onchange="loadImage(this);"></p>
     </div>
 
     <!--投稿-->
     <div class="post" id="post-container">
-    <p><a id="select" href= "#selection-container" >戻る</a></p>
-        <div class="header">
-            <h3>新規投稿</h3>
-    </div>
-    <p><a id="post-submit" href= "selection.html" >シェア</a></p>
-    <hr>
-    <div class="post-main">
-         <p id="preview"></p>
+    <div class="post-main" position="relative">
+         <p id="preview" position="absolute"></p>
         <br>
         <textarea placeholder="キャプションを入力..."></textarea>
     </div>
     <hr>
     <div class="post-option">
         
-        <ul>
+        <ul class="tag">
             <li>タグ付け</li>
             <li>場所を追加</li>
         </ul>
@@ -84,21 +128,22 @@ $('.selection').toggleClass('show');
 .selection,.post{
 display:none;
 }
+
 .show{
     display:inline;
 }
+
 </style>
     
 </body>
 <script>
     document.getElementById('select').addEventListener('click',function(){
-        $('#post-container').removeClass('show')
-        $('#selection-container').toggleClass('show')
+        $('.post').removeClass('show')
+        $('.selection').toggleClass('show')
     })
     document.getElementById('post').addEventListener('click',function(){
-        console.log('gg')
-        $('#selection-container').removeClass('show')
-        $('#post-container').toggleClass('show')
+        $('.selection').removeClass('show')
+        $('.post').toggleClass('show')
     })
 </script>
 </html>

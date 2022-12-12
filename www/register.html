@@ -7,6 +7,18 @@
     <link rel="stylesheet" href="components/loader.css">
     <script src="components/loader.js"></script>
     <script>
+        // パスワードと確認用パスワードが同じかチェックを行う
+        function check-password(){
+            var pass = document.getElementById("password").value;
+            var check-pass = document.getElementById("check-password").value;
+
+            // パスワードを比較
+            if(pass != check-pass){
+                 alert('パスワードが一致していません');
+            }
+        }
+
+       // ログイン画面に遷移する
        function transition(){
            location.href = 'login.html';
        }
@@ -26,17 +38,17 @@
                    placeholder="ユーザ名" 
                    required="required"/>
             <br>
-            <input type="password" 
+            <input type="password" id="password"
                    name="password" 
                    placeholder="パスワード" 
                    required="required"/>
             <br>
-            <input type="password" 
+            <input type="password" id="check-password"
                    name="check-password" 
                    placeholder="確認用パスワード" 
                    required="required"/>
 
             </form>
-            <button type="submit" class="btn btn-primary button-size" onclick="transition()">登録</button>
+            <button type="submit" class="btn btn-primary button-size" onclick="check-password();transition()">登録</button>
 </body>
 </html>

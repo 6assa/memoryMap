@@ -13,7 +13,7 @@
 
 <script>
 window.addEventListener('load',function(){
-$('.selection').toggleClass('show');
+$('.selection').show();
 })
 
     var file;
@@ -138,12 +138,12 @@ display:none;
 </body>
 <script>
     document.getElementById('select').addEventListener('click',function(){
-        $('.post').removeClass('show')
-        $('.selection').toggleClass('show')
+        $('.post').hide();
+        $('.selection').show();
     })
     document.getElementById('post').addEventListener('click',function(){
-        $('.selection').removeClass('show')
-        $('.post').toggleClass('show')
+        $('.selection').hide();
+        $('.post').show();
     })
 </script>
 </html>

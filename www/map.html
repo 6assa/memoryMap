@@ -1,67 +1,102 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-  <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
-  <script src="components/loader.js"></script>
-  <script src="lib/onsenui/js/onsenui.min.js"></script>
-  <script src="html/login/login.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <title>map</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: content: https://ssl.gstatic.com; style-src * 'unsafe-inline';    script-src * 'unsafe-inline' 'unsafe-eval'">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw==" crossorigin=""></script>
+    <script src="components/loader.js"></script>
+    <script src="classic.js"></script>
+    <link rel="stylesheet" href="components/loader.css">
+    <link rel="stylesheet" href="css/style.css">
 
-  <!DOCTYPE HTML>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <meta http-equiv="Content-Security-Policy" content="default-src * data:; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+    <style type="text/css">
+        <!-- #mapid {
+            height: 400px;
+            width: 600px
+        }
+        
+        #btnCurLocation {
+            height: 50px;
+            width: 150px;
+        }
+        -->
+    </style>
 
-  <!-- Google Maps APIを読み込む -->
-  <script src="http://maps.googleapis.com/maps/api/js"></script>
-  <script>
-    // 1. ネイティブ機能を使う準備ができたときの処理
-    document.addEventListener("deviceready",function() {
-      // 2. 現在置情報を取得する
-      navigator.geolocation.getCurrentPosition(onSuccess, onError);
-    });
-    // 3. 現在地取得に成功した場合の処理
-    function onSuccess(position){
-      // 4. Google Maps APIの位置情報オブジェクトを生成
-      var latitude = position.coords.latitude;
-      var longitude = position.coords.longitude
-      var latlng = new google.maps.LatLng(latitude, longitude);
-      // 5. 地図を表示
-      map = new google.maps.Map(document.getElementById("mapCanvas"), {
-        zoom: 14,       // ズームレベル
-        center: latlng  // 中心地を指定
-      });
-      // 6. マーカーを置く
-      var marker = new google.maps.Marker({position: latlng, map: map});
-    }
-    // 7. 現在地取得に失敗した場合の処理
-    function onError(error){
-      console.log(JSON.stringify(error));
-    }
-  </script>
+    <script>
+        function setCurLocation() {
+            document.addEventListener("deviceready", function() {
+                // 現在地情報を取得する
+                navigator.geolocation.getCurrentPosition(onSuccess, onError);
+            });
+            // 現在地取得に成功した場合の処理
+            function onSuccess(position) {
+                // 緯度取得
+                var latitude = position.coords.latitude;
+                // 経度取得
+                var longitude = position.coords.longitude;
+                // 表示
+                console.log(latitude);
+                console.log(longitude);
+                // document.writeln(" 緯度:" + latitude);
+                // document.writeln(" 経度:" + longitude);
+                // 逆ジオコーディングを実行
+                var url = "https://aginfo.cgk.affrc.go.jp/ws/rgeocode.php?json&" +
+                    "lat=" + latitude +
+                    "&lon=" + longitude;
+                console.log(url);
+                fetch(url)
+                    .then(function(response) {
+                        return response.json();
+                    })
+                    .then(function(address) {
+                        var address = " 住所：" +
+                            address.result.prefecture.pname +
+                            address.result.municipality.mname +
+                            address.result.local[0].section;
+                        //alert(address);
+                        viewmap(latitude,longitude);
+                    });
+            }
+            // 現在地取得に失敗した場合の処理
+            function onError(error) {
+                alert(error.message);
+            }
+        }
+        
+        function viewmap(latitude,longitude){
+            var mymap = L.map('mapid').setView([latitude,longitude], 15);
 
-  <link rel="stylesheet" href="components/loader.css">
-  <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
-  <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
-  <link rel="stylesheet" href="css/style.css">
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+            attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, '
+        }).addTo(mymap);
+
+        var marker = L.marker([latitude,longitude]).addTo(mymap);
+        marker.bindPopup("<p>popup1</p><p>地図表示時に一緒に現在地が表示されます。</p>").openPopup();
+        }
+    </script>
 </head>
+
 <body>
-    <div id="main">
-        <div id="mapCanvas" style="width:100%;height:850px"></div>
-        <div class="common-footer">
-        <nav>
-            <li><a href="main.html"><img id="home" src="img/home.png" alt="home"></a></li>
-            <li><a href="search.html"><img id="search" src="img/search.png" alt="search"></a></li>
-            <li><a href="selection.html"><img id="post" src="img/post.png" alt="post"></a></li>
-            <li><a href="map.html"><img id="map" src="img/map.png" alt="map"></a></li>
-            <li><a href="profile.html"><img id="profile" src="img/profile.png" alt="profile"></a></li>
-            
-        </nav>
-    </div>
-    </div>
+    <div id="mapid"></div>
+    <button id="btnCurLocation" onClick="setCurLocation()">現在地を表示</button>
+    <script>
+      setCurLocation();      
+      // ピン追加
+      var marker2 = L.marker([43.047922, 141.39669]).addTo(mymap);
+      var popup = L.popup();
+      function onMarker2Click(e) {
+          popup
+              .setLatLng(e.latlng)
+              .setContent("<p>popup2</p><p>clickで表示されます。</p>" + e.latlng.toString()).openOn(mymap);
+      }
+     mymap.on('click', onMarker2Click);
+
+    </script>
 </body>
+
 </html>

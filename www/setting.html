@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -9,10 +9,28 @@
     <script src="components/loader.js"></script>
     <script src="js/setting.js"></script>
     <script>
-        //
-        // TODO: Write JavaScript code here
-        //
+    	var mymap = L.map('mapid').setView([35.7102, 139.8132], 15);
+
+      L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    		maxZoom: 18,
+    		attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, '
+    	}).addTo(mymap);
+
+      var marker = L.marker([35.7101, 139.8107]).addTo(mymap);
+      marker.bindPopup("<p>popup1</p><p>地図表示時に一緒に表示されます。</p>").openPopup();
+
+      var marker2 = L.marker([35.7121, 139.8207]).addTo(mymap);
+      var popup = L.popup();
+      function onMarker2Click(e) {
+          popup
+              .setLatLng(e.latlng)
+              .setContent("<p>popup2</p><p>clickで表示されます。</p>" + e.latlng.toString())
+              .openOn(mymap);
+      }
+      mymap.on('click', onMarker2Click);
+
     </script>
+
 </head>
 <body>
     <div class="setting-headder">

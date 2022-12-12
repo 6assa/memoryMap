@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+    <link rel="stylesheet" href="components/loader.css">
+    <script src="components/loader.js"></script>
+    <script>
+       function transition(){
+           location.href = 'login.html';
+       }
+    </script>
+</head>
+<body>
+    <div>
+        <img src="img/logo.png" width="350px">
+    </div>
+
+            <form method="post">
+    	    <input type="text" name="u" 
+                   placeholder="メールアドレス" 
+                   required="required"/>
+            <br>
+            <input type="text" name="n" 
+                   placeholder="ユーザ名" 
+                   required="required"/>
+            <br>
+            <input type="password" 
+                   name="p" 
+                   placeholder="パスワード" 
+                   required="required"/>
+            <br>
+            <input type="password" 
+                   name="p" 
+                   placeholder="確認用パスワード" 
+                   required="required"/>
+
+            </form>
+            <button type="submit" class="btn btn-primary button-size" onclick="transition()">登録</button>
+</body>
+</html>

@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
     <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/tabs.css">
 
 </head>
 
@@ -18,26 +17,12 @@
     <div id="main">
         <div class="header">
             <div class="header-img">
+                <img class="search" src="img/search.svg">
                 <img class="logo" src="img/logo.png">
                 <img class="notice" src="img/bell.png">
             </div>
-            <div class="header-tabs">
-                <div class="tabs">
-                    <input id="follow-tab" type="radio" name="tab_item" onclick="tabs()" checked>
-                    <label class="tab_item" for="follow-tab">フォロー</label>
-                    <input id="open-tab" type="radio" name="tab_item" onclick="tabs()">
-                    <label class="tab_item" for="open-tab">オープン</label>
-                </div>
-            </div>
-            <div>
-                絞り込み
-            </div>
         </div>
-        <div id="follow-content">フォロー
-        </div>
-        <div class="tab_content" id="open-content">
-            オープン
-        </div>
+        <div id="content"></div>
         <nav class="footer">
 
             <li>
@@ -65,10 +50,13 @@
 <script src="lib/onsenui/js/onsenui.min.js"></script>
 <script src="js/main.js"></script>
 <script>
+    // 一件分のデータを定義
+    var profile_img = '<img class="search" src="img/search.svg">'
+
     // タブの要素表示
-    var follow_content = document.getElementById('follow-content');
+    var content = document.getElementById('content');
     var add_code = '<h1>ああああ</h1>';
-    follow_content.insertAdjacentHTML('afterend', add_code);
+    content.insertAdjacentHTML('afterend', add_code);
 </script>
 
 </html>

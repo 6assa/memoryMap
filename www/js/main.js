@@ -1,16 +1,7 @@
-// タブ押下による内容の表示
-function tabs() {
-    if (document.getElementsByName('tab_item')[0].checked) {
-        $('#open-content').hide();
-        $('#follow-content').show();
-    } else {
-        $('#follow-content').hide();
-        $('#open-content').show();
-    }
-}
-
-// 上記の動きをページが読み込まれたらすぐに動かす
-$(window).on('load', function () {
-    $('#follow-content').show();
-});
+// // ページが読み込まれたらすぐに動かす
+// $(window).on('load', function () {
+//     var content = document.getElementsByClassName('content');
+//     var add_code = '<h1>ああああ</h1>';
+//     content.insertAdjacentHTML('afterend', add_code);
+// });
 

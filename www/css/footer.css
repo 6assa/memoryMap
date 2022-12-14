@@ -1,0 +1,12 @@
+/* This is a CSS file */
+footer{
+    background-color: #fff;
+}
+.footer li{
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+        .footer li{
+            width:20%;
+        }

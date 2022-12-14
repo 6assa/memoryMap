@@ -4,14 +4,10 @@ function tabs() {
         $('#follow-content').hide();
         $('#follower-content').hide();
         $('#post-content').show();
-    } else if(document.getElementsByName('tab_item')[1].checked) {
+    } else{
         $('#post-content').hide();
         $('#follower-content').hide();
         $('#follow-content').show();
-    }else{
-        $('#post-content').hide();
-        $('#follow-content').hide();
-        $('#follower-content').show();
     }
 }
 

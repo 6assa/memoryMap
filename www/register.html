@@ -5,50 +5,37 @@
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
     <link rel="stylesheet" href="components/loader.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/ncmb-latest.min.js"></script>
     <script src="components/loader.js"></script>
-    <script>
-        // パスワードと確認用パスワードが同じかチェックを行う
-        function check-password(){
-            var pass = document.getElementById("password").value;
-            var check-pass = document.getElementById("check-password").value;
-
-            // パスワードを比較
-            if(pass != check-pass){
-                 alert('パスワードが一致していません');
-            }
-        }
-
-       // ログイン画面に遷移する
-       function transition(){
-           location.href = 'login.html';
-       }
-    </script>
+    <script src="js/register.js"></script>
+    <script src="js/cssua.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
+
 <body>
-    <div>
+    <!-- 登録ページ -->
+    <header>
         <img src="img/logo.png" width="350px">
-    </div>
+    </header>
 
-            <form method="post">
-    	    <input type="text" name="mailaddress" 
-                   placeholder="メールアドレス" 
-                   required="required"/>
+        <section data-role="content">
+            <h1>新規登録</h1>
+            ユーザ名
+    	      <input type="text" id="reg_username">
             <br>
-            <input type="text" name="user-name" 
-                   placeholder="ユーザ名" 
-                   required="required"/>
+            <input type="text" id="reg_mailaddres" 
+                   placeholder="メールアドレス"/>
             <br>
-            <input type="password" id="password"
-                   name="password" 
-                   placeholder="パスワード" 
-                   required="required"/>
+            <input type="password" id="reg_password"
+                   placeholder="パスワード"/>
             <br>
-            <input type="password" id="check-password"
-                   name="check-password" 
-                   placeholder="確認用パスワード" 
-                   required="required"/>
+            <input type="password" id="regcheck_password"
+                   placeholder="確認用パスワード"/>
 
-            </form>
-            <button type="submit" class="btn btn-primary button-size" onclick="check-password();transition()">登録</button>
+            <button onclick="onRegisterBtn()">登録</button>
+            <a href="login.html">戻る</a>
+        </section>
 </body>
+
 </html>

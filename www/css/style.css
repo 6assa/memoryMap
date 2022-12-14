@@ -20,14 +20,13 @@ body {
         width: 26px;
         height: 26px;
         margin: auto 20px auto auto; }
-    #main .header .header-tab {
+    #main .header .header-tabs {
       border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
 
 .footer {
   position: fixed;
   bottom: 0px;
   width: 100%;
-
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   padding-left: 15px; }
   .footer li {

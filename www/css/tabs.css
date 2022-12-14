@@ -37,12 +37,6 @@ input[name="tab_item"] {
   overflow: hidden;
 }
 
-
-/*areaにis-activeというクラスがついた時の形状*/
-.show {
-    display: inline;/*表示*/
-}
-
 /*選択されているタブのスタイルを変える*/
 .tabs input:checked + .tab_item {
     border-bottom: 3px solid orange;

@@ -6,6 +6,7 @@
     <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
     <link rel="stylesheet" href="components/loader.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/setting.css">
     <script src="components/loader.js"></script>
     <script src="js/setting.js"></script>
     <script>
@@ -35,8 +36,9 @@
 <body>
     <div class="setting-headder">
         <h3>設定</h3>
-    </div>
+    </div class="item">
     <hr>
+    <div>
     <p><a href="" class="no-line">アカウント</a></p>
     <hr>
     <p><a href="" class="no-line">プロフィール</a></p>
@@ -45,8 +47,9 @@
     <hr>
     <p><a href="" class="no-line">その他</a></p>
     <hr>
-    <p><a href="" class="no-line">ログアウト</a></p>
+    <p><button type="submit" class="button-layout" onclick="logout()">ログアウト</button></p>
     <hr>
+    </div>
 
      
         <nav class="footer">

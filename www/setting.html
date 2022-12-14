@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -6,37 +6,58 @@
     <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
     <link rel="stylesheet" href="components/loader.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/setting.css">
     <script src="components/loader.js"></script>
+    <script src="js/setting.js"></script>
     <script>
-        //
-        // TODO: Write JavaScript code here
-        //
+    	var mymap = L.map('mapid').setView([35.7102, 139.8132], 15);
+
+      L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    		maxZoom: 18,
+    		attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, '
+    	}).addTo(mymap);
+
+      var marker = L.marker([35.7101, 139.8107]).addTo(mymap);
+      marker.bindPopup("<p>popup1</p><p>地図表示時に一緒に表示されます。</p>").openPopup();
+
+      var marker2 = L.marker([35.7121, 139.8207]).addTo(mymap);
+      var popup = L.popup();
+      function onMarker2Click(e) {
+          popup
+              .setLatLng(e.latlng)
+              .setContent("<p>popup2</p><p>clickで表示されます。</p>" + e.latlng.toString())
+              .openOn(mymap);
+      }
+      mymap.on('click', onMarker2Click);
+
     </script>
+
 </head>
 <body>
-    <div class="headder">
+    <div class="setting-headder">
         <h3>設定</h3>
+    </div class="item">
+    <hr>
+    <div>
+    <p><a href="" class="no-line">アカウント</a></p>
+    <hr>
+    <p><a href="" class="no-line">プロフィール</a></p>
+    <hr>
+    <p><a href="" class="no-line">通知</a></p>
+    <hr>
+    <p><a href="" class="no-line">その他</a></p>
+    <hr>
+    <p><button type="submit" class="button-layout" onclick="logout()">ログアウト</button></p>
+    <hr>
     </div>
-    <hr>
-    <p><a href="" class="no_line">アカウント</a></p>
-    <hr>
-    <p><a href="" class="no_line">プロフィール</a></p>
-    <hr>
-    <p><a href="" class="no_line">通知</a></p>
-    <hr>
-    <p><a href="" class="no_line">その他</a></p>
-    <hr>
-    <p><a href="" class="no_line">ログアウト</a></p>
-    <hr>
 
-     <div class="common-footer">
-        <nav>
+     
+        <nav class="footer">
             <li><a href="main.html"><img id="home" src="img/home.png" alt="home"></a></li>
             <li><a href="search.html"><img id="search" src="img/search.png" alt="search"></a></li>
             <li><a href="selection.html"><img id="post" src="img/post.png" alt="post"></a></li>
             <li><a href="map.html"><img id="map" src="img/map.png" alt="map"></a></li>
             <li><a href="profile.html"><img id="profile" src="img/profile.png" alt="profile"></a></li>
         </nav>
-    </div>
 </body>
 </html>

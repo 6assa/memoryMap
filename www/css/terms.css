@@ -1,0 +1,15 @@
+/* This is a CSS file */
+
+.content-box {
+  box-sizing: content-box;
+  width: 290px;
+  height: 350px;
+  padding: 20px;
+  border: 2px solid black;
+  background: rgb(247, 247, 247);
+}
+
+.button-size{
+    width: 290px;
+    height: 30px;
+}

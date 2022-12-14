@@ -1,0 +1,27 @@
+/* This is a CSS file */
+
+.setting-headder{
+    text-align: center;
+}
+
+.back{
+    text-align: left;
+}
+
+.no-line{
+    text-decoration: none;
+    color: black;
+    position: relative;
+    left: 20px;
+}
+
+.button-layout{
+    color: black;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 16px;
+    font-weight: lighter;
+    font-family: serif;
+    padding: 5px 20px;
+}

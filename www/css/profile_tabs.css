@@ -1,0 +1,49 @@
+/*タブ切り替え全体のスタイル*/
+.tabs {
+  margin-top: 50px;
+  padding-bottom: 40px;
+  background-color: #fff;
+  width: 100%;
+  margin: 0 auto;}
+
+/*タブのスタイル*/
+.tab_item {
+  width: 33%;
+  height: 38px;
+  line-height: 38px;
+  font-size: 16px;
+  color: #565656;
+  display: block;
+  float: left;
+  text-align: center;
+  font-weight: bold;
+  transition: all 0.2s ease;
+  margin: auto;
+}
+.tab_item:hover {
+  opacity: 0.75;
+}
+
+/*ラジオボタンを全て消す*/
+input[name="tab_item"] {
+  display: none;
+}
+
+/*タブ切り替えの中身のスタイル*/
+.tab_content {
+  display: none;
+  padding:0;
+  clear: both;
+  overflow: hidden;
+}
+
+
+/*areaにis-activeというクラスがついた時の形状*/
+.show {
+    display: inline;/*表示*/
+}
+
+/*選択されているタブのスタイルを変える*/
+.tabs input:checked + .tab_item {
+    border-bottom: 3px solid orange;
+}

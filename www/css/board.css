@@ -1,4 +1,4 @@
-/* This is a CSS file */
+/* 掲示板 */
 .board-list{
     display: flex;
     flex-direction:column-reverse;

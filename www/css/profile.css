@@ -3,7 +3,7 @@
 .profile-images{
           position:relative;
       }
-      #head-img{
+#head-img{
           left:8px;
           position:absolute;
       }
@@ -22,21 +22,67 @@
           justify-content: center;
           align-items: center;
       }
+      .tab-contents{
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          min-height:190px;
+          width:100%;
+      }
       .tab_content{
+          margin-left: 20px;
           overflow: auto;
-          height:170px;
+          box-sizing: border-box;
+          width: 650px;
+          height:100%;
+      }
+      .tab_content::-webkit-scrollbar {
+          display: none;
       }
       .tab_content img{
           display:inline-block;
           width:31%;
           height:118px;
           padding:0;
+          
           }
           footer{
               bottom:0;
           }
 
-          /*タブ切り替え全体のスタイル*/
+          .follow-item{
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              width: 100%;
+          }
+          .follow-item img{
+              float: left;
+              width: 50px;
+              height: 50px;
+
+          }
+          .follow-item p{
+              float: left;
+              margin-left: 20px;
+
+          }
+          .follow-text{
+              margin-left: 150px;
+              display: flex;
+              align-items: center;
+              flex-direction: row;
+              }
+          
+          .follow-item button{
+              float: right;
+              height:30px;
+              color: #fff;
+              background-color: #68CFFB;
+              border-radius: 5px;
+          }
+ /*タブ切り替え全体のスタイル*/
 .tabs {
     float: left;
   margin-top: 50px;
@@ -47,7 +93,7 @@ width: 100%;
 
 /*タブのスタイル*/
 .tab_item {
-  width: 50%;
+  width: 33%;
   height: 38px;
   line-height: 38px;
   font-size: 16px;

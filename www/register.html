@@ -21,11 +21,22 @@
 
         <section data-role="content">
             <h1>新規登録画面</h1>
-    	    <input type="text" id="reg_username"
+    	    <input type="text" id="reg_username"    
                    placeholder="ユーザーネーム"/>
             <br>
             <input type="text" id="reg_mailaddres" 
                    placeholder="メールアドレス"/>
+            <br>
+            <select name="area" required>
+                <option value="">お住まいの地域</option>
+                <option value="a">北海道地方</option>
+                <option value="b">東北地方</option>
+                <option value="c">関東地方</option>
+                <option value="d">中部地方</option>
+                <option value="e">近畿地方</option>
+                <option value="h">中国・四国地方</option>
+                <option value="g">九州地方</option>
+            </select>
             <br>
             <input type="password" id="reg_password"
                    placeholder="パスワード"/>

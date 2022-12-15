@@ -1,9 +1,4 @@
 /* This is a CSS file */
-
-main{
-    height: 100%;
-}
-
 .profile-header{
     position:relative;
 }
@@ -90,7 +85,7 @@ input[name="tab_item"] {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    min-height:190px;
+    height:275px;
     width:100%;
 }
 .tab_content{

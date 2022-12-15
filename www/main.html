@@ -30,7 +30,7 @@
 </div>
 </div>
 <div class="splashbg"></div>-->
-<div id="container">
+
     <header>
     <div id="main">
         <div class="header">
@@ -42,6 +42,7 @@
         </div>
     </div>
     </header>
+    <div id="container">
     <main>
         <div id="board-list">
             <div class="board-item">
@@ -321,14 +322,28 @@
 <!-- <script src="js/load.js"></script> -->
 <script>
     // 一件分のデータを定義
-    var user_img = 'img/home.png';
-    var user_id = '香島 凌';
-    var user_text = '無給で働きます';
-    var user_time = '12:32';
+    // var user_img = 'img/home.png';
+    // var user_id = '香島 凌';
+    // var user_text = '無給で働きます';
+    // var user_time = '12:32';
+    var array = [
+        ['img/home.png','香島 凌','無給で働きます','12:32'],
+        ['img/bell.png','あさき','長い文字が入力されたぞおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおお','12:50'],
+        ['img/usericon.png','ゆあさ','からあげおいしいなー','13:24'],
+        ['img/search.svg','ふくい','俺以外まともじゃないな','14:12'],
+        ['img/map.png','いけの','びじねすびじねす','15:30']
+    ];
 
-    var content = document.getElementById('board-list');
-    var add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon"      src="' + user_img + '" width="50px" height="50px" ></div><div class="board-text"><p id="text"><span>' + user_id + '</span><br><span>' + user_text + '</span></p><div class="post-img"><img src="img/share.png"><img src="img/good.png"></div></div><div class="post-time"><p class="time">' + user_time + '</p></div></div>'
-    content.insertAdjacentHTML('beforeend', add_code);
+    $.each(array, function(cnt, value_data){
+        console.log('0:' + value_data[0]);
+        console.log('1:' + value_data[1]);
+        console.log('2:' + value_data[2]);
+        console.log('3:' + value_data[3]);
+
+        var content = document.getElementById('board-list');
+        var add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon"      src="' + value_data[0] + '" width="50px" height="50px" ></div><div class="board-text"><p id="text"><span>' + value_data[1] + '</span><br><span>' + value_data[2] + '</span></p><div class="post-img"><img src="img/share.png"><img src="img/good.png"></div></div><div class="post-time"><p class="time">' + value_data[3] + '</p></div></div>'
+        content.insertAdjacentHTML('beforeend', add_code);
+    });
 </script>
 
 </html>

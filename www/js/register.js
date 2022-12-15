@@ -4,12 +4,13 @@ var clientKey = "c69493cf90b864392429342ee30634253184f5ea19165840dc4d13b706fa70f
 var ncmb = new NCMB(appKey, clientKey);
 
 //----------------------------------USER MANAGEMENT-------------------------------------//
-var currentLoginUser; //現在ログイン中ユーザー
+//var currentLoginUser; //現在ログイン中ユーザー
 
 function onRegisterBtn(){
     //入力フォームから変数をセット
-    var username = $("#reg_username").val();
-    var mailaddres = $("#reg_mailaddres").val();
+    //ニフクラの仕組みでusernameにメアドを入れてる
+    var username = $("#reg_mailaddres").val();
+    var displayname = $("#reg_username").val();
     var password = $("#reg_password").val();
     var checkpassword = $("#regcheck_password").val();
     var passcheck = true;
@@ -23,7 +24,7 @@ function onRegisterBtn(){
     if (passcheck) {
     var user = new ncmb.User();
     user.set("userName", username)
-        .set("mailaddres", mailaddres)
+        .set("displayName", displayname)
         .set("password", password)
         .signUpByAccount() //ここでニフクラに登録される
         .then(function(reg_user) {
@@ -31,7 +32,7 @@ function onRegisterBtn(){
             ncmb.User.login(reg_user)
                      .then(function(login_user) {
                          alert("新規登録とログイン成功");
-                         currentLoginUser = ncmb.User.getCurrentUser();
+                         //currentLoginUser = ncmb.User.getCurrentUser();
                          document.location.href='login.html';
                      })
                      .catch(function(error) {

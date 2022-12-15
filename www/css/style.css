@@ -8,10 +8,14 @@ body {
     position: sticky;
     top: 0px;
     margin-top: 50px;
-    width: 100%; }
+    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
     #main .header .header-img {
       height: 40px;
       display: flex; }
+      #main .header .header-img .search {
+        width: 26px;
+        height: 26px; }
       #main .header .header-img .logo {
         margin: auto 0px;
         width: 160px;
@@ -20,11 +24,9 @@ body {
         width: 26px;
         height: 26px;
         margin: auto 20px auto auto; }
-    #main .header .header-tabs {
-      border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
 
 .footer {
-  position: fixed;
+  position: sticky;
   bottom: 0px;
   width: 100%;
   border-top: 1px solid rgba(0, 0, 0, 0.1);

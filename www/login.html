@@ -8,12 +8,13 @@
   <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
   <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
   <link rel="stylesheet" href="css/style.css">
+  <script src="js/ncmb-latest.min.js"></script>
   <script src="components/loader.js"></script>
   <script src="lib/onsenui/js/onsenui.min.js"></script>
   <script src="js/login.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
-
-  <script>
+  <!-- <script>
     ons.ready(function() {
         console.log(window.location.href)
       console.log("Onsen UI is ready!");
@@ -23,33 +24,36 @@
       document.documentElement.setAttribute('onsflag-iphonex-portrait', '');
       document.documentElement.setAttribute('onsflag-iphonex-landscape', '');
     }
-  </script>
- 
+  </script> -->
 </head>
+
 <body>
-    <div id="root">
-        <div class="header">
-            <img src="img/logo.png" width="200px">
-        </div>
-        <form method="post">
-    	    <input type="text" name="u" 
-                   placeholder="メールアドレス" 
-                   required="required"/>
-            <br>
-            <input type="password" 
-                   name="p" 
-                   placeholder="パスワード" 
-                   required="required"/>
-            <p>メイン画面に遷移<a href= "main.html">こちら</a></p>
-            <!-- <button type="submit" onsubmit="login()" 
-                    class="btn btn-primary btn-block btn-large">ログイン
-            </button> -->
-            <p>プロフィール画面に遷移<a href= "profile.html" >こちら</a><p>
-            <p>新規投稿画面に遷移<a href= "selection.html" >こちら</a></p>
-            <p>マップ画面に遷移<a href= "map.html" >こちら</a></p>
-            <p>設定画面に遷移<a href= "setting.html" >こちら</a></p>
-            <p>新規登録に遷移<a href= "register.html" >こちら</a></p>
-        </form>
-    </div>
+    <header>
+        <img src="img/logo.png" width="200px">
+    </header>
+
+    <section data-role="content">
+        <h1>ログイン画面</h1>
+        <input type="text" id="login_mailaddres" 
+               placeholder="メールアドレス"/>
+        <br>
+        <input type="password" id="login_password" 
+               placeholder="パスワード"/>
+        <p>パスワードを忘れた方は<a href="register.html">こちら</a></p>
+        <button onclick="onLoginBtn()">ログイン</button>
+        <br>
+        <br>
+        <br>
+        <p>アカウントをお持ちでない方<a href="#">こちら</a></p>
+        <br>
+        <p>メイン画面に遷移<a href="main.html">こちら</a></p>
+        <p>プロフィール画面に遷移<a href="profile.html" >こちら</a></p>
+        <p>新規投稿画面に遷移<a href="selection.html" >こちら</a></p>
+        <p>マップ画面に遷移<a href="map.html" >こちら</a></p>
+        <p>設定画面に遷移<a href="setting.html" >こちら</a></p>
+        <p>新規登録に遷移<a href="register.html" >こちら</a></p>
+        <p>テスト<a href="test.html" >こちら</a></p>
+
+    </section>
 </body>
 </html>

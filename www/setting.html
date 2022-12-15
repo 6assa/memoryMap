@@ -1,38 +1,40 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
     <link rel="stylesheet" href="components/loader.css">
-    <link rel="stylesheet" href="css/styles.css">
-    <script src="js/ncmb-latest.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/setting.css">
     <script src="components/loader.js"></script>
     <script src="js/setting.js"></script>
 
 </head>
-
 <body>
-    <!-- 登録ページ -->
-    <header>
-        <img src="img/logo.png" width="350px">
-    </header>
+    <div class="setting-headder">
+        <h3>設定</h3>
+    </div class="item">
+    <hr>
+    <div>
+    <p><a href="" class="no-line">アカウント</a></p>
+    <hr>
+    <p><a href="" class="no-line">プロフィール</a></p>
+    <hr>
+    <p><a href="" class="no-line">通知</a></p>
+    <hr>
+    <p><a href="" class="no-line">その他</a></p>
+    <hr>
+    <p><class="no-line" onclick="onLogout()">ログアウト</p>
+    <hr>
+    </div>
 
-        <section data-role="content">
-            <h1>新規登録画面</h1>
-    	    <input type="text" id="reg_username"
-                   placeholder="ユーザーネーム"/>
-            <br>
-            <input type="text" id="reg_mailaddres" 
-                   placeholder="メールアドレス"/>
-            <br>
-            <input type="password" id="reg_password"
-                   placeholder="パスワード"/>
-            <br>
-            <input type="password" id="regcheck_password"
-                   placeholder="確認用パスワード"/>
-            <button onclick="mail()">登録</button>
-            <a href="login.html">戻る</a>
-        </section>
+        <nav class="footer">
+            <li><a href="main.html"><img id="home" src="img/home.png" alt="home"></a></li>
+            <li><a href="search.html"><img id="search" src="img/search.png" alt="search"></a></li>
+            <li><a href="selection.html"><img id="post" src="img/post.png" alt="post"></a></li>
+            <li><a href="map.html"><img id="map" src="img/map.png" alt="map"></a></li>
+            <li><a href="profile.html"><img id="profile" src="img/profile.png" alt="profile"></a></li>
+        </nav>
 </body>
 </html>

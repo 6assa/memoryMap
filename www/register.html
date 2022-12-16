@@ -27,8 +27,7 @@
             <input type="text" id="reg_mailaddres" 
                    placeholder="メールアドレス"/>
             <br>
-            <select name="area" required>
-                <option value="">お住まいの地域</option>
+            <select id="area" required>
                 <option value="a">北海道地方</option>
                 <option value="b">東北地方</option>
                 <option value="c">関東地方</option>
@@ -43,6 +42,10 @@
             <br>
             <input type="password" id="regcheck_password"
                    placeholder="確認用パスワード"/>
+            <br>
+            <input type="text" id="secret_pass"
+                   placeholder="秘密の言葉"/>
+            <p>パスワード再設定時に使用します。</p>
             <button onclick="onRegisterBtn()">登録</button>
             <a href="login.html">戻る</a>
         </section>

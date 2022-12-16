@@ -15,13 +15,11 @@
     left: 20px;
 }
 
-.button-layout{
-    color: black;
-    border: none;
-    outline: none;
-    background: transparent;
-    font-size: 16px;
-    font-weight: lighter;
-    font-family: serif;
-    padding: 5px 20px;
+.position{
+    position: relative;
+    left: -20px;
+}
+
+.footer{
+    margin: 380px 0px 0px; 
 }

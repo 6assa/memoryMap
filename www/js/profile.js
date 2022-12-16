@@ -21,3 +21,12 @@ $(window).on('load', function () {
     $('#post-content').show();
 
 });
+
+//自己紹介詳細表示
+$('#myself').click(function(){
+    let text=document.getElementById('myself').textContent;
+
+    if(text.length>=22){
+        $(this).toggleClass('more');
+    }
+})

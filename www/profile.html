@@ -19,55 +19,9 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/profile.css">
-
-    <style>
-        #container {
-            position: relative;
-        }
-        
-        #head-img {
-            left: 8px;
-            position: absolute;
-        }
-        
-        #icon-img {
-            top: 130px;
-            left: 153px;
-            position: absolute;
-        }
-        
-        main {
-            margin-top: 200px;
-        }
-        
-        .profile-text {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .tab_content {
-            overflow: auto;
-            height: 230px;
-        }
-        
-        .tab_content .content-image {
-            display: inline-block;
-            width: 31%;
-            height: 120px;
-            padding: 0;
-        }
-        
-        footer {
-            bottom: 0;
-        }
-    </style>
 </head>
 
 <body>
-
-
-
     <div id="container">
         <header>
             <div id="main">
@@ -79,8 +33,9 @@
                 </div>
             </div>
         </header>
-        <div id="main">
 
+        <main>
+        <div id="main">
             <div class="profile-header">
                 <div class="profile-images">
                     <img id="head-img" src="img/profileimage.png">
@@ -91,11 +46,11 @@
             <div class="setting">
                 <a href="setting.html"><img src="img/setting.svg"></a>
             </div>
-            <main>
+            
                 <div class="profile-text">
                     <p>userName</p>
 
-                    <p>comment</p>
+                    <p id="myself"></p>
                 </div>
 
                 <div class="header-tab">
@@ -142,9 +97,8 @@
                 </div>
             </div>
         </div>
-        </main>
-
 </div>
+</main>
         <footer>
             <nav class="footer">
                 <li>

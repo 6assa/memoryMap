@@ -1,22 +1,21 @@
-/* This is a CSS file */
-
+/* プロフィール画面 */
 main{
-    height: 100%;
-}
-
-.profile-header{
     position:relative;
+    overflow-y: scroll;
+    height: 690px;
 }
+/* 設定アイコン */
 .setting{
     position:absolute;
     right: 20px;
-    bottom: 350px;
+    top: 180px;
 }
 .setting img{
     width: 20px;
     height: 20px;
 }
 
+/* ヘッダー画像とアイコン */
 #head-img{
     left:8px;
     position:absolute;
@@ -26,20 +25,42 @@ main{
     left:153px;
     position:absolute;
 }
+
+/* プロフィールテキスト全体 */
 .profile-text{
+    margin-top: 200px;;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+.profile-text p{
+    margin-top: 0;
+}
+
+/*自己紹介文*/
+#myself{
+    max-width: 200px;
+    max-height: 5%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+#myself.more{
+    word-break: break-all;
+    white-space: pre-wrap;
+    overflow: visible;
+    text-overflow: clip;
+}
+
 
 /*タブ切り替え全体のスタイル*/
 .tabs {
     float: left;
   margin-top: 50px;
-  padding-bottom: 40px;
+  padding-bottom: 0;
   background-color: #fff;
-width: 100%;
+  width: 100%;
   margin: 0 auto;}
 
 /*タブのスタイル*/
@@ -69,7 +90,6 @@ input[name="tab_item"] {
 .tab_content {
   display: none;
   padding:0;
-
   clear: both;
   overflow: hidden;
 }
@@ -85,30 +105,35 @@ input[name="tab_item"] {
     border-bottom: 3px solid orange;
 }
 
+/* コンテンツ全体 */
 .tab-contents{
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    min-height:190px;
+    height:310px;
     width:100%;
 }
 .tab_content{
     margin-left: 20px;
     overflow: auto;
     box-sizing: border-box;
-    width: 650px;
+    width: 95%;
     height:100%;
 }
 .tab_content::-webkit-scrollbar {
     display: none;
 }
+
+/* 投稿 */
 .tab_content img{
     display:inline-block;
     width:31%;
     height:118px;
     padding:0;
 }
+
+/* フォロー・フォロワー */
 .follow-item{
     display: flex;
     flex-direction: row;
@@ -141,6 +166,7 @@ input[name="tab_item"] {
 }
  
 footer{
+    position: sticky;
     bottom:0;
 }
 

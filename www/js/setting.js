@@ -14,6 +14,11 @@ function onLogout(){
     }
 }
 
+// ←押下で遷移先画面から設定画面に戻る
+function back(){
+    location.href = 'setting.html';
+}
+
 // 設定画面のアカウント押下
 function account(){
     location.href = 'account.html';
@@ -22,18 +27,10 @@ function account(){
 // アカウント画面のユーザ情報表示
 function user(){
     var MemoryMap = ncmb.DataStore('MemoryMap');
-    var user_name = MemoryMap.fetchById("displayName");
+    var username = MemoryMap.fetchById("displayName");
     var mail_address = MemoryMap.fetchById("userName");
-    var password = MemoryMap.fetchById("password");
-    document.getElementById("user_name").innerText = user_name;
+    document.getElementById("user_name").innerText = username;
     document.getElementById("mail_address").innerText = mail_address;
-    document.getElementById("password").innerText = password;
-
-}
-
-// 設定画面のプロフィール押下
-function profile(){
-    location.href = 'setprofile.html';
 }
 
 // 設定画面の通知押下

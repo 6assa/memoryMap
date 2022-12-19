@@ -15,7 +15,8 @@ body {
       display: flex; }
       #main .header .header-img .search {
         width: 26px;
-        height: 26px; }
+        height: 26px;
+        margin: auto auto auto 20px; }
       #main .header .header-img .logo {
         margin: auto 0px;
         width: 160px;
@@ -36,16 +37,5 @@ body {
     margin: 20px;
     float: left;
     list-style: none; }
-
-/** テスト用 */
-html{
-	height: 100%; margin: 0; padding: 0;
-}
-
-body{
-	height: 100%; margin: 0; padding: 0;
-}
-
-#map{
-	height: 100%;
-}
+    .footer li img {
+      height: 26px; }

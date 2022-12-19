@@ -1,8 +1,14 @@
 /* プロフィール画面 */
+#container{
+    height: 780px;
+}
 main{
     position:relative;
     overflow-y: scroll;
-    height: 690px;
+    height: 770px;
+}
+main::-webkit-scrollbar {
+    display: none;
 }
 /* 設定アイコン */
 .setting{
@@ -57,7 +63,7 @@ main{
 /*タブ切り替え全体のスタイル*/
 .tabs {
     float: left;
-  margin-top: 50px;
+  margin-top: 80px;
   padding-bottom: 0;
   background-color: #fff;
   width: 100%;
@@ -108,15 +114,14 @@ input[name="tab_item"] {
 /* コンテンツ全体 */
 .tab-contents{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height:310px;
     width:100%;
 }
 .tab_content{
-    margin-left: 20px;
-    overflow: auto;
+    overflow-y: auto;
     box-sizing: border-box;
     width: 95%;
     height:100%;

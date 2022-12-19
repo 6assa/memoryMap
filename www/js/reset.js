@@ -9,4 +9,5 @@ function onResetBtn(){
     var pasnew_password = $("#new_password").val();
     var ck_new_password = $("#ck_new_password").val();
     
+    
 }

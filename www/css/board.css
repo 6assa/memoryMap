@@ -1,12 +1,12 @@
 /* 掲示板 */
-#board-list{
+.board-list{
     display: flex;
     flex-direction:column-reverse;
     height:680px;
     width:100%;
     overflow:scroll;
 }
-#board-list::-webkit-scrollbar {
+.board-list::-webkit-scrollbar {
     display: none;
 }
 .board-item{

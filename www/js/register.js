@@ -19,6 +19,16 @@ function onRegisterBtn(){
     var passcheck = true;
     var secretpass = $("#secret_pass").val();
 
+    //userNameがTaroに一致しているデータを検索
+    ncmb.User.equalTo("userName", "Taro")
+        .fetchAll()
+        .then(function(results){
+            //成功した場合の処理
+        })
+        .catch(function(error){
+            //失敗した場合の処理
+        });
+
     //パスワード比較
     if(password != checkpassword){
         alert("パスワードが違います");

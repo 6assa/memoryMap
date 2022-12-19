@@ -9,6 +9,11 @@ var followArray = [
 
 // オープンの投稿を配列に定義
 var openArray = [
+        ['img/search.svg','ダミー','ダミーデータです','12:00'],
+        ['img/search.svg','ダミー','ダミーデータです','12:00'],
+        ['img/search.svg','ダミー','ダミーデータです','12:00'],
+        ['img/search.svg','ダミー','ダミーデータです','12:00'],
+        ['img/search.svg','ダミー','ダミーデータです','12:00'],
         ['img/home.svg','香島 凌','給料ほしいです','12:32'],
         ['img/bell.svg','あさき','長い文字が入力されたぞおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおお','12:50'],
         ['img/usericon.png','ゆあさ','からあげくんです','13:24'],
@@ -19,11 +24,6 @@ var openArray = [
 // フォローの投稿を表示
 function followPost() {
     $.each(followArray, function(cnt, value_data){
-        console.log('0:' + value_data[0]);
-        console.log('1:' + value_data[1]);
-        console.log('2:' + value_data[2]);
-        console.log('3:' + value_data[3]);
-
         var content = document.getElementById('follow-content');
         var add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon" src="' + value_data[0] + '" width="50px" height="50px" ></div><div class="board-text"><p id="text"><span>' + value_data[1] + '</span><br><span>' + value_data[2] + '</span></p><div class="post-img"><img src="img/share.png"><img src="img/good.png"></div></div><div class="post-time"><p class="time">' + value_data[3] + '</p></div></div>'
         content.insertAdjacentHTML('beforeend', add_code);
@@ -33,11 +33,6 @@ function followPost() {
 // オープンの投稿を表示
 function openPost() {
     $.each(openArray, function(cnt, value_data){
-        console.log('0:' + value_data[0]);
-        console.log('1:' + value_data[1]);
-        console.log('2:' + value_data[2]);
-        console.log('3:' + value_data[3]);
-
         var content = document.getElementById('open-content');
         var add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon" src="' + value_data[0] + '" width="50px" height="50px" ></div><div class="board-text"><p id="text"><span>' + value_data[1] + '</span><br><span>' + value_data[2] + '</span></p><div class="post-img"><img src="img/share.png"><img src="img/good.png"></div></div><div class="post-time"><p class="time">' + value_data[3] + '</p></div></div>'
         content.insertAdjacentHTML('beforeend', add_code);

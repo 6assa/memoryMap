@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="css/board.css">
     <!-- <link rel="stylesheet" href="css/load.css"> -->
     <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/main_tabs.css">
 
 </head>
 
@@ -39,252 +40,23 @@
                 <img class="logo" src="img/logo.png">
                 <img class="notice" src="img/bell.svg">
             </div>
+            <div class="header-tab">
+                <div class="tabs">
+                    <input id="follow" type="radio" name="tab_item" onclick="tabs()" checked>
+                    <label class="tab_item" for="follow">フォロー</label>
+                    <input id="follower" type="radio" name="tab_item" onclick="tabs()">
+                    <label class="tab_item" for="follower">オープン</label>
+                </div>
+            </div>
         </div>
     </div>
     </header>
     <div id="container">
     <main>
-        <div id="board-list">
-            <div class="board-item">
-                <div class="icon-img">
-                    <img class="board-icon" src="img/usericon.png" width="50px" height="50px" >
-                </div>
-                
-                <div class="board-text">
-                    <p id="text"><span>AAAAA</span><br><span>XXXXXXXXXXXX</span></p>
-                    <div class="post-img">
-                    <img src="img/share.png">
-                    <img src="img/good.png">
-                </div>
-                </div>
-                <div class="post-time">
-                    <p class="time">00:00</p>
-                </div>
-            </div>
-            <div class="board-item">
-                <div class="icon-img">
-                    <img class="board-icon" src="img/usericon.png" width="50px" height="50px" >
-                </div>
-                
-                <div class="board-text">
-                    <p id="text"><span>AAAAA</span><br><span>XXXXXXXXXXXX</span></p>
-                    <div class="post-img">
-                    <img src="img/share.png">
-                    <img src="img/good.png">
-                </div>
-                </div>
-                <div class="post-time">
-                    <p class="time">00:00</p>
-                </div>
-            </div>
-            <div class="board-item">
-                <div class="icon-img">
-                    <img class="board-icon" src="img/usericon.png" width="50px" height="50px" >
-                </div>
-                
-                <div class="board-text">
-                    <p id="text"><span>AAAAA</span><br><span>XXXXXXXXXXXX</span></p>
-                    <div class="post-img">
-                    <img src="img/share.png">
-                    <img src="img/good.png">
-                </div>
-                </div>
-                <div class="post-time">
-                    <p class="time">00:00</p>
-                </div>
-            </div>
-            <div class="board-item">
-                <div class="icon-img">
-                    <img class="board-icon" src="img/usericon.png" width="50px" height="50px" >
-                </div>
-                
-                <div class="board-text">
-                    <p id="text"><span>AAAAA</span><br><span>XXXXXXXXXXXX</span></p>
-                    <div class="post-img">
-                    <img src="img/share.png">
-                    <img src="img/good.png">
-                </div>
-                </div>
-                <div class="post-time">
-                    <p class="time">00:00</p>
-                </div>
-            </div>
-            <div class="board-item">
-                <div class="icon-img">
-                    <img class="board-icon" src="img/usericon.png" width="50px" height="50px" >
-                </div>
-                
-                <div class="board-text">
-                    <p id="text"><span>AAAAA</span><br><span>XXXXXXXXXXXX</span></p>
-                    <div class="post-img">
-                    <img src="img/share.png">
-                    <img src="img/good.png">
-                </div>
-                </div>
-                <div class="post-time">
-                    <p class="time">00:00</p>
-                </div>
-            </div>
-            <div class="board-item">
-                <div class="icon-img">
-                    <img class="board-icon" src="img/usericon.png" width="50px" height="50px" >
-                </div>
-                
-                <div class="board-text">
-                    <p id="text"><span>AAAAA</span><br><span>XXXXXXXXXXXX</span></p>
-                    <div class="post-img">
-                    <img src="img/share.png">
-                    <img src="img/good.png">
-                </div>
-                </div>
-                <div class="post-time">
-                    <p class="time">00:00</p>
-                </div>
-            </div>
-            <div class="board-item">
-                <div class="icon-img">
-                    <img class="board-icon" src="img/usericon.png" width="50px" height="50px" >
-                </div>
-                
-                <div class="board-text">
-                    <p id="text"><span>AAAAA</span><br><span>XXXXXXXXXXXX</span></p>
-                    <div class="post-img">
-                    <img src="img/share.png">
-                    <img src="img/good.png">
-                </div>
-                </div>
-                <div class="post-time">
-                    <p class="time">00:00</p>
-                </div>
-            </div>
-            <div class="board-item">
-                <div class="icon-img">
-                    <img class="board-icon" src="img/usericon.png" width="50px" height="50px" >
-                </div>
-                
-                <div class="board-text">
-                    <p id="text"><span>AAAAA</span><br><span>XXXXXXXXXXXX</span></p>
-                    <div class="post-img">
-                    <img src="img/share.png">
-                    <img src="img/good.png">
-                </div>
-                </div>
-                <div class="post-time">
-                    <p class="time">00:00</p>
-                </div>
-            </div>
-            <div class="board-item">
-                <div class="icon-img">
-                    <img class="board-icon" src="img/usericon.png" width="50px" height="50px" >
-                </div>
-                
-                <div class="board-text">
-                    <p id="text"><span>AAAAA</span><br><span>XXXXXXXXXXXX</span></p>
-                    <div class="post-img">
-                    <img src="img/share.png">
-                    <img src="img/good.png">
-                </div>
-                </div>
-                <div class="post-time">
-                    <p class="time">00:00</p>
-                </div>
-            </div>
-            <div class="board-item">
-                <div class="icon-img">
-                    <img class="board-icon" src="img/usericon.png" width="50px" height="50px" >
-                </div>
-                
-                <div class="board-text">
-                    <p id="text"><span>AAAAA</span><br><span>XXXXXXXXXXXX</span></p>
-                    <div class="post-img">
-                    <img src="img/share.png">
-                    <img src="img/good.png">
-                </div>
-                </div>
-                <div class="post-time">
-                    <p class="time">00:00</p>
-                </div>
-            </div>
-            <div class="board-item">
-                <div class="icon-img">
-                    <img class="board-icon" src="img/usericon.png" width="50px" height="50px" >
-                </div>
-                
-                <div class="board-text">
-                    <p id="text"><span>AAAAA</span><br><span>XXXXXXXXXXXX</span></p>
-                    <div class="post-img">
-                    <img src="img/share.png">
-                    <img src="img/good.png">
-                </div>
-                </div>
-                <div class="post-time">
-                    <p class="time">00:00</p>
-                </div>
-            </div>
-            <div class="board-item">
-                <div class="icon-img">
-                    <img class="board-icon" src="img/usericon.png" width="50px" height="50px" >
-                </div>
-                
-                <div class="board-text">
-                    <p id="text"><span>AAAAA</span><br><span>XXXXXXXXXXXX</span></p>
-                    <div class="post-img">
-                    <img src="img/share.png">
-                    <img src="img/good.png">
-                </div>
-                </div>
-                <div class="post-time">
-                    <p class="time">00:00</p>
-                </div>
-            </div>
-            <div class="board-item">
-                <div class="icon-img">
-                    <img class="board-icon" src="img/usericon.png" width="50px" height="50px" >
-                </div>
-                
-                <div class="board-text">
-                    <p id="text"><span>AAAAA</span><br><span>XXXXXXXXXXXX</span></p>
-                    <div class="post-img">
-                    <img src="img/share.png">
-                    <img src="img/good.png">
-                </div>
-                </div>
-                <div class="post-time">
-                    <p class="time">00:00</p>
-                </div>
-            </div>
-            <div class="board-item">
-                <div class="icon-img">
-                    <img class="board-icon" src="img/usericon.png" width="50px" height="50px" >
-                </div>
-                
-                <div class="board-text">
-                    <p id="text"><span>AAAAA</span><br><span>XXXXXXXXXXXX</span></p>
-                    <div class="post-img">
-                    <img src="img/share.png">
-                    <img src="img/good.png">
-                </div>
-                </div>
-                <div class="post-time">
-                    <p class="time">00:00</p>
-                </div>
-            </div>
-            <div class="board-item">
-                <div class="icon-img">
-                    <img class="board-icon" src="img/usericon.png" width="50px" height="50px" >
-                </div>
-                
-                <div class="board-text">
-                    <p id="text"><span>AAAAA</span><br><span>XXXXXXXXXXXX</span></p>
-                    <div class="post-img">
-                    <img src="img/share.png">
-                    <img src="img/good.png">
-                </div>
-                </div>
-                <div class="post-time">
-                    <p class="time">00:00</p>
-                </div>
-            </div>
+        <div id="follow-content" class="board-list">
+        </div>
+        <div id="open-content" class="board-list">
+            
         </div>
     </main>
     
@@ -320,30 +92,5 @@
 <script src="js/main.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <!-- <script src="js/load.js"></script> -->
-<script>
-    // 一件分のデータを定義
-    // var user_img = 'img/home.png';
-    // var user_id = '香島 凌';
-    // var user_text = '無給で働きます';
-    // var user_time = '12:32';
-    var array = [
-        ['img/home.svg','香島 凌','無給で働きます','12:32'],
-        ['img/bell.svg','あさき','長い文字が入力されたぞおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおお','12:50'],
-        ['img/usericon.png','ゆあさ','からあげおいしいなー','13:24'],
-        ['img/search.svg','ふくい','俺以外まともじゃないな','14:12'],
-        ['img/pin.svg','いけの','びじねすびじねす','15:30']
-    ];
-
-    $.each(array, function(cnt, value_data){
-        console.log('0:' + value_data[0]);
-        console.log('1:' + value_data[1]);
-        console.log('2:' + value_data[2]);
-        console.log('3:' + value_data[3]);
-
-        var content = document.getElementById('board-list');
-        var add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon" src="' + value_data[0] + '" width="50px" height="50px" ></div><div class="board-text"><p id="text"><span>' + value_data[1] + '</span><br><span>' + value_data[2] + '</span></p><div class="post-img"><img src="img/share.png"><img src="img/good.png"></div></div><div class="post-time"><p class="time">' + value_data[3] + '</p></div></div>'
-        content.insertAdjacentHTML('beforeend', add_code);
-    });
-</script>
 
 </html>

@@ -6,11 +6,8 @@
     <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
     <link rel="stylesheet" href="components/loader.css">
     <script src="components/loader.js"></script>
-    <script>
-        //
-        // TODO: Write JavaScript code here
-        //
-    </script>
+    <script src="js/sendmail.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
 <body>
     	<br />
@@ -18,12 +15,13 @@
     <hr>
     <h4>パスワード再設定用のメールを送信します。登録済みのメールアドレスを入力して「送信」ボタンを押下してください。</h4>
 
-    <h5>メールアドレス</h5>
-    <input type="password">
-    <p>
+    <input type="text" id="fix_mailaddres" 
+               placeholder="メールアドレス"/>
+    <br>
+    <br>
     <div class="flex">
-        <button type="button" onclick="back()">戻る</button>
-        <button type="button" class="btn btn-primary" onclick="send()">送信</button>
+        <a href="login.tml">戻る</button>
+        <button onclick="send()">送信</button>
     </div>
 </body>
 </html>

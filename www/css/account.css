@@ -19,6 +19,16 @@
      white-space: nowrap;
 }
 
+.name-position{
+    position: relative;
+    left: -75px;
+}
+
+.address-position{
+    position: relative;
+    left: -130px;
+}
+
 .text-color{
     color: red;
 }

@@ -6,6 +6,9 @@
     width:100%;
     overflow:scroll;
 }
+#board-list::-webkit-scrollbar {
+    display: none;
+}
 .board-item{
     display: flex;
     flex-direction: row;

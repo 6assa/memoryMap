@@ -37,7 +37,7 @@
             <div class="header-img">
                 <img class="search" src="img/search.svg">
                 <img class="logo" src="img/logo.png">
-                <img class="notice" src="img/bell.png">
+                <img class="notice" src="img/bell.svg">
             </div>
         </div>
     </div>
@@ -293,17 +293,17 @@
         <nav class="footer">
             <li>
                 <a href="main.html">
-                    <img id="home" src="img/home.png" alt="home">
+                    <img id="home" src="img/home.svg" alt="home">
                 </a>
             </li>
             <li>
                 <a href="map.html">
-                    <img id="map" src="img/map.png" alt="map">
+                    <img id="map" src="img/pin.svg" alt="map">
                     </a>
             </li>
             <li>
                 <a href="profile.html">
-                    <img id="profile" src="img/profile.png" alt="profile">
+                    <img id="profile" src="img/profile.svg" alt="profile">
                 </a>
             </li>
         </nav>
@@ -327,11 +327,11 @@
     // var user_text = '無給で働きます';
     // var user_time = '12:32';
     var array = [
-        ['img/home.png','香島 凌','無給で働きます','12:32'],
-        ['img/bell.png','あさき','長い文字が入力されたぞおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおお','12:50'],
+        ['img/home.svg','香島 凌','無給で働きます','12:32'],
+        ['img/bell.svg','あさき','長い文字が入力されたぞおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおお','12:50'],
         ['img/usericon.png','ゆあさ','からあげおいしいなー','13:24'],
         ['img/search.svg','ふくい','俺以外まともじゃないな','14:12'],
-        ['img/map.png','いけの','びじねすびじねす','15:30']
+        ['img/pin.svg','いけの','びじねすびじねす','15:30']
     ];
 
     $.each(array, function(cnt, value_data){
@@ -341,7 +341,7 @@
         console.log('3:' + value_data[3]);
 
         var content = document.getElementById('board-list');
-        var add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon"      src="' + value_data[0] + '" width="50px" height="50px" ></div><div class="board-text"><p id="text"><span>' + value_data[1] + '</span><br><span>' + value_data[2] + '</span></p><div class="post-img"><img src="img/share.png"><img src="img/good.png"></div></div><div class="post-time"><p class="time">' + value_data[3] + '</p></div></div>'
+        var add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon" src="' + value_data[0] + '" width="50px" height="50px" ></div><div class="board-text"><p id="text"><span>' + value_data[1] + '</span><br><span>' + value_data[2] + '</span></p><div class="post-img"><img src="img/share.png"><img src="img/good.png"></div></div><div class="post-time"><p class="time">' + value_data[3] + '</p></div></div>'
         content.insertAdjacentHTML('beforeend', add_code);
     });
 </script>

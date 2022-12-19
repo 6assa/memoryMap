@@ -11,9 +11,23 @@ function onRegisterBtn(){
     //ニフクラの仕組みでusernameにメアドを入れてる
     var username = $("#reg_mailaddres").val();
     var displayname = $("#reg_username").val();
+    var obj = document.getElementById("area");
+    var idx = obj.selectedIndex;
+    var area  = obj.options[idx].text;  //ラベルを取得
     var password = $("#reg_password").val();
     var checkpassword = $("#regcheck_password").val();
     var passcheck = true;
+    var secretpass = $("#secret_pass").val();
+
+    //userNameがTaroに一致しているデータを検索
+    ncmb.User.equalTo("userName", "Taro")
+        .fetchAll()
+        .then(function(results){
+            //成功した場合の処理
+        })
+        .catch(function(error){
+            //失敗した場合の処理
+        });
 
     //パスワード比較
     if(password != checkpassword){
@@ -24,8 +38,10 @@ function onRegisterBtn(){
     if (passcheck) {
     var user = new ncmb.User();
     user.set("userName", username)
+        .set("area", area)
         .set("displayName", displayname)
         .set("password", password)
+        .set("secretPass", secretpass)
         .signUpByAccount() //ここでニフクラに登録される
         .then(function(reg_user) {
             //新規登録したユーザーでログイン

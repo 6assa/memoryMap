@@ -36,3 +36,16 @@ body {
     margin: 20px;
     float: left;
     list-style: none; }
+
+/** テスト用 */
+html{
+	height: 100%; margin: 0; padding: 0;
+}
+
+body{
+	height: 100%; margin: 0; padding: 0;
+}
+
+#map{
+	height: 100%;
+}

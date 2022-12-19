@@ -40,8 +40,12 @@ function user() {
     }
 }
 
-function a(){
-    d
+// アカウント削除押下
+function kill(){
+    var result = window.confirm("アカウントを削除します。よろしいですか？");
+
+    if(result){
+    }
 }
 
 // 設定画面の通知押下

@@ -19,6 +19,7 @@ body {
         .search {
             width: 26px;
             height: 26px;
+            margin: auto auto auto 20px;
         }
         .logo {
             margin: auto 0px;
@@ -45,5 +46,8 @@ body {
         margin: 20px;
         float: left;
         list-style: none;
+        img {
+            height: 26px;
+        }
     }
 }

@@ -3,7 +3,6 @@ var clientKey = "05557971c5c7770f388a7c460cdaa0362d55ab58b08ac0e27ee8abcc86c22aa
 
 var ncmb = new NCMB(appKey, clientKey);
 
-//----------------------------------USER MANAGEMENT-------------------------------------//
 //var currentLoginUser; //現在ログイン中ユーザー
 
 function onRegisterBtn() {

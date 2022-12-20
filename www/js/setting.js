@@ -10,6 +10,7 @@ function onLogout() {
     if (result) {
         ncmb.User.logout();
         alert('ログアウトしました');
+        console.log()
         location.href = 'login.html';
     }
 }

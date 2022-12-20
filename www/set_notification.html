@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -14,12 +15,42 @@
         //
     </script>
 </head>
+
 <body>
     <div class="flex">
-        <h3 class="left" onclick="back()"><</h3>
-        <h3 class="center">通知</h3>
+        <h3 class="left" onclick="back()">
+            <</h3>
+                <h3 class="center">通知</h3>
     </div>
     <hr>
+    <div class="flex">
+        <h6 class="left">通知を受け取る</h6>
+        <div class="toggle_button">
+            <input id="toggle" class="toggle_input" type='checkbox'>
+            <label for="toggle" class="toggle_label">
+        </div>
+    </div>
+    <div class="flex">
+        <h6 class="left">返信</h6>
+        <div class="toggle_button">
+            <input id="toggle" class="toggle_input" type='checkbox'>
+            <label for="toggle" class="toggle_label">
+        </div>
+    </div>
+    <div class="flex">
+        <h6 class="left">いいね</h6>
+        <div class="toggle_button">
+            <input id="toggle" class="toggle_input" type='checkbox'>
+            <label for="toggle" class="toggle_label">
+        </div>
+    </div>
+    <div class="flex">
+        <h6 class="left">新しいフォロワー</h6>
+        <div class="toggle_button">
+            <input id="toggle" class="toggle_input" type='checkbox'>
+            <label for="toggle" class="toggle_label">
+        </div>
     </div>
 </body>
+
 </html>

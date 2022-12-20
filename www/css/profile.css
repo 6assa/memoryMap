@@ -117,7 +117,7 @@ input[name="tab_item"] {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height:310px;
+    height:450px;
     width:100%;
 }
 .tab_content{
@@ -128,14 +128,6 @@ input[name="tab_item"] {
 }
 .tab_content::-webkit-scrollbar {
     display: none;
-}
-
-/* 投稿 */
-.tab_content img{
-    display:inline-block;
-    width:31%;
-    height:118px;
-    padding:0;
 }
 
 /* フォロー・フォロワー */
@@ -153,10 +145,10 @@ input[name="tab_item"] {
 }
 .follow-item p{
     float: left;
-    margin-left: 20px;
+    margin-left: 10px;
 }
 .follow-text{
-    margin-left: 150px;
+    margin-left: 120px;
     display: flex;
     align-items: center;
     flex-direction: row;

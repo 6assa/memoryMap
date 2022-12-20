@@ -8,11 +8,7 @@
 
     <script src="components/loader.js"></script>
     <script src="lib/onsenui/js/onsenui.min.js"></script>
-
-
-
-
-
+    <link rel="stylesheet" href="css/board.css">
     <link rel="stylesheet" href="components/loader.css">
     <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
     <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
@@ -20,8 +16,8 @@
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/profile.css">
     <style>
-        header .header-img{
-            justify-content:space-between;
+        header .header-img {
+            justify-content: space-between;
         }
     </style>
 </head>
@@ -41,18 +37,18 @@
     </header> -->
 
         <main>
-        <div id="main">
-            <div class="profile-header">
-                <div class="profile-images">
-                    <img id="head-img" src="img/profileimage.png">
-                    <img id="icon-img" src="img/usericon.png">
+            <div id="main">
+                <div class="profile-header">
+                    <div class="profile-images">
+                        <img id="head-img" src="img/profileimage.png">
+                        <img id="icon-img" src="img/usericon.png">
+                    </div>
                 </div>
-            </div>
-            <br>
-            <div class="setting">
-                <a href="setting.html"><img src="img/setting.svg"></a>
-            </div>
-            
+                <br>
+                <div class="setting">
+                    <a href="setting.html"><img src="img/setting.svg"></a>
+                </div>
+
                 <div class="profile-text">
                     <p>userName</p>
 
@@ -70,64 +66,63 @@
 
                     </div>
                 </div>
-        </div>
-        <!-- 投稿 -->
-        <div class="tab-contents">
-            <div class="tab_content" id="post-content">
-                <img class="content-image" src="img/square.png">
-                <img class="content-image" src="img/square.png">
-                <img class="content-image" src="img/square.png">
-                <img class="content-image" src="img/square.png">
             </div>
-
-            <!-- フォロー -->
-            <div class="tab_content" id="follow-content">
-                <div class="follow-item" id="follow-item">
-                    <div class="icon-img" id="follow-icon">
-                        <img class="board-icon" src="img/usericon.png" width="50px" height="50px" id="follow-icon">
+            <!-- 投稿 -->
+            <div class="tab-contents">
+                <div class="tab_content" id="post-content">
+                    <div id="open-content" class="board-list">
                     </div>
-                    <p id="follow-name">名前</p>
-                    <div class="follow-text">
-                        <button id="follow-btn"><span>フォロー中</span></button>
+                </div>
+
+
+                <!-- フォロー -->
+                <div class="tab_content" id="follow-content">
+                    <div class="follow-item" id="follow-item">
+                        <div class="icon-img" id="follow-icon">
+                            <img class="board-icon" src="img/usericon.png" width="50px" height="50px" id="follow-icon">
+                        </div>
+                        <p id="follow-name">名前</p>
+                        <div class="follow-text">
+                            <button id="follow-btn"><span>フォロー中</span></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- フォロワー -->
+                <div class="tab_content" id="follower-content">
+                    <div class="follow-item" id="follower-item">
+                        <div class="icon-img">
+                            <img class="board-icon" src="img/usericon.png" width="50px" height="50px" id="follower-icon">
+                        </div>
+                        <p id="follower-name">名前</p>
+                        <div class="follow-text">
+                            <button id="follower-btn"><span>フォロー中</span></button>
+                        </div>
                     </div>
                 </div>
             </div>
+    </div>
+    </main>
+    <footer>
+        <nav class="footer">
+            <li>
+                <a href="main.html">
+                    <img id="home" src="img/home.png" alt="home">
+                </a>
+            </li>
+            <li>
+                <a href="map.html">
+                    <img id="map" src="img/map.png" alt="map">
+                </a>
+            </li>
+            <li>
+                <a href="profile.html">
+                    <img id="profile" src="img/profile.png" alt="profile">
+                </a>
+            </li>
+        </nav>
+    </footer>
 
-            <!-- フォロワー -->
-            <div class="tab_content" id="follower-content">
-                <div class="follow-item" id="follower-item">
-                    <div class="icon-img">
-                        <img class="board-icon" src="img/usericon.png" width="50px" height="50px" id="follower-icon">
-                    </div>
-                    <p id="follower-name">名前</p>
-                    <div class="follow-text">
-                        <button id="follower-btn"><span>フォロー中</span></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-</div>
-</main>
-        <footer>
-            <nav class="footer">
-                <li>
-                    <a href="main.html">
-                        <img id="home" src="img/home.png" alt="home">
-                    </a>
-                </li>
-                <li>
-                    <a href="map.html">
-                        <img id="map" src="img/map.png" alt="map">
-                    </a>
-                </li>
-                <li>
-                    <a href="profile.html">
-                        <img id="profile" src="img/profile.png" alt="profile">
-                    </a>
-                </li>
-            </nav>
-        </footer>
-    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="js/profile.js"></script>
 

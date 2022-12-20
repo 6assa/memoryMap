@@ -1,0 +1,20 @@
+/* This is a CSS file */
+
+.flex{
+    display: flex;
+}
+
+.left{
+    margin: 20px 20px;
+    white-space: nowrap;
+}
+
+.center{
+    margin: 20px 130px;
+    white-space: nowrap;
+}
+
+.right{
+     margin: 20px 150px;
+     white-space: nowrap;
+}

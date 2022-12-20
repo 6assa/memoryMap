@@ -15,7 +15,7 @@ function onLogout() {
     }
 }
 
-// ←押下で遷移先画面から設定画面に戻る
+// 〈 押下で遷移先画面から設定画面に戻る
 function back() {
     location.href = 'setting.html';
 }
@@ -41,13 +41,21 @@ function user() {
     }
 }
 
-function a(){
-    d
+// アカウント削除押下
+function kill() {
+    var result = window.confirm("アカウントを削除します。よろしいですか？");
+    console.log(result);
+    if (result) {
+        const currentUser = ncmb.User.getCurrentUser();
+        currentUser.delete();
+        alert('アカウントを削除しました');
+        location.href = 'login.html';
+    }
 }
 
 // 設定画面の通知押下
 function notification() {
-    location.href = 'setnotification.html';
+    location.href = 'set_notification.html';
 }
 
 // 設定画面のその他押下

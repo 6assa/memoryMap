@@ -1,11 +1,6 @@
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    color: #3d3d3d;
-    background-color: white; }
-
-#container{
-    height: 90%;
-}
+  color: #3d3d3d;
+  background-color: white; }
 
 #main {
   color: black; }
@@ -17,12 +12,11 @@ body {
     border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
     #main .header .header-img {
       height: 40px;
-      display: flex; 
-      justify-content: space-between;}
+      display: flex; }
       #main .header .header-img .search {
         width: 26px;
         height: 26px;
-        padding: 8px; }
+        margin: auto auto auto 20px; }
       #main .header .header-img .logo {
         margin: auto 0px;
         width: 160px;
@@ -30,7 +24,7 @@ body {
       #main .header .header-img .notice {
         width: 26px;
         height: 26px;
-        padding: 8px;}
+        margin: auto 20px auto auto; }
 
 .footer {
   position: sticky;

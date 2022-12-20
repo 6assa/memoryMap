@@ -1,0 +1,23 @@
+.post-btn{
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  right: 10px;
+  bottom: 0;
+  z-index: 0;
+  /* 非表示にする */
+  transition: 0.3s;
+  transform: translate(0px, 50px);
+}
+
+.post {
+  width: 60px;
+  height: 60px;
+}
+
+.is-active{
+  /* 表示する */
+  transition: 0.3s;
+  transform: translate(0px, -50px);
+}

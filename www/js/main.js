@@ -56,3 +56,28 @@ $(window).on('load', function () {
     $('#follow-content').show();
 });
 
+$(function(){
+  var btn = $('.post-btn');
+  var timer;
+
+  $('.board-list').scroll(function() {
+    //スクロール開始するとボタンを非表示
+    btn.removeClass('is-active');
+    
+    //スクロール中はイベントの発火をキャンセルする
+    clearTimeout(timer);
+    
+    //スクロールが停止して0.2秒後にイベントを発火する
+    timer = setTimeout(function() {
+      btn.addClass('is-active');
+    }, 200);
+  });
+
+  //ボタンクリックでトップへ戻る
+  btn.on('click',function () {
+    $('body,html').animate({
+      scrollTop: 0
+    });
+  });
+});
+

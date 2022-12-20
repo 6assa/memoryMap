@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+    <link rel="stylesheet" href="components/loader.css">
+    <script src="components/loader.js"></script>
+    <script>
+        window.addEventListener('load', function() {
+            $('.selection').show();
+        })
+
+        var file;
+        var url;
+
+        function loadImage(obj) {
+            for (i = 0; i < obj.files.length; i++) {
+                file = obj.files[i];
+                var fileReader = new FileReader();
+                fileReader.onload = (function(e) {
+                    document.getElementById('preview').innerHTML += '<img src="' + e.target.result + '">'
+                    uri = e.target.result;
+                });
+
+                if (obj.files.length == 0) {
+                    document.getElementById('preview').innerHTML += '<img src="img/input-img.png">'
+                }
+
+                fileReader.readAsDataURL(file);
+            }
+            localStorage.setItem('name', file.name)
+            localStorage.setItem('type', file.type)
+            localStorage.setItem('uri', uri)
+        }
+
+        window.addEventListener('load', function() {
+            //For Android
+            Keyboard.show();
+
+            //For iOS
+            inputElement.focus();
+        })
+    </script>
+
+</head>
+
+<style type="text/css">
+    body {}
+    
+    .post-img {
+        text-aligh: center;
+    }
+    
+    header {
+        justify-content: space-between;
+        display: flex;
+    }
+    
+    header p {
+        font-size: 20px
+    }
+    
+    textarea {
+        margin-top: -30px;
+        width: 100%;
+        height: 310px;
+        border: none;
+    }
+    
+    .textAreaFont {
+        font-size: 20px
+    }
+</style>
+
+<body style="text-align:center">
+
+    <header>
+
+        <p class="close">
+            <a href="main.html" style="color:#000;"><img id="close" src="img/close.svg"></a>
+        </p>
+
+        <p class="title">新規投稿</p>
+
+
+        <p class="post next">
+            <a id="post-submit" href="main.html"></a>
+        </p>
+    </header>
+
+
+    <div class="post" id="post-container">
+        <div class="post-main" position="relative">
+            <textarea class="textAreaFont" placeholder="テキストを入力"></textarea>
+            <p id="preview" position="absolute"></p>
+        </div>
+    </div>
+
+    <!--画像選択-->
+    <div class="selection" id="selection-container">
+        <br>
+        <div class="input-img">
+            <p id="preview" position="absolute"></p>
+            <label>
+                <input type="file" accept='image/*' multiple="multiple" onchange="loadImage(this);">
+            </label>
+        </div>
+        <hr>
+
+    </div>
+
+</body>
+
+</html>

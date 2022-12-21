@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="components/loader.css">
   <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
   <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/login.css">
   <script src="js/ncmb-latest.min.js"></script>
   <script src="components/loader.js"></script>
   <script src="lib/onsenui/js/onsenui.min.js"></script>
@@ -16,21 +16,18 @@
 </head>
 
 <body>
-    <header>
-        <img src="img/logo.png" width="200px">
-    </header>
+    <div id="title">
+        <img id="title" src="img/logo.png" width="300px">
+    </div>
 
-    <section data-role="content">
-        <h1>ログイン画面</h1>
+    <section id="main-content">
         <input type="text" id="login_mailaddres" 
-               placeholder="メールアドレス"/>
+               class="textbox" placeholder="メールアドレス"/>
         <br>
         <input type="password" id="login_password" 
-               placeholder="パスワード"/>
-        <p>パスワードを忘れた方は<a href="reset.html">こちら</a></p>
-        <button onclick="onLoginBtn()">ログイン</button>
-        <br>
-        <br>
+               class="textbox pas" placeholder="パスワード"/>
+        <p class="p">パスワードを忘れた方は<a href="reset.html">こちら</a></p>
+        <button class="loginbtn" onclick="onLoginBtn()">ログイン</button>
         <br>
         <p>アカウントをお持ちでない方<a href="register.html">こちら</a></p>
         <br>
@@ -38,7 +35,7 @@
         <p>プロフィール画面に遷移<a href="profile.html" >こちら</a></p>
         <p>マップ画面に遷移<a href="map.html" >こちら</a></p>
         <p>設定画面に遷移<a href="setting.html" >こちら</a></p>
-        <p>投稿画面に遷移<a href="upLoad.html" >こちら</a></p>
+        <p>投稿画面に遷移<a href="upload.html" >こちら</a></p>
 
     </section>
 

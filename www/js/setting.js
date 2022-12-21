@@ -58,6 +58,51 @@ function notification() {
     location.href = 'set_notification.html';
 }
 
+// 通知画面に遷移時の処理
+function load_boolean() {
+    // ↓初期の読み込み 将来的にDBからユーザごとに読み込む
+    document.getElementById("toggle").checked = true;
+    /**
+    document.getElementById("toggle1").checked = true;
+    document.getElementById("toggle2").checked = true;
+    document.getElementById("toggle3").checked = true;
+    */
+    let element = document.getElementById('toggle');
+    console.log(element.checked);
+
+    // 通知を受け取るのcheckedがtrueなら他の項目を活性化
+    let elements = document.getElementById('toggle');
+    const activity_flg = elements.checked;
+    console.log(activity_flg);
+    if (activity_flg) {
+        const items = document.getElementsByName("item");
+        for (let j = 0; j < items.length; j++) {
+            items[j].removeAttribute("disabled");
+        }
+    }
+}
+
+// 通知画面の通知を受け取るのタグル押下
+function all_false() {
+    let element = document.getElementById('toggle');
+    const flg = element.checked;
+    console.log(element.checked);
+    if (flg == true) {
+        // 通知を受け取るのcheckedがtrueなら他の項目を活性化
+        const item = document.getElementsByName("item");
+        for (let i = 0; i < item.length; i++) {
+            item[i].removeAttribute("disabled");
+        }
+    } else if (flg == false) {
+        // 通知を受け取るのcheckedがfalseなら,他の項目のcheckedをfalseにして非活性にする
+        const item = document.getElementsByName("item");
+        for (let i = 0; i < item.length; i++) {
+            item[i].checked = false;
+            item[i].setAttribute("disabled", true);
+        }
+    }
+}
+
 // 設定画面のその他押下
 function others() {
     location.href = 'others.html';

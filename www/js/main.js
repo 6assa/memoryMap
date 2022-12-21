@@ -54,6 +54,7 @@ $(window).on('load', function () {
     followPost();
     openPost();
     $('#follow-content').show();
+    $('#open-content').hide();
 });
 
 $(function(){

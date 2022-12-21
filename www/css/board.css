@@ -2,6 +2,7 @@
 .board-list{
     display: flex;
     flex-direction:column-reverse;
+    align-items: flex-start;
     height:680px;
     width:100%;
     overflow:scroll;
@@ -11,7 +12,6 @@
 }
 .board-item{
     display: flex;
-    flex-direction: row;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 .icon-img{

@@ -16,7 +16,7 @@
     </script>
 </head>
 
-<body>
+<body onload="load_boolean()">
     <div class="flex">
         <h3 class="left" onclick="back()">
             <</h3>
@@ -26,28 +26,28 @@
     <div class="flex">
         <h6 class="left">通知を受け取る</h6>
         <div class="toggle_button">
-            <input id="toggle" class="toggle_input" type='checkbox'>
+            <input id="toggle" class="toggle_input" type='checkbox' onclick="all_false()">
             <label for="toggle" class="toggle_label">
         </div>
     </div>
     <div class="flex">
         <h6 class="left">返信</h6>
         <div class="toggle_button">
-            <input id="toggle1" class="toggle_input" type='checkbox' disabled>
+            <input id="toggle1" class="toggle_input" type='checkbox' name="item" disabled>
             <label for="toggle1" class="toggle_label">
         </div>
     </div>
     <div class="flex">
         <h6 class="left">いいね</h6>
         <div class="toggle_button">
-            <input id="toggle2" class="toggle_input" type='checkbox' disabled>
+            <input id="toggle2" class="toggle_input" type='checkbox' name="item" disabled>
             <label for="toggle2" class="toggle_label">
         </div>
     </div>
     <div class="flex">
         <h6 class="left">新しいフォロワー</h6>
         <div class="toggle_button">
-            <input id="toggle3" class="toggle_input" type='checkbox' disabled>
+            <input id="toggle3" class="toggle_input" type='checkbox' name="item" disabled>
             <label for="toggle3" class="toggle_label">
         </div>
     </div>

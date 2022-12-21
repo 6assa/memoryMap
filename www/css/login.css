@@ -1,0 +1,52 @@
+#title {
+    margin-top: 15%;
+    text-align: center;
+}
+
+#main-content {
+    margin-top: 9%;
+    text-align: center;
+}
+
+.textbox {
+  width: 82%;
+  height: 3em;
+  padding: 3px 7px;
+  margin-top: 2em;;
+  border-radius: 5px;
+  border: 2px solid #bbb;
+}
+.pas {
+    margin-right: 4px;
+    margin-bottom: 0px;
+}
+.textbox:focus {
+  outline: 0;
+  border: 2px solid #2196f3;
+}
+.p {
+    text-align: end;
+    margin-right: 2em;
+}
+
+.loginbtn {
+    appearance: none;
+    border: 0;
+    border-radius: 8px;
+    background: #68CFFB;
+    color: #fff;
+    padding: 8px 16px;
+    margin-top: 10%;
+    font-size: 16px;
+    font-weight: bold;
+    min-width: 85%;
+}
+.loginbtn:focus {
+  outline: 0;
+  border: 2px solid #68CFFB;
+}
+
+a {
+    color: #68CFFB;
+    text-decoration:none;
+}

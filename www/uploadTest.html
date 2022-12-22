@@ -11,19 +11,23 @@
         function ShowLength(str) {
             document.getElementById("inputlength").innerHTML = str.length + "/300";
         }
+        // 変更部分
         var file;
         var url;
 
         function loadImage(obj) {
+            
             for (i = 0; i < obj.files.length; i++) {
+                // 画像ファイルを取得・プレビュー表示
                 file = obj.files[i];
                 var fileReader = new FileReader();
                 fileReader.onload = (function(e) {
                     document.getElementById('preview').innerHTML += "<img src=" + e.target.result + ">";
-
                 });
                 fileReader.readAsDataURL(file);
             }
+            // スクロール初期位置指定
+            document.getElementById('preview').scrollLeft = 0;
         };
     </script>
 
@@ -82,19 +86,42 @@
     .textAreaFont {
         font-size: 20px
     }
+    /* 変更部分 */
+    .img-prev {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        width: 420px;
+        height: 300px;
+    }
+    
+    .img-prev input {
+        width: 70%;
+        position: absolute;
+        right: -30px;
+        bottom: 10px;
+        background-color: #fff;
+    }
     
     #preview {
         display: flex;
         flex-direction: row;
-        justify-content:center;
-        align-items:center;
-        max-width: 400px;
+        max-width: 100%;
         overflow-x: auto;
     }
     
-    #preview img {
-        width: 70%;
+    #preview ::-webkit-scrollbar {
+        display: none;
     }
+    
+    #preview img {
+        width: 100%;
+        padding: 10px;
+        padding-left: 0;
+    }
+    /* 変更終了部分 */
+
     /* 005 */
     
     .shere a {
@@ -132,12 +159,13 @@
         </div>
     </div>
 
-
-    <div id="preview" position="absolute"></div>
-
-    <!--画像選択-->
-    <input type="file" multiple="multiple" id="file" onchange="loadImage(this);" />
-
+    <!-- 変更部分 -->
+    <div class="img-prev">
+        <div id="preview" position="absolute"></div>
+        <!--画像選択-->
+        <input type="file" multiple="multiple" id="file" onchange="loadImage(this);" />
+    </div>
+    <!-- 変更部分終了 -->
 
     <div class="shere">
         <a href="main.html">投稿</a>

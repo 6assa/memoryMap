@@ -1,0 +1,73 @@
+header {
+        justify-content: space-between;
+        width: 100%;
+        /* 幅いっぱいを指定 */
+        height: 50px;
+        /* 高さを50pxに指定 */
+        padding: 20px 50px;
+        /* ヘッダーに上下左右それぞれ余白を指定 */
+        box-sizing: border-box;
+        /* padding分を含んで幅を100%にするため */
+        position: fixed;
+        /* ウィンドウを基準に画面に固定 */
+        top: 0px;
+        /* 上下の固定位置を上から0pxにする */
+        left: 0px;
+        /* 左右の固定位置を左から0pxにする */
+        display: flex;
+        /* 中の要素を横並びにする */
+        align-items: center;
+        /* 中の要素を上下中央に並べる */
+        border-bottom: 1px solid #c0c0c0;
+    }
+    
+    header p {
+        font-size: 20px
+    }
+    
+    textarea {
+        margin-top: 50px;
+        width: 92%;
+        height: 300px;
+        border: none;
+        padding: 10px;
+    }
+    
+    #close {
+        width: 16px;
+        height: 16px;
+        margin-left: -40px;
+        margin-top: 5px;
+        color: grey;
+    }
+    
+    #inputlength {
+        margin-right: -40px;
+    }
+    
+    .textAreaFont {
+        font-size: 20px
+    }
+    
+    #preview {
+        width: 20px;
+        height: 20px;
+    }
+    /* 005 */
+    
+    .shere a {
+        font-size: 15px;
+        border-radius: 5px;
+        position: relative;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin: 0 auto;
+        max-width: 30px;
+        padding: 10px 25px;
+        color: #FFF;
+        transition: 0.3s ease-in-out;
+        font-weight: 600;
+        background: rgb(149, 202, 252);
+        background: linear-gradient(270deg, rgba(149, 202, 252, 1) 0%, rgba(107, 182, 255, 1) 100%);
+    }

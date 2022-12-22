@@ -1,0 +1,186 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+    <link rel="stylesheet" href="components/loader.css">
+    <script src="components/loader.js"></script>
+    <script>
+        function ShowLength(str) {
+            document.getElementById("inputlength").innerHTML = str.length + "/300";
+        }
+        // 変更部分
+        var file;
+        var url;
+
+        function loadImage(obj) {
+            
+            for (i = 0; i < obj.files.length; i++) {
+                // 画像ファイルを取得・プレビュー表示
+                file = obj.files[i];
+                var fileReader = new FileReader();
+                fileReader.onload = (function(e) {
+                    document.getElementById('preview').innerHTML += "<img src=" + e.target.result + ">";
+                });
+                fileReader.readAsDataURL(file);
+            }
+            // スクロール初期位置指定
+            document.getElementById('preview').scrollLeft = 0;
+        };
+    </script>
+
+</head>
+
+<style type="text/css">
+    header {
+        justify-content: space-between;
+        position: fixed;
+        /* ヘッダーを固定する */
+        width: 100%;
+        /* 幅いっぱいを指定 */
+        height: 50px;
+        /* 高さを50pxに指定 */
+        padding: 20px 50px;
+        /* ヘッダーに上下左右それぞれ余白を指定 */
+        box-sizing: border-box;
+        /* padding分を含んで幅を100%にするため */
+        position: fixed;
+        /* ウィンドウを基準に画面に固定 */
+        top: 0;
+        /* 上下の固定位置を上から0pxにする */
+        left: 0;
+        /* 左右の固定位置を左から0pxにする */
+        display: flex;
+        /* 中の要素を横並びにする */
+        align-items: center;
+        /* 中の要素を上下中央に並べる */
+    }
+    
+    header p {
+        font-size: 20px
+    }
+    
+    textarea {
+        margin-top: 50px;
+        width: 92%;
+        height: 300px;
+        border: none;
+        border: 1px solid #333;
+        padding: 10px;
+        background: #f2f2f2;
+    }
+    
+    #close {
+        width: 16px;
+        height: 16px;
+        margin-left: -40px;
+        margin-top: 5px;
+    }
+    
+    #inputlength {
+        margin-right: -40px;
+    }
+    
+    .textAreaFont {
+        font-size: 20px
+    }
+    /* 変更部分 */
+    .img-prev {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        width: 420px;
+        height: 300px;
+    }
+    
+    .img-prev input {
+        width: 70%;
+        position: absolute;
+        right: -30px;
+        bottom: 10px;
+        background-color: #fff;
+        opacity:0;
+    }
+    .img-prev label{
+        position: absolute;
+        right:50px;
+        bottom: 10px;
+    }
+    
+    #preview {
+        display: flex;
+        flex-direction: row;
+        max-width: 100%;
+        
+        overflow: auto;
+    }
+    
+    #preview ::-webkit-scrollbar {
+        display: none;
+    }
+    
+    #preview img {
+        width: 100%;
+        padding: 10px;
+        padding-left: 0;
+    }
+    /* 変更終了部分 */
+
+    /* 005 */
+    
+    .shere a {
+        font-size: 15px;
+        border-radius: 5px;
+        position: relative;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin: 0 auto;
+        max-width: 30px;
+        padding: 10px 25px;
+        color: #FFF;
+        transition: 0.3s ease-in-out;
+        font-weight: 600;
+        background: rgb(149, 202, 252);
+        background: linear-gradient(270deg, rgba(149, 202, 252, 1) 0%, rgba(107, 182, 255, 1) 100%);
+    }
+</style>
+
+<body style="text-align:center">
+
+    <header>
+
+        <a href="main.html">
+            <img id="close" src="img/close.svg" alt="close">
+        </a>
+        <p class="title">新規投稿</p>
+        <p id="inputlength">0/300</p>
+    </header>
+
+    <div class="post" id="post-container">
+        <div class="post-main" position="relative">
+            <textarea class="textAreaFont" maxlength="300" placeholder="テキストを入力" onkeyup="ShowLength(value);"></textarea>
+        </div>
+    </div>
+
+    <!-- 変更部分 -->
+    <div class="img-prev">
+        <div id="preview" position="absolute"></div>
+        <!--画像選択-->
+        <label>
+            <img src="img/post.svg">
+            <input type="file" multiple="multiple" id="file" onchange="loadImage(this);" />
+        </label>
+    </div>
+    <!-- 変更部分終了 -->
+
+    <div class="shere">
+        <a href="main.html">投稿</a>
+    </div>
+
+</body>
+
+</html>

@@ -102,13 +102,20 @@
         right: -30px;
         bottom: 10px;
         background-color: #fff;
+        opacity:0;
+    }
+    .img-prev label{
+        position: absolute;
+        right:50px;
+        bottom: 10px;
     }
     
     #preview {
         display: flex;
         flex-direction: row;
         max-width: 100%;
-        overflow-x: auto;
+        
+        overflow: auto;
     }
     
     #preview ::-webkit-scrollbar {
@@ -163,7 +170,10 @@
     <div class="img-prev">
         <div id="preview" position="absolute"></div>
         <!--画像選択-->
-        <input type="file" multiple="multiple" id="file" onchange="loadImage(this);" />
+        <label>
+            <img src="img/post.svg">
+            <input type="file" multiple="multiple" id="file" onchange="loadImage(this);" />
+        </label>
     </div>
     <!-- 変更部分終了 -->
 

@@ -1,0 +1,33 @@
+/* This is a CSS file */
+
+.flex{
+    display: flex;
+}
+
+.left{
+    margin: 20px 20px;
+    white-space: nowrap;
+}
+
+.center{
+    margin: 20px 25px;
+    white-space: nowrap;
+}
+
+.right{
+     margin: 20px 30px;
+     white-space: nowrap;
+}
+
+.line{
+    border: none;
+    margin: 0px 15px;
+}
+
+.size{
+    font-size: 100%;
+}
+
+hr{
+    margin: 3px auto;
+}

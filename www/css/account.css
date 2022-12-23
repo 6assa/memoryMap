@@ -24,6 +24,12 @@
     left: -75px;
 }
 
+.transition{
+    position: relative;
+    left: -90px;
+    margin: 20px;
+}
+
 .address-position{
     position: relative;
     left: -130px;

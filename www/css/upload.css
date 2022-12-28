@@ -28,9 +28,10 @@ header {
     textarea {
         margin-top: 50px;
         width: 92%;
-        height: 300px;
+        height: 280px;
         border: none;
         padding: 10px;
+
     }
     
     #close {
@@ -48,26 +49,82 @@ header {
     .textAreaFont {
         font-size: 20px
     }
-    
-    #preview {
-        width: 20px;
-        height: 20px;
+
+    .photoArea{
+        border-top: 1px solid #c0c0c0;
     }
+    .photoArea1{
+        padding-top: 3%;
+        display: flex;
+        justify-content: space-between;
+        padding-left: 5%;
+        padding-right: 5%;
+        padding-bottom: 5%;
+    }
+
+    .photoArea1 .photo{
+        position: relative;
+        width: 105px;
+        height: 140px;
+        border: 1px solid #c0c0c0;
+    }
+
+    .photoArea1 .photo #addBtn{
+        width: 24px;
+        height: 24px;
+        justify-content: space-between;
+        position: absolute;
+        right: -10px;
+        bottom: -10px;
+    }
+
+    .photoArea2{
+        display: flex;
+        justify-content: space-between;
+        padding-left: 5%;
+        padding-right: 5%;
+        padding-bottom: 3%;        
+    }
+
+    .photoArea2 .photo{
+        position: relative;
+        width: 105px;
+        height: 140px;
+        border: 1px solid #c0c0c0;
+    }
+
+    .photoArea2 .photo #addBtn{
+        width: 24px;
+        height: 24px;
+        justify-content: space-between;
+        position: absolute;
+        right: -10px;
+        bottom: -10px;
+    }
+
+
+    
+    
     /* 005 */
     
-    .shere a {
-        font-size: 15px;
-        border-radius: 5px;
-        position: relative;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        margin: 0 auto;
-        max-width: 30px;
-        padding: 10px 25px;
-        color: #FFF;
-        transition: 0.3s ease-in-out;
-        font-weight: 600;
-        background: rgb(149, 202, 252);
-        background: linear-gradient(270deg, rgba(149, 202, 252, 1) 0%, rgba(107, 182, 255, 1) 100%);
+
+
+    #upload_btn{
+        appearance: none;
+        border: 0;
+        border-radius: 8px;
+        background: #68CFFB;
+        color: #fff;
+        padding: 8px 16px;
+        font-size: 20px;
+        font-weight: bold;
+        min-width: 50%;
+
     }
+
+    
+
+ 
+
+
+   

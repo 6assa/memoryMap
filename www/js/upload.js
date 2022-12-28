@@ -65,4 +65,5 @@ function count_up(obj) {
          * 写真が入っていないときはimg/photoUpload.svg
          * ⇩写真を挿入したいエリア⇩
          * upload.htmlのclass="photo"
+         * 投稿ボタン現状何も動作しないです
          */

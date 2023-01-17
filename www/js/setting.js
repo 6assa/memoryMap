@@ -41,6 +41,46 @@ function user() {
     }
 }
 
+// ユーザ名の横の＞押下
+function change_name() {
+    location.href = "change_name.html";
+}
+
+// ユーザー名変更画面の現在の名前取得
+function now_name() {
+    // カレントユーザー情報の取得
+    var currentUser = ncmb.User.getCurrentUser();
+    var user_name = currentUser.get("displayName");
+
+    if (currentUser) {
+        console.log("ユーザ名" + user_name);
+        document.getElementById("user_name").innerText = user_name;
+    }
+}
+
+// ユーザー名変更画面の登録押下
+function update_name() {
+    // ニフクラでデータストアに定義をしなければならない
+    var uesrs = ncmb.DataStore("uesrs");
+
+    var currentUser = ncmb.User.getCurrentUser();
+    var objectId = currentUser.get("objectId");
+    const text = document.getElementById("new_name");
+    const name = text.value;
+    console.log(objectId);
+    console.log(name);
+
+    uesrs.fetchById(objectId).then(function (results) {
+            console.log(JSON.stringify(results));
+            results.set("displayName", name);
+            console.log("動いてるぞ");
+            return uesrs.update();
+        })
+        .catch(function(err){
+           alert(err);
+         });
+}
+
 // アカウント削除押下
 function kill() {
     var result = window.confirm("アカウントを削除します。よろしいですか？");

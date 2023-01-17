@@ -1,0 +1,164 @@
+/* This is a CSS file */
+
+h1{
+    color: #FFF;
+    position: relative;
+    text-align: center;
+    font-size:xx-large;
+    font-family: 'Courier New', Courier, monospace;
+    -webkit-text-stroke: 1px #000;
+    padding: 40px 0px 0px;
+}
+
+h2{
+    color: #FFF;
+    position: relative;
+    text-align: center;
+    font-size:xx-large;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 5% 0;
+}
+
+.content-box1 {
+  box-sizing: content-box;
+  position: relative;
+  width: 160px;
+  height: 160px;
+}
+
+.content-box2 {
+  box-sizing: content-box;
+  position: relative;
+  width: 160px;
+  height: 160px;
+}
+
+.content-box3 {
+  box-sizing: content-box;
+  position: relative;
+  width: 160px;
+  height: 160px;
+}
+
+.content-box4 {
+  box-sizing: content-box;
+  position: relative;
+  width: 160px;
+  height: 160px;
+}
+
+.content-box5 {
+  box-sizing: content-box;
+  position: relative;
+  width: 160px;
+  height: 160px;
+}
+
+.content-box6 {
+  box-sizing: content-box;
+  position: relative;
+  width: 160px;
+  height: 160px;
+}
+
+.content-box7 {
+  box-sizing: content-box;
+  position: relative;
+  background-color: rgb(83, 226, 255);
+  width: 120px;
+  height: 60px;
+  border-radius: 10px;
+  margin: auto 35%;
+}
+
+.content-box1::before {
+    content: '';
+    background-image: url('../img/buisiness.jpg');
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    filter: blur(1px);
+    z-index: -1;
+    border-radius: 10px;
+    border: 1px solid #000
+}
+
+.content-box2::before {
+    content: '';
+    background-image: url('../img/life.jpg');
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    filter: blur(1px);
+    z-index: -1;
+    border-radius: 10px;
+    border: 1px solid #000
+}
+
+.content-box3::before {
+    content: '';
+    background-image: url('../img/hobby.jpg');
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    filter: blur(1px);
+    z-index: -1;
+    border-radius: 10px;
+    border: 1px solid #000
+}
+
+.content-box4::before {
+    content: '';
+    background-image: url('../img/talk.jpg');
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    filter: blur(1px);
+    z-index: -1;
+    border-radius: 10px;
+    border: 1px solid #000
+}
+
+.content-box5::before {
+    content: '';
+    background-image: url('../img/music.jpg');
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    filter: blur(1px);
+    z-index: -1;
+    border-radius: 10px;
+    border: 1px solid #000
+}
+
+.content-box6::before {
+    content: '';
+    background-image: url('../img/study.jpg');
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    filter: blur(1px);
+    z-index: -1;
+    border-radius: 10px;
+    border: 1px solid #000
+}
+
+.aria{
+    align-items: center;
+    max-width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}

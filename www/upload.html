@@ -8,39 +8,8 @@
     <link rel="stylesheet" href="components/loader.css">
     <link rel="stylesheet" href="css/upload.css">
     <script src="components/loader.js"></script>
-    <script>
-        function count_up(obj) {
-            var element = document.getElementById('inputlength');
-            var area = document.getElementById('area');
-            element.innerHTML = obj.value.length + "/300";
+    <script src="js/upload.js"></script>
 
-            if (obj.value.length > 300) {
-                element.style.color = 'red';
-            } else {
-                element.style.color = 'grey';
-            }
-        }
-
-        function disp() {
-
-            // 「OK」時の処理開始 ＋ 確認ダイアログの表示
-            if (window.confirm('投稿しますか？')) {
-
-                location.href = "main.html"; // example_confirm.html へジャンプ
-
-            }
-            // 「OK」時の処理終了
-
-            // 「キャンセル」時の処理開始
-            else {
-
-                window.alert('キャンセルされました'); // 警告ダイアログを表示
-
-            }
-            // 「キャンセル」時の処理終了
-
-        }
-    </script>
 </head>
 
 <body style="text-align:center">
@@ -59,9 +28,30 @@
         <textarea class="textAreaFont" id="area" placeholder="テキストを入力" onkeyup="count_up(this);"></textarea>
     </div>
 
+    <div class="img-prev">
+        <div id="preview" position="absolute"></div>
+
+        <!--画像選択-->
+
+    </div>
+    <div class="photoArea">
+    <div class="photoArea1">
+        <div class="photo"><img id="addBtn" src="img/photoUpload.svg"></div>
+        <div class="photo"><img id="addBtn" src="img/photoUpload.svg"></div>
+        <div class="photo"><img id="addBtn" src="img/photoUpload.svg"></div>
+
+    </div>
+    <div class="photoArea2">
+        <div class="photo"><img id="addBtn" src="img/photoUpload.svg"></div>
+        <div class="photo"><img id="addBtn" src="img/photoUpload.svg"></div>
+        <div class="photo"><img id="addBtn" src="img/photoUpload.svg"></div>
+    </div>
+    </div>
 
     <div class="shere">
-        <p><input type="button" value="投稿" onClick="disp()"></p>
+        <p><input id="upload_btn" type="button" value="投稿" onclick="onUploadBtn()"></p>
+    </div>
+
     </div>
 
 </body>

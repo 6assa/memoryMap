@@ -3,21 +3,21 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  right: 10px;
-  bottom: 0;
+  right: 1.25em;
+  bottom: 3.375em;
   z-index: 0;
   /* 非表示にする */
   transition: 0.3s;
-  transform: translate(0px, 50px);
+  transform: translate(0px, 4em);
 }
 
 .post {
-  width: 60px;
-  height: 60px;
+  width: 3.75em;
+  height: 3.75em;
 }
 
 .is-active{
   /* 表示する */
   transition: 0.3s;
-  transform: translate(0px, -50px);
+  transform: translate(0px, -4em);
 }

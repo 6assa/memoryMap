@@ -2,16 +2,18 @@
 .board-list{
     display: flex;
     flex-direction:column-reverse;
-    align-items: flex-start;
-    height:680px;
+    justify-content: flex-start;
+    height:39.5em;
     width:100%;
     overflow:scroll;
+
 }
 .board-list::-webkit-scrollbar {
     display: none;
 }
 .board-item{
     display: flex;
+    justify-content: flex-start;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 .icon-img{

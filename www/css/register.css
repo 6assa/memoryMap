@@ -1,4 +1,6 @@
-/* #title {
+/* This is a CSS file */
+
+#title {
     margin-top: 15%;
     text-align: center;
 }
@@ -83,4 +85,4 @@ select {
 .backbtn{
     color: black;
     background-color: #D9D9D9;
-} */
+}

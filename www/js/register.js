@@ -34,11 +34,11 @@ function onRegisterBtn() {
     //         mailcheck = false;
     //     });
 
-    //パスワード比較
-    if (password != checkpassword) {
-        alert("確認パスワードが違います");
-        passcheck = false;
-    }
+    // //パスワード比較
+    // if (password != checkpassword) {
+    //     alert("確認パスワードが違います");
+    //     passcheck = false;
+    // }
 
     if (passcheck) {
         var user = new ncmb.User();

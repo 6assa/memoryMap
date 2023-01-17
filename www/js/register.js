@@ -17,28 +17,28 @@ function onRegisterBtn() {
     var checkpassword = $("#regcheck_password").val();
     var passcheck = true;
     var mailcheck = true;
-    var secretpass = $("#secret_pass").val();
+    // var secretpass = $("#secret_pass").val();
 
     // ユーザネームを未入力の場合
     if(!displayname){ //空文字とnull
         displayname = "none";
     }
 
-    //mailaddressが被ってないかチェック
-    ncmb.User.equalTo("userName", username)
-        .fetchAll()
-        .then(function (results) {
-            mailcheck = true;
-        })
-        .catch(function (error) {
-            mailcheck = false;
-        });
+    // //mailaddressが被ってないかチェック
+    // ncmb.User.equalTo("userName", username)
+    //     .fetchAll()
+    //     .then(function (results) {
+    //         mailcheck = true;
+    //     })
+    //     .catch(function (error) {
+    //         mailcheck = false;
+    //     });
 
-    //パスワード比較
-    if (password != checkpassword) {
-        alert("確認パスワードが違います");
-        passcheck = false;
-    }
+    // //パスワード比較
+    // if (password != checkpassword) {
+    //     alert("確認パスワードが違います");
+    //     passcheck = false;
+    // }
 
     if (passcheck) {
         var user = new ncmb.User();
@@ -46,7 +46,6 @@ function onRegisterBtn() {
             .set("area", area)
             .set("displayName", displayname)
             .set("password", password)
-            .set("secretPass", secretpass)
             .signUpByAccount() //ここでニフクラに登録される
             .then(function (user) {
                 //新規登録したユーザーでログイン
@@ -61,17 +60,26 @@ function onRegisterBtn() {
                     });
             })
             .catch(function (error) {
-                if (!username) {
-                    alert("メールアドレスが入力されていません");
-                } else if (!password) {
-                    alert("パスワードが入力されていません");
-                } else if (!checkpassword) {
-                    alert("秘密の言葉が入力されていません");
-                } else if (mailcheck) {
-                    alert("このメールアドレスは既に使用されています");
-                } else {
-                    alert("新規登録に失敗！次のエラー発生：" + error);
-                }
+                alert("新規登録に失敗しました");
+                console.log(error)
+                // if (!username) {
+                //     alert("メールアドレスが入力されていません");
+                // } else if (mailcheck) {
+                //     alert("このメールアドレスは既に使用されています");
+                // } else if (!password) {
+                //     alert("パスワードが入力されていません");
+                // } else {
+                //     alert("新規登録に失敗しました");
+                //     console.log(error)
+                // }
             });
     }
 }
+
+// function changeColor(hoge){
+//     if( hoge.value == 0 ){
+//         hoge.style.color = '';
+//     }else{
+//         hoge.style.color = 'black';
+//     }
+// }

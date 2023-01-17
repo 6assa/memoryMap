@@ -69,7 +69,7 @@ header {
         border: 1px solid #c0c0c0;
     }
 
-    .photoArea1 .photo #addBtn{
+    .photoArea1 .photo .addBtn{
         width: 24px;
         height: 24px;
         justify-content: space-between;
@@ -93,7 +93,7 @@ header {
         border: 1px solid #c0c0c0;
     }
 
-    .photoArea2 .photo #addBtn{
+    .photoArea2 .photo .addBtn{
         width: 24px;
         height: 24px;
         justify-content: space-between;
@@ -103,11 +103,18 @@ header {
     }
 
 
-    
+    .img-input{
+        opacity: 0;
+        display: none;
+    }
     
     /* 005 */
     
-
+    .previewImage{
+        width: 105px;
+        height: 140px;
+    object-fit: cover;
+    }
 
     #upload_btn{
         appearance: none;

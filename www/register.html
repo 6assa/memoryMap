@@ -15,13 +15,25 @@
 </head>
 
 <body>
-    <section id="main-conten">
-        <h1>新規登録画面</h1>
-        <input type="text" id="reg_username" placeholder="ユーザーネーム" />
-        <br>
-        <input type="text" id="reg_mailaddres" placeholder="メールアドレス" />
-        <br>
-        <select id="area" required>
+    <section id="main-content">
+        <div id="title">
+            <h2>新規ユーザ登録</h2>
+        </div>
+
+        <div id="content">
+            <label>表示ネーム</label>
+            <input type="text" id="reg_username" class="textbox" placeholder="例) 太郎" />
+        </div>
+
+        <div id="content">
+            <label>メールアドレス<span class="necessary">必須</span></label>
+            <input type="mail" id="reg_mailaddres" class="textbox" placeholder="例) example@mail.com" />
+        </div>
+
+        <div id="content" class="selects">
+            <label>お住まい<span class="necessary">必須</span></label>
+            <select id="area" class="selectarea" onchange="changeColor(this)">
+                <option value="z">選択してください</option>
                 <option value="a">北海道地方</option>
                 <option value="b">東北地方</option>
                 <option value="c">関東地方</option>
@@ -29,17 +41,28 @@
                 <option value="e">近畿地方</option>
                 <option value="f">中国・四国地方</option>
                 <option value="g">九州地方</option>
-                <option value="h">設定しない</option>
             </select>
-        <br>
-        <input type="password" id="reg_password" placeholder="パスワード" />
-        <br>
-        <input type="password" id="regcheck_password" placeholder="確認用パスワード" />
-        <br>
-        <input type="text" id="secret_pass" placeholder="秘密の言葉" />
-        <p>パスワード再設定時に使用します。</p>
-        <button onclick="onRegisterBtn()">登録</button>
-        <a href="login.html">戻る</a>
+        </div>
+
+        <div id="content">
+            <label>パスワード<span class="necessary">必須</span></label>
+            <input type="password" id="reg_password" class="textbox" placeholder="パスワードは6文字以上、20文字以内のものを使用してください" />
+        </div>
+
+        <div id="content">
+            <label>パスワード再入力<span class="necessary">必須</span></label>
+            <input type="password" id="regcheck_password" class="textbox" placeholder="上の欄のパスワードを入力してください" />
+        </div>
+
+        <div id="content">
+            <label>秘密の言葉<span class="necessary">必須</span></label>
+            <input type="text" id="secret_pass" class="textbox" placeholder="パスワードを再設定時に使用します" />
+        </div>
+
+        <FORM class="btns">
+            <button class="backbtn" onclick="history.back()">戻る</button>
+            <button class="registerbtn" onclick="onRegisterBtn()">登録</button>
+        </FORM>
     </section>
 </body>
 

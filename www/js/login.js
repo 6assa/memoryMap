@@ -15,6 +15,7 @@ function onLoginBtn(){
             //currentLoginUser = ncmb.User.getCurrentUser();
         })
         .catch(function(error) {
-            alert("ログイン失敗！次のエラー発生: " + error);
+            alert("ログイン失敗！メールアドレスまたはパスワードが違います");
+            console.log(error)
         });
 }

@@ -10,15 +10,6 @@ h1{
     padding: 40px 0px 0px;
 }
 
-h2{
-    color: #FFF;
-    position: relative;
-    text-align: center;
-    font-size:xx-large;
-    font-family: 'Courier New', Courier, monospace;
-    padding: 5% 0;
-}
-
 .content-box1 {
   box-sizing: content-box;
   position: relative;
@@ -59,16 +50,6 @@ h2{
   position: relative;
   width: 160px;
   height: 160px;
-}
-
-.content-box7 {
-  box-sizing: content-box;
-  position: relative;
-  background-color: rgb(83, 226, 255);
-  width: 120px;
-  height: 60px;
-  border-radius: 10px;
-  margin: auto 35%;
 }
 
 .content-box1::before {

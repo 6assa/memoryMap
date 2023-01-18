@@ -1,10 +1,16 @@
 // This is a JavaScript file
-    $('.select-btn').click(function(e){
-        // クリック要素内のテキストを取得
-        let select=$(this).find('#select-text').text();
+let select
+
+
+$('.select-btn').click(function (e) {
+    // クリック要素内のテキストを取得
+    select = $(this).find('#select-text').text();
+    // 入室ボタン押下イベント
+    $('#inroom-btn').click(function () {
         // フェードアウト後に遷移
-        $(document.body).fadeOut("slow", function(){
-            location.href="main.html?select="+encodeURIComponent(select);
+        $(document.body).fadeOut("slow", function () {
+            location.href = "main.html?select=" + encodeURIComponent(select);
         });
-        });
+    });
+});
 

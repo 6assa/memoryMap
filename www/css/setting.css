@@ -21,5 +21,14 @@
 }
 
 .footer{
-    margin: 410px 0px 0px; 
+    margin: 28em 0 0; 
+}
+
+h3{
+    font-family: 'Courier New', Courier, monospace;
+}
+
+p{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.1em;
 }

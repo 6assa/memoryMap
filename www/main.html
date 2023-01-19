@@ -16,7 +16,23 @@
     <link rel="stylesheet" href="css/main_tabs.css">
     <link rel="stylesheet" href="css/pagetop.css">
 </head>
+<script>
+        //url取得
+        var query = location.search;
+        // 「=」で分割して、クエリストリングを取得
+        var value = query.split('=');
+        // テキスト
+        let text = decodeURIComponent(value[1]);
+        // フェードインして表示
+        $(document).ready(function() {
+            $(document.body).hide().fadeIn("slow");
+        });
 
+        window.onload=function(){
+            $('#head-text').text(text);
+        };
+        
+    </script>
 <body>
     <!--ロード画面-->
     <!-- <div id="splash">
@@ -34,7 +50,7 @@
         <header class="header">
             <div class="header-img">
                 <img class="search" src="img/search.svg">
-                <img class="logo" src="img/logo.png">
+                <h4 id="head-text"></h4>
                 <img class="notice" src="img/bell.svg">
             </div>
             <div class="header-tab">

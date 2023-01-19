@@ -1,13 +1,63 @@
 /* This is a CSS file */
 
+.font2{
+    color: #FFF;
+    -webkit-text-stroke: 1px #000;
+    font-size: 2.5em;
+    font-family: 'Courier New', Courier, monospace;
+    position: relative;
+    text-align: center;
+    padding: 25px 0px 0px;
+}
+
 h1{
+    color: #FFF;
+    position: relative;
+    text-align: center;
+    font-size: 3em;
+    font-family: 'Courier New', Courier, monospace;
+    -webkit-text-stroke: 1px #000;
+    padding: 15px 0px 0px;
+}
+
+h2{
     color: #FFF;
     position: relative;
     text-align: center;
     font-size:xx-large;
     font-family: 'Courier New', Courier, monospace;
-    -webkit-text-stroke: 1px #000;
-    padding: 40px 0px 0px;
+    padding: 5% 0;
+}
+
+button{
+    box-sizing: content-box;
+    color: #FFF;
+    background-color: rgb(83, 226, 255);
+    text-align: center;
+    white-space: nowrap;
+    font-size:xx-large;
+    font-weight: 900;
+    font-family: 'Courier New', Courier, monospace;
+    position: relative;
+    border: none;
+    border-radius: 10px;
+    width: 60px;
+    height:50px;
+    margin: auto 35%;
+    padding: 0 auto ;
+}
+button:disabled{
+    opacity: 0.3;
+}
+
+h3{
+    color: #000;
+    
+    position: relative;
+    text-align: center;
+    font-size: 2.5em;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 0;
 }
 
 .content-box1 {
@@ -52,9 +102,40 @@ h1{
   height: 160px;
 }
 
+
+
+.content-box8 {
+  box-sizing: content-box;
+  position: relative;
+  width: 160px;
+  height: 160px;
+}
+
+.content-box9 {
+  box-sizing: content-box;
+  position: relative;
+  width: 160px;
+  height: 160px;
+}
+
+.content-box10 {
+  box-sizing: content-box;
+  position: relative;
+  width: 160px;
+  height: 160px;
+}
+
+.content-box11 {
+  box-sizing: content-box;
+  position: relative;
+  width: 160px;
+  height: 160px;
+}
+
 .content-box1::before {
     content: '';
     background-image: url('../img/buisiness.jpg');
+    object-fit: cover;
     position: absolute;
     top: 0;
     left: 0;
@@ -69,6 +150,7 @@ h1{
 .content-box2::before {
     content: '';
     background-image: url('../img/life.jpg');
+    object-fit: cover;
     position: absolute;
     top: 0;
     left: 0;
@@ -83,6 +165,7 @@ h1{
 .content-box3::before {
     content: '';
     background-image: url('../img/hobby.jpg');
+    object-fit: cover;
     position: absolute;
     top: 0;
     left: 0;
@@ -97,6 +180,7 @@ h1{
 .content-box4::before {
     content: '';
     background-image: url('../img/talk.jpg');
+    object-fit: cover;
     position: absolute;
     top: 0;
     left: 0;
@@ -111,6 +195,7 @@ h1{
 .content-box5::before {
     content: '';
     background-image: url('../img/music.jpg');
+    object-fit: cover;
     position: absolute;
     top: 0;
     left: 0;
@@ -125,6 +210,7 @@ h1{
 .content-box6::before {
     content: '';
     background-image: url('../img/study.jpg');
+    object-fit: cover;
     position: absolute;
     top: 0;
     left: 0;
@@ -136,10 +222,83 @@ h1{
     border: 1px solid #000
 }
 
+.content-box8::before {
+    content: '';
+    background-image: url('../img/match.jpg');
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    filter: blur(1px);
+    z-index: -1;
+    border-radius: 10px;
+    border: 1px solid #000
+}
+
+.content-box9::before {
+    content: '';
+    background-image: url('../img/food.jpg');
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    filter: blur(1px);
+    z-index: -1;
+    border-radius: 10px;
+    border: 1px solid #000
+}
+
+.content-box10::before {
+    content: '';
+    background-image: url('../img/trip.jpg');
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    filter: blur(1px);
+    z-index: -1;
+    border-radius: 10px;
+    border: 1px solid #000
+}
+
+.content-box11::before {
+    content: '';
+    background-image: url('../img/sports.jpg');
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    filter: blur(1px);
+    z-index: -1;
+    border-radius: 10px;
+    border: 1px solid #000
+}
+
+
+
 .aria{
     align-items: center;
     max-width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+}
+
+.scroll {
+  width: 350px;
+  height: 535px;
+  overflow-y: scroll;
+  margin: 0 5%;
+}
+
+.scroll::-webkit-scrollbar{
+  display: none;
 }

@@ -127,12 +127,18 @@ function all_false() {
     let element = document.getElementById('toggle');
     const flg = element.checked;
     console.log(element.checked);
+
+    // 要素の非表示を管理するやつ
+    const invisible = document.getElementById("invisible");
+
     if (flg == true) {
         // 通知を受け取るのcheckedがtrueなら他の項目を活性化
         const item = document.getElementsByName("item");
         for (let i = 0; i < item.length; i++) {
             item[i].removeAttribute("disabled");
         }
+        // 要素を表示
+        invisible.hidden = false;
     } else if (flg == false) {
         // 通知を受け取るのcheckedがfalseなら,他の項目のcheckedをfalseにして非活性にする
         const item = document.getElementsByName("item");
@@ -140,6 +146,8 @@ function all_false() {
             item[i].checked = false;
             item[i].setAttribute("disabled", true);
         }
+        // 非活性にした後に項目を非表示にする
+        invisible.hidden = true;
     }
 }
 

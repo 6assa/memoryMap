@@ -15,21 +15,29 @@
     <!-- <link rel="stylesheet" href="css/load.css"> -->
     <link rel="stylesheet" href="css/main_tabs.css">
     <link rel="stylesheet" href="css/pagetop.css">
+    <!-- ヘッダのCSS -->
+    <link rel="stylesheet" href="css/main-head.css">
+    <!-- フッターのCSS -->
+    <link rel="stylesheet" href="css/main-foot.css">
+    <!-- アイコンの引用元リンク（FontAwesomeより） -->
+    <script src="https://kit.fontawesome.com/37b3cc24f8.js" crossorigin="anonymous"></script>
 </head>
 <script>
-        //url取得
-        var query = location.search;
-        // 「=」で分割して、クエリストリングを取得
-        var value = query.split('=');
+        
         // テキスト
-        let text = decodeURIComponent(value[1]);
+        let text = localStorage.getItem('room');
         // フェードインして表示
         $(document).ready(function() {
             $(document.body).hide().fadeIn("slow");
         });
 
         window.onload=function(){
-            $('#head-text').text(text);
+            if(text=='unselected'){
+                location.href('choice.html');
+            }else{
+                $('#head-text').text(text);
+            }
+            
         };
         
     </script>
@@ -48,10 +56,10 @@
 <div class="splashbg"></div>-->
     <div id="main">
         <header class="header">
-            <div class="header-img">
-                <img class="search" src="img/search.svg">
-                <h4 id="head-text"></h4>
-                <img class="notice" src="img/bell.svg">
+             <div class="header-img">
+                <a id="roomout" class="fa-sharp fa-solid fa-arrow-right-from-bracket" onclick="localStorage.setItem('room','unselected');"  href="choice.html"></a>
+                <p id="head-text">header</p>
+                <i id="search" class="fa-solid fa-magnifying-glass "></i>
             </div>
             <div class="header-tab">
                 <div class="tabs">
@@ -69,18 +77,18 @@
         </main>
         <div class="footer">
             <li>
-                <a href="main.html">
-                    <img id="home" src="img/home.svg" alt="home">
+                <a class="foot-item" href="main.html">
+                    <i class="fa-sharp fa-solid fa-house"></i>
                 </a>
             </li>
             <li>
-                <a href="map.html">
-                    <img id="map" src="img/pin.svg" alt="map">
-                    </a>
+                <a class="foot-item" href="nortice.html">
+                    <i class="fa-solid fa-bell"></i>
+                </a>
             </li>
             <li>
-                <a href="profile.html">
-                    <img id="profile" src="img/profile.svg" alt="profile">
+                <a class="foot-item" href="profile.html">
+                    <i class="fa-solid fa-user"></i>
                 </a>
             </li>
         </div>

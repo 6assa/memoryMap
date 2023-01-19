@@ -15,6 +15,10 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/profile.css">
+    <!-- フッターのCSS -->
+    <link rel="stylesheet" href="css/main-foot.css">
+    <!-- アイコンの引用元リンク（FontAwesomeより） -->
+    <script src="https://kit.fontawesome.com/37b3cc24f8.js" crossorigin="anonymous"></script>
     <style>
         header .header-img {
             justify-content: space-between;
@@ -103,25 +107,25 @@
             </div>
     </div>
     </main>
-    <footer>
-        <nav class="footer">
+    <div class="footer">
             <li>
-                <a href="main.html">
-                    <img id="home" src="img/home.png" alt="home">
+                <a class="foot-item" href="main.html">
+                    <i class="fa-sharp fa-solid fa-house"></i>
                 </a>
             </li>
             <li>
-                <a href="map.html">
-                    <img id="map" src="img/map.png" alt="map">
+                <a class="foot-item" href="nortice.html">
+                    <i class="fa-solid fa-bell"></i>
                 </a>
             </li>
             <li>
-                <a href="profile.html">
-                    <img id="profile" src="img/profile.png" alt="profile">
+                <a class="foot-item" href="profile.html">
+                    <i class="fa-solid fa-user"></i>
                 </a>
             </li>
-        </nav>
-    </footer>
+        </div>
+        <script src="js/load.js"></script>
+    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="js/profile.js"></script>

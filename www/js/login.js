@@ -11,7 +11,7 @@ function onLoginBtn(){
     ncmb.User.login(username, password)
         .then(function(user) {
             alert("ログイン成功");
-            document.location.href='login.html';
+            document.location.href='main.html';
             //currentLoginUser = ncmb.User.getCurrentUser();
         })
         .catch(function(error) {

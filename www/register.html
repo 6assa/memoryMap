@@ -29,7 +29,7 @@
             <input type="mail" id="reg_mailaddres" class="textbox" placeholder="例) example@mail.com" />
         </div>
 
-        <div id="content" class="selects">
+        <!-- <div id="content" class="selects">
             <label>お住まい<span class="necessary">必須</span></label>
             <select id="area" class="selectarea" onchange="changeColor(this)">
                 <option value="z">選択してください</option>
@@ -41,7 +41,7 @@
                 <option value="f">中国・四国地方</option>
                 <option value="g">九州地方</option>
             </select>
-        </div>
+        </div> -->
 
         <div id="content">
             <label>パスワード<span class="necessary">必須</span></label>
@@ -53,14 +53,14 @@
             <input type="password" id="regcheck_password" class="textbox" placeholder="上の欄のパスワードを入力してください" />
         </div>
 
-        <div id="content">
+        <!-- <div id="content">
             <label>秘密の言葉<span class="necessary">必須</span></label>
             <input type="text" id="secret_pass" class="textbox" placeholder="パスワードを再設定時に使用します" />
-        </div>
+        </div> -->
 
         <FORM class="btns">
-            <button class="backbtn" onclick="history.back()">戻る</button>
-            <button class="registerbtn" onclick="onRegisterBtn()">登録</button>
+            <button type="button" class="backbtn" onclick="history.back()">戻る</button>
+            <button type="button" class="registerbtn" onclick="onRegisterBtn()">登録</button>
         </FORM>
     </section>
 </body>

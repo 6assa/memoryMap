@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+    <link rel="stylesheet" href="components/loader.css">
+    <link rel="stylesheet" href="css/reply.css">
+    <script src="js/ncmb-latest.min.js"></script>
+    <script src="components/loader.js"></script>
+    <script src="js/reply.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+</head>
+
+<body style="text-align:center">
+
+    <header>
+        <a href="main.html" >キャンセル</a>
+        
+        <button class="replybtn" onclick="onReplyBtn()">返信</button>
+        <!-- <p id="inputlength">
+            <font color="grey">0/300</font>
+        </p> -->
+    </header>
+
+    <main id="container">
+        <a class="post-btn is-active" href="reply.html"></a>
+        <div id="follow-content" class="board-list"></div>
+    </main>
+
+    <div class="post" id="post-container">
+        <textarea class="textAreaFont" id="area" placeholder="テキストを入力" onkeyup="count_up(this);"></textarea>
+    </div>
+        <div class="photoArea2">
+           
+            <div id="photo4" class="photo"><div id="preview4"></div><div id="btn4"><label id="label4"><img class="addBtn" id="addBtn4" src="img/photoUpload.svg"><input id="input4" class="img-input" onchange="imgPreView(event,4)" type="file"></label></div></div>
+            <div id="photo5" class="photo"><div id="preview5"></div><div id="btn5"><label id="label5"><img class="addBtn" id="addBtn5" src="img/photoUpload.svg"><input id="input5" class="img-input" onchange="imgPreView(event,5)" type="file"></label></div></div>
+            <div id="photo6" class="photo"><div id="preview6"></div><div id="btn6"><label id="label6"><img class="addBtn" id="addBtn6" src="img/photoUpload.svg"><input id="input6" class="img-input" onchange="imgPreView(event,6)" type="file"></label></div></div>
+        </div>
+
+</body>
+</html>

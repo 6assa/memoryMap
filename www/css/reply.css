@@ -1,0 +1,115 @@
+header {
+        justify-content: space-between;
+        width: 100%;
+        /* 幅いっぱいを指定 */
+        height: 50px;
+        /* 高さを50pxに指定 */
+        padding: 20px 50px;
+        /* ヘッダーに上下左右それぞれ余白を指定 */
+        box-sizing: border-box;
+        /* padding分を含んで幅を100%にするため */
+        position: fixed;
+        /* ウィンドウを基準に画面に固定 */
+        top: 0px;
+        /* 上下の固定位置を上から0pxにする */
+        left: 0px;
+        /* 左右の固定位置を左から0pxにする */
+        display: flex;
+        /* 中の要素を横並びにする */
+        align-items: center;
+        /* 中の要素を上下中央に並べる */
+        border-bottom: 1px solid #c0c0c0;
+    }
+    
+    header p {
+        font-size: 20px
+    }
+    
+    textarea {
+        margin-top: 50px;
+        width: 92%;
+        height: 500px;
+        border: none;
+        padding: 10px;
+
+    }
+    
+    #close {
+        width: 16px;
+        height: 16px;
+        margin-left: -40px;
+        margin-top: 5px;
+        color: grey;
+    }
+    
+    #inputlength {
+        margin-right: -40px;
+    }
+    
+    .textAreaFont {
+        font-size: 20px
+    }
+
+    .photoArea2{
+        border-top: 1px solid #c0c0c0;
+        display: flex;
+        justify-content: space-between;
+        padding-left: 11%;
+        padding-top: 5%;
+        padding-right: 5%;
+        padding-bottom: 3%;
+        position: fixed;
+        bottom: 3%;    
+    }
+
+    .photoArea2 .photo{
+        position: relative;
+        width: 105px;
+        height: 140px;
+        border: 1px solid #c0c0c0;
+        margin: 2%;
+    }
+
+    .photoArea2 .photo .addBtn{
+        width: 24px;
+        height: 24px;
+        justify-content: space-between;
+        position: absolute;
+        right: -10px;
+        bottom: -10px;
+    }
+
+    .img-input{
+        opacity: 0;
+        display: none;
+    }
+    
+    /* 005 */
+    
+    .previewImage{
+        width: 105px;
+        height: 140px;
+    object-fit: cover;
+    }
+
+    a:link {
+        color: #000000;
+        text-decoration: none;
+    }
+
+    .replybtn {
+    appearance: none;
+    border: 0;
+    border-radius: 15px;
+    background: #68CFFB;
+    color: #fff;
+    padding: 1.5% 5%;
+    margin-top: 1.2%;
+    font-size: 16px;
+    font-weight: bold;
+    min-width: 25%;
+    }
+    .replybtn:focus {
+    outline: 0;
+    border: 2px solid #68CFFB;
+    }

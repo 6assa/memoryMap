@@ -18,7 +18,6 @@
             color: #000;
             position: absolute;
             top: 30%;
-            left: 70%;
             content: '\f00c';
             font-family: Font Awesome\ 5 Free;
         }
@@ -27,8 +26,22 @@
             padding: 10px;
             position: absolute;
             width: 60%;
-            height: 15%;
-            top: 35%;
+            height: 10%;
+            top: 40%;
             left: 20%;
             background-color: white;
+            border-radius: 10px;
+
+        }
+
+        .modal-body .search-area1{
+            display: flex;
+            border-bottom: 1px solid #c0c0c0;
+            height: 50%;
+        }
+
+        .search-area1{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
         }

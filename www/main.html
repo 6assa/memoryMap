@@ -35,7 +35,7 @@
         if (text == 'unselected') {
             location.href('choice.html');
         } else {
-            $('#head-text').text("テスト");
+            $('#head-text').text(text);
         }
 
     };
@@ -45,52 +45,58 @@
     <div id="modal" class="modal-container">
         <i class="fa-solid fa-xmark-large"></i>
         <div class="modal-body">
-            <h4>キーワード検索</h4>
-            <input type="text" placeholder="keyword">
+            <div class="search-area1">
+                <span id="close">✕</span>
+                <span class="keyword-search" style="text">キーワード検索</span>
+            </div>
+            <div class="search-area2">
+                <input type="text"
+                id="search-word" name="search-word" placeholder="検索したいワードを入力">
+                <span id="modal-keyword" class="fa-solid fa-magnifying-glass"></span>
+            </div>
+            </div>
 
         </div>
-
-    </div>
-    <div id="main">
-        <header class="header">
-            <div class="header-img">
-                <a id="roomout" class="fa-sharp fa-solid fa-arrow-right-from-bracket" onclick="localStorage.setItem('room','unselected');" href="choice.html"></a>
-                <p id="head-text">header</p>
-                <i id="search" class="fa-solid fa-magnifying-glass "></i>
-            </div>
-            <div class="header-tab">
-                <div class="tabs">
-                    <input id="follow" type="radio" name="tab_item" onclick="tabs()" checked>
-                    <label class="tab_item" for="follow">フォロー</label>
-                    <input id="follower" type="radio" name="tab_item" onclick="tabs()">
-                    <label class="tab_item" for="follower">オープン</label>
+        <div id="main">
+            <header class="header">
+                <div class="header-img">
+                    <a id="roomout" class="fa-sharp fa-solid fa-arrow-right-from-bracket" onclick="localStorage.setItem('room','unselected');" href="choice.html"></a>
+                    <p id="head-text">header</p>
+                    <i id="search" class="fa-solid fa-magnifying-glass "></i>
                 </div>
+                <div class="header-tab">
+                    <div class="tabs">
+                        <input id="follow" type="radio" name="tab_item" onclick="tabs()" checked>
+                        <label class="tab_item" for="follow">フォロー</label>
+                        <input id="follower" type="radio" name="tab_item" onclick="tabs()">
+                        <label class="tab_item" for="follower">オープン</label>
+                    </div>
+                </div>
+            </header>
+            <main id="container">
+                <a class="post-btn is-active" href="upload.html"><img class="post" src="img/post.svg"></a>
+                <div id="follow-content" class="board-list"></div>
+                <div id="open-content" class="board-list"></div>
+            </main>
+            <div class="footer">
+                <li>
+                    <a class="foot-item" href="main.html">
+                        <i class="fa-sharp fa-solid fa-house"></i>
+                    </a>
+                </li>
+                <li>
+                    <a class="foot-item" href="nortice.html">
+                        <i class="fa-solid fa-bell"></i>
+                    </a>
+                </li>
+                <li>
+                    <a class="foot-item" href="profile.html">
+                        <i class="fa-solid fa-user"></i>
+                    </a>
+                </li>
             </div>
-        </header>
-        <main id="container">
-            <a class="post-btn is-active" href="upload.html"><img class="post" src="img/post.svg"></a>
-            <div id="follow-content" class="board-list"></div>
-            <div id="open-content" class="board-list"></div>
-        </main>
-        <div class="footer">
-            <li>
-                <a class="foot-item" href="main.html">
-                    <i class="fa-sharp fa-solid fa-house"></i>
-                </a>
-            </li>
-            <li>
-                <a class="foot-item" href="nortice.html">
-                    <i class="fa-solid fa-bell"></i>
-                </a>
-            </li>
-            <li>
-                <a class="foot-item" href="profile.html">
-                    <i class="fa-solid fa-user"></i>
-                </a>
-            </li>
+            <script src="js/load.js"></script>
         </div>
-        <script src="js/load.js"></script>
-    </div>
 
 </body>
 

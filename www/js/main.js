@@ -14,44 +14,24 @@ var count = 0;
 
 
 $(window).on('load', async function () {
-    var arr = [];
     post.fetchAll()
-        // ニフクラからデータを取得
-        // .then(function (results) {
-            //  console.log("取得成功:" + JSON.stringify(results));
-        //     var tempArray = [];
-
-        //     // $.each(results, function (cnt, value_data) {
-        //     //     image = getUserIcon(value_data);
-        //     //     //arr.push(getUserIcon(value_data));
-        //     //     console.log("success" + image.);
-        //     //     results.push(image);
-        //     //     arr.push(results);
-        //     // console.log(arr);
-        //     return results;
-        // })
-        // .catch(function (error) {
-        //     console.log("取得失敗:" + JSON.stringify(error))
-        // })
         // フォローの投稿を表示
         .then(function (result) {
              console.log("取得成功:" + JSON.stringify(result));
             $.each(result, function (cnt, value_data) {
                 var object = result[cnt];
                 var content = document.getElementById('follow-content');
-                var add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon" id="image' + count +'" src="img/good.png" width="50px" height="50px" /></div><div class="board-text"><p id="text"><span>' + object.displayName + '</span><br><span>' + object.postedMessage + '</span></p><div class="reaction"><div class="post-img"><img src="img/share.png"></div><div class="LikesIcon"><i class="far fa-heart LikesIcon-fa-heart"></i></div></div></div><div class="post-time"><p class="time">' + object.postedDate + '</p></div></div>'
+                var add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon" id="image' + count +'" src="https://mbaas.api.nifcloud.com/2013-09-01/applications/dzkz4P3WqMDSGgc3/publicFiles/'+object.roleObjectId+'"width="50px" height="50px" /></div><div class="board-text"><p id="text"><span>' + object.displayName + '</span><br><span>' + object.postedMessage + '</span></p><div class="reaction"><div class="post-img"><img src="img/share.png"></div><div class="LikesIcon"><i class="far fa-heart LikesIcon-fa-heart"></i></div></div></div><div class="post-time"><p class="time">' + object.postedDate + '</p></div></div>'
                 content.insertAdjacentHTML('beforeend', add_code);
-                image[cnt] = "userIcon.svg";
-                console.log(cnt);
-                count = cnt;
             });
             return arr
         })
         // オープンの投稿を表示
         .then(function (arr) {
             $.each(arr, function (cnt, value_data) {
+                var object = result[cnt];
                 var content = document.getElementById('open-content');
-                var add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon" src="' + value_data[0] + '" width="50px" height="50px" ></div><div class="board-text"><p id="text"><span>' + value_data[1] + '</span><br><span>' + value_data[2] + '</span></p><div class="post-img"><img src="img/share.png"><img src="img/good.png"></div></div><div class="post-time"><p class="time">' + value_data[3] + '</p></div></div>'
+                var add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon" id="image' + count +'" src="https://mbaas.api.nifcloud.com/2013-09-01/applications/dzkz4P3WqMDSGgc3/publicFiles/'+object.roleObjectId+'"width="50px" height="50px" /></div><div class="board-text"><p id="text"><span>' + object.displayName + '</span><br><span>' + object.postedMessage + '</span></p><div class="reaction"><div class="post-img"><img src="img/share.png"></div><div class="LikesIcon"><i class="far fa-heart LikesIcon-fa-heart"></i></div></div></div><div class="post-time"><p class="time">' + object.postedDate + '</p></div></div>'
                 content.insertAdjacentHTML('beforeend', add_code);
             });
         })
@@ -94,59 +74,4 @@ $(function () {
             btn.addClass('is-active');
         }, 200);
     });
-
-    //ボタンクリックでトップへ戻る
-    btn.on('click', function () {
-        $('body,html').animate({
-            scrollTop: 0
-        });
-    });
 });
-
-// ファイルストアから画像を取得する
-async function getUserIcon(value_data) {
-    //var fileName = objectId + '.svg';
-    var fileName = 'userIcon.svg';
-    downloadImage(fileName);
-    reader.onload = function (e) {
-        var dataUrl = reader.result;
-        // 一次元配列に格納
-        tempArray = [dataUrl, value_data.displayName, value_data.postedMessage, value_data.postedDate];
-        //console.log("checlk:" + tempArray);
-        // 二次元配列に格納
-        //arr.push(tempArray);
-        console.log("dataUrl:" + dataUrl);
-        return dataUrl;
-    }
-};
-
-// 画像を配置する
-function setImage(cnt) {
-    reader.onload = function (e) {
-        var dataUrl = reader.result;
-        console.log(dataUrl);
-        document.getElementById("image" + cnt).src = dataUrl;
-    }
-}
-
-// 画像を読み込む
-function downloadImage() {
-    // ダウンロード（データ形式をblobを指定）
-    ncmb.File.download("userIcon.svg", "blob")
-        .then(function (blob) {
-            // ファイルリーダーにデータを渡す
-            reader.readAsDataURL(blob);
-        })
-        .catch(function (err) {
-            console.error(err);
-        })
-    //await wait(0.1);
-}
-
-// サムネイル画像を上から順に表示する
-function setImg(cnt) {
-    downloadImage();
-    // await wait(0.1);
-    setImage(cnt);
-    // await wait(1.5);
-}

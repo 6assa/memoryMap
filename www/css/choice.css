@@ -131,6 +131,10 @@ h3{
   width: 160px;
   height: 160px;
 }
+.content-box11 .font{
+    padding: 29px 0px 0px;
+  font-size: 2.4em;
+}
 
 .content-box1::before {
     content: '';

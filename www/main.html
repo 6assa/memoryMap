@@ -12,89 +12,101 @@
     <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/board.css">
+    <link rel="stylesheet" href="css/search.css">
     <!-- <link rel="stylesheet" href="css/load.css"> -->
     <link rel="stylesheet" href="css/main_tabs.css">
     <link rel="stylesheet" href="css/pagetop.css">
+    <link rel="stylesheet" href="css/heart.css">
+    <!-- ヘッダのCSS -->
+    <link rel="stylesheet" href="css/main-head.css">
+    <!-- フッターのCSS -->
+    <link rel="stylesheet" href="css/main-foot.css">
+    <!-- アイコンの引用元リンク（FontAwesomeより） -->
+    <script src="https://kit.fontawesome.com/37b3cc24f8.js" crossorigin="anonymous"></script>
 </head>
 <script>
-        //url取得
-        var query = location.search;
-        // 「=」で分割して、クエリストリングを取得
-        var value = query.split('=');
-        // テキスト
-        let text = decodeURIComponent(value[1]);
-        // フェードインして表示
-        $(document).ready(function() {
-            $(document.body).hide().fadeIn("slow");
-        });
+    // テキスト
+    let text = localStorage.getItem('room');
+    // フェードインして表示
+    $(document).ready(function() {
+        $(document.body).hide().fadeIn("slow");
+    });
 
-        window.onload=function(){
+    window.onload = function() {
+        if (text == 'unselected') {
+            location.href('choice.html');
+        } else {
             $('#head-text').text(text);
-        };
-        
-    </script>
+        }
+
+    };
+</script>
+
 <body>
-    <!--ロード画面-->
-    <!-- <div id="splash">
-<div id="splash-logo">
-    <div class="spinner-box">
-  <div class="circle-border">
-    <div class="circle-core"></div>
-  </div>
-  <p id="load-text">Loading...</p>  
-</div>
-</div>
-</div>
-<div class="splashbg"></div>-->
-    <div id="main">
-        <header class="header">
-            <div class="header-img">
-                <img class="search" src="img/search.svg">
-                <h4 id="head-text"></h4>
-                <img class="notice" src="img/bell.svg">
+    <div id="modal" class="modal-container">
+        <i class="fa-solid fa-xmark-large"></i>
+        <div class="modal-body">
+            <div class="search-area1">
+                <span id="close">✕</span>
+                <span class="keyword-search" style="text">キーワード検索</span>
             </div>
-            <div class="header-tab">
-                <div class="tabs">
-                    <input id="follow" type="radio" name="tab_item" onclick="tabs()" checked>
-                    <label class="tab_item" for="follow">フォロー</label>
-                    <input id="follower" type="radio" name="tab_item" onclick="tabs()">
-                    <label class="tab_item" for="follower">オープン</label>
-                </div>
+            <div class="search-area2">
+                <input type="text"
+                id="search-word" name="search-word" placeholder="検索したいワードを入力">
+                <span id="modal-keyword" class="fa-solid fa-magnifying-glass"></span>
             </div>
-        </header>
-        <main id="container">
-            <a class="post-btn is-active" href="upload.html"><img class="post" src="img/post.svg"></a>
-            <div id="follow-content" class="board-list"></div>
-            <div id="open-content" class="board-list"></div>
-        </main>
-        <div class="footer">
-            <li>
-                <a href="main.html">
-                    <img id="home" src="img/home.svg" alt="home">
-                </a>
-            </li>
-            <li>
-                <a href="map.html">
-                    <img id="map" src="img/pin.svg" alt="map">
-                    </a>
-            </li>
-            <li>
-                <a href="profile.html">
-                    <img id="profile" src="img/profile.svg" alt="profile">
-                </a>
-            </li>
+            </div>
+
         </div>
-        <script src="js/load.js"></script>
-    </div>
+        <div id="main">
+            <header class="header">
+                <div class="header-img">
+                    <a id="roomout" class="fa-sharp fa-solid fa-arrow-right-from-bracket" onclick="localStorage.setItem('room','unselected');" href="choice.html"></a>
+                    <p id="head-text">header</p>
+                    <i id="search" class="fa-solid fa-magnifying-glass "></i>
+                </div>
+                <div class="header-tab">
+                    <div class="tabs">
+                        <input id="follow" type="radio" name="tab_item" onclick="tabs()" checked>
+                        <label class="tab_item" for="follow">フォロー</label>
+                        <input id="follower" type="radio" name="tab_item" onclick="tabs()">
+                        <label class="tab_item" for="follower">オープン</label>
+                    </div>
+                </div>
+            </header>
+            <main id="container">
+                <a class="post-btn is-active" href="upload.html"><img class="post" src="img/post.svg"></a>
+                <div id="follow-content" class="board-list"></div>
+                <div id="open-content" class="board-list"></div>
+            </main>
+            <div class="footer">
+                <li>
+                    <a class="foot-item" href="main.html">
+                        <i class="fa-sharp fa-solid fa-house"></i>
+                    </a>
+                </li>
+                <li>
+                    <a class="foot-item" href="nortice.html">
+                        <i class="fa-solid fa-bell"></i>
+                    </a>
+                </li>
+                <li>
+                    <a class="foot-item" href="profile.html">
+                        <i class="fa-solid fa-user"></i>
+                    </a>
+                </li>
+            </div>
+            <script src="js/load.js"></script>
+        </div>
+
 </body>
-
-
-<!-- javaScriptの読み込み -->
 
 <script src="components/loader.js"></script>
 <script src="lib/onsenui/js/onsenui.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-<script src="js/main.js"></script>
+
+<script src="js/search.js"></script>
+<script src="js/good.js"></script>
 
 <!-- <script src="js/load.js"></script> -->
 

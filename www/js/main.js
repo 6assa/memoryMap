@@ -14,44 +14,24 @@ var count = 0;
 
 
 $(window).on('load', async function () {
-    var arr = [];
     post.fetchAll()
-        // ニフクラからデータを取得
-        // .then(function (results) {
-            //  console.log("取得成功:" + JSON.stringify(results));
-        //     var tempArray = [];
-
-        //     // $.each(results, function (cnt, value_data) {
-        //     //     image = getUserIcon(value_data);
-        //     //     //arr.push(getUserIcon(value_data));
-        //     //     console.log("success" + image.);
-        //     //     results.push(image);
-        //     //     arr.push(results);
-        //     // console.log(arr);
-        //     return results;
-        // })
-        // .catch(function (error) {
-        //     console.log("取得失敗:" + JSON.stringify(error))
-        // })
         // フォローの投稿を表示
         .then(function (result) {
              console.log("取得成功:" + JSON.stringify(result));
             $.each(result, function (cnt, value_data) {
                 var object = result[cnt];
                 var content = document.getElementById('follow-content');
-                var add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon" id="image' + count +'" src="img/good.png" width="50px" height="50px" /></div><div class="board-text"><p id="text"><span>' + object.displayName + '</span><br><span>' + object.postedMessage + '</span></p><div class="reaction"><div class="post-img"><img src="img/share.png"></div><input type="checkbox" class="like" id="like"><label for="like"><svg id="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></label></div></div><div class="post-time"><p class="time">' + object.postedDate + '</p></div></div>'
+                var add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon" id="image' + count +'" src="https://mbaas.api.nifcloud.com/2013-09-01/applications/dzkz4P3WqMDSGgc3/publicFiles/'+object.roleObjectId+'"width="50px" height="50px" /></div><div class="board-text"><p id="text"><span>' + object.displayName + '</span><br><span>' + object.postedMessage + '</span></p><div class="reaction"><div class="post-img"><img src="img/share.png"></div><div class="LikesIcon"><i class="far fa-heart LikesIcon-fa-heart"></i></div></div></div><div class="post-time"><p class="time">' + object.postedDate + '</p></div></div>'
                 content.insertAdjacentHTML('beforeend', add_code);
-                image[cnt] = "userIcon.svg";
-                console.log(cnt);
-                count = cnt;
             });
             return arr
         })
         // オープンの投稿を表示
         .then(function (arr) {
             $.each(arr, function (cnt, value_data) {
+                var object = result[cnt];
                 var content = document.getElementById('open-content');
-                var add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon" src="' + value_data[0] + '" width="50px" height="50px" ></div><div class="board-text"><p id="text"><span>' + value_data[1] + '</span><br><span>' + value_data[2] + '</span></p><div class="post-img"><img src="img/share.png"><img src="img/good.png"></div></div><div class="post-time"><p class="time">' + value_data[3] + '</p></div></div>'
+                var add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon" id="image' + count +'" src="https://mbaas.api.nifcloud.com/2013-09-01/applications/dzkz4P3WqMDSGgc3/publicFiles/'+object.roleObjectId+'"width="50px" height="50px" /></div><div class="board-text"><p id="text"><span>' + object.displayName + '</span><br><span>' + object.postedMessage + '</span></p><div class="reaction"><div class="post-img"><img src="img/share.png"></div><div class="LikesIcon"><i class="far fa-heart LikesIcon-fa-heart"></i></div></div></div><div class="post-time"><p class="time">' + object.postedDate + '</p></div></div>'
                 content.insertAdjacentHTML('beforeend', add_code);
             });
         })
@@ -95,58 +75,19 @@ $(function () {
         }, 200);
     });
 
-    //ボタンクリックでトップへ戻る
-    btn.on('click', function () {
-        $('body,html').animate({
-            scrollTop: 0
-        });
+    $(document).on("click",".board-item",function() {
+
+        let icon = $(this).find(value_data[0]).text();
+        let txt = $(this).find('#text').text();
+        let time = $(this).find('.time').text();
+        console.log("aaaaaaaaaaaaaaaaaaaaaaaa");
+        console.log(icon);
+        console.log(txt);
+        console.log(time);
+        console.log("aaaaaaaaaaaaaaaaaaaaaaaa");
+        // localStorageに保存
+        localStorage.setItem('txt', txt);
+        localStorage.setItem('time', time);
+        document.location.href = 'reply.html';
     });
 });
-
-// ファイルストアから画像を取得する
-async function getUserIcon(value_data) {
-    //var fileName = objectId + '.svg';
-    var fileName = 'userIcon.svg';
-    downloadImage(fileName);
-    reader.onload = function (e) {
-        var dataUrl = reader.result;
-        // 一次元配列に格納
-        tempArray = [dataUrl, value_data.displayName, value_data.postedMessage, value_data.postedDate];
-        //console.log("checlk:" + tempArray);
-        // 二次元配列に格納
-        //arr.push(tempArray);
-        console.log("dataUrl:" + dataUrl);
-        return dataUrl;
-    }
-};
-
-// 画像を配置する
-function setImage(cnt) {
-    reader.onload = function (e) {
-        var dataUrl = reader.result;
-        console.log(dataUrl);
-        document.getElementById("image" + cnt).src = dataUrl;
-    }
-}
-
-// 画像を読み込む
-function downloadImage() {
-    // ダウンロード（データ形式をblobを指定）
-    ncmb.File.download("userIcon.svg", "blob")
-        .then(function (blob) {
-            // ファイルリーダーにデータを渡す
-            reader.readAsDataURL(blob);
-        })
-        .catch(function (err) {
-            console.error(err);
-        })
-    //await wait(0.1);
-}
-
-// サムネイル画像を上から順に表示する
-function setImg(cnt) {
-    downloadImage();
-    // await wait(0.1);
-    setImage(cnt);
-    // await wait(1.5);
-}

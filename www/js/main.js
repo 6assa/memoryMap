@@ -76,7 +76,7 @@ $(function () {
 
     $(document).on("click",".board-item",function() {
 
-        //let icon = $(this).find(#image).text();
+        let icon = $(this).find(.src).text();
         let txt = $(this).find('#text').text();
         let time = $(this).find('.time').text();
         console.log("aaaaaaaaaaaaaaaaaaaaaaaa");

@@ -9,11 +9,6 @@ var post = ncmb.DataStore("post");
 //     $(this).find('.img-input').click();
 // });
 
-function onUploadBtn() {
-    var text = document.getElementById("area");
-    var photo = document.getElementById("preview");
-}
-
 // function count_up(obj) {
 //     var element = document.getElementById('inputlength');
 //     var area = document.getElementById('area');
@@ -26,17 +21,52 @@ function onUploadBtn() {
 //     }
 // }
 
+// $(window).on('load', function () {
+//     console.log("チェック");
+//     var arr = [];
+//     post.fetchAll()
+//         // ニフクラからデータを取得
+//         .then(function(results) {
+//             console.log("取得成功:" + JSON.stringify(results));
+//             var tempArray = [];
+            
+//             $.each(results, function(cnt, value_data){
+//                 // 一次元配列に格納
+//                 tempArray = ['img/home.svg', value_data.userName, value_data.    postedMessage, value_data.postedDate];
+
+//                 // 二次元配列に格納
+//                 arr.push(tempArray);
+//             });
+//             console.log(arr);
+//             return arr
+//         })
+//         .catch(function(error) {
+//             console.log("取得失敗:" + JSON.stringify(error))
+//         })
+//         // フォローの投稿を表示
+//         .then(function(arr) {
+//             $.each(arr, function(cnt, value_data){
+//                 var content = document.getElementById('follow-content');
+//                 var add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon" src="' + value_data[0] + '" width="50px" height="50px" ></div><div class="board-text"><p id="text"><span>' + value_data[1] + '</span><br><span>' + value_data[2] + '</span></p><div class="post-img"><img src="img/share.png"><img src="img/good.png"></div></div><div class="post-time"><p class="time">' + value_data[3] + '</p></div></div>'
+//                 content.insertAdjacentHTML('beforeend', add_code);
+//             });
+//             return arr
+//         })
+// });
+
 $(window).on('load', function () {
-        // フォローの投稿を表示
-        console.log('ちぇっく');
+        // localStorageから押下した投稿をもってくるんご
+        let text = localStorage.getItem("txt");
+        let date = localStorage.getItem("time");
         var icon = 'image/home.svg';
-        var userName = 'かしま';
-        var text = 'aaaaaaaaaaa';
-        var date = '16:00';
+        //var userName = 'かしま';
+        // var text = 'aaaaaaaaaaa';
+        // var date = '16:00';
         var content = document.getElementById('follow-content');
-        var add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon" src="' + icon + '" width="50px" height="50px" ></div><div class="board-text"><p id="text"><span>' + userName + '</span><br><span>' + text + '</span></p><div class="post-img"><img src="img/share.png"><img src="img/good.png"></div></div><div class="post-time"><p class="time">' + date + '</p></div></div>'
+        var add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon" src="' + icon + '" width="50px" height="50px" ></div><div class="board-text"><p id="text"><span>' + text + '</span><br><span>' +  + '</span></p><div class="post-img"><img src="img/share.png"><img src="img/good.png"></div></div><div class="post-time"><p class="time">' + date + '</p></div></div>'
         content.insertAdjacentHTML('beforeend', add_code);
 });
+
 function disp() {
 
     // 「OK」時の処理開始 ＋ 確認ダイアログの表示
@@ -79,16 +109,10 @@ function imgPreView(event, num) {
         img.setAttribute("id", "previewImage" + num);
         img.setAttribute("class", "previewImage");
         preview.appendChild(img);
-        
     };
 
     document.getElementById("btn" + num).innerHTML = '<img class="addBtn" id="remBtn"' + num + ' src="img/photoDelete.svg" onclick="removePreview(' + num + ')">';
 
-
-
-
-    
-    
 
 
     reader.readAsDataURL(file);

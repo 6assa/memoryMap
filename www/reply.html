@@ -10,7 +10,32 @@
     <script src="components/loader.js"></script>
     <script src="js/reply.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="components/loader.css">
+    <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
+    <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- <link rel="stylesheet" href="css/board.css"> -->
+    <!-- <link rel="stylesheet" href="css/load.css"> -->
 </head>
+
+<script>
+        //url取得
+        var query = location.search;
+        // 「=」で分割して、クエリストリングを取得
+        var value = query.split('=');
+        // テキスト
+        let text = decodeURIComponent(value[1]);
+        // フェードインして表示
+        $(document).ready(function() {
+            $(document.body).hide().fadeIn("slow");
+        });
+
+        window.onload=function(){
+            $('#head-text').text(text);
+        };
+        
+ </script>
 
 <body style="text-align:center">
 
@@ -39,4 +64,10 @@
         </div>
 
 </body>
+
+<!-- javaScriptの読み込み -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="js/reply.js"></script>
+<!-- <script src="js/load.js"></script> -->
+
 </html>

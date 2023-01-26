@@ -12,7 +12,6 @@ var image = [];
 var count = 0;
 
 
-
 $(window).on('load', async function () {
     post.fetchAll()
         // フォローの投稿を表示
@@ -77,11 +76,11 @@ $(function () {
 
     $(document).on("click",".board-item",function() {
 
-        let icon = $(this).find(value_data[0]).text();
+        //let icon = $(this).find(#image).text();
         let txt = $(this).find('#text').text();
         let time = $(this).find('.time').text();
         console.log("aaaaaaaaaaaaaaaaaaaaaaaa");
-        console.log(icon);
+        //console.log(icon);
         console.log(txt);
         console.log(time);
         console.log("aaaaaaaaaaaaaaaaaaaaaaaa");

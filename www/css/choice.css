@@ -97,7 +97,11 @@ h3{
 
 .content-box13 .font{
     padding: 29px 0px 0px;
+<<<<<<< HEAD
     font-size: 2.4em;
+=======
+  font-size: 1.6em;
+>>>>>>> 48363fc429dd7a8cb6e2076909404927207566e8
 }
 
 .content-box1::before {

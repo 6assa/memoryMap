@@ -3,15 +3,15 @@ let select
 
 
 $('.select-btn').click(function (e) {
-    
+
     // クリック要素内のテキストを取得
-    $('.select-btn').css('border','none');
+
+    $('.select-btn').removeClass('unselected-btn');
+    $('.select-btn').not(this).addClass('unselected-btn');
     select = $(this).find('#select-text').text();
-    localStorage.setItem('room',select);
+    localStorage.setItem('room', select);
     console.log(localStorage.getItem('room'));
-    $(this).css('border','5px solid rgba(77, 166, 255,0.5)');
-    $(this).css('border-radius','12px');
-    $('#inroom-btn').prop('disabled',false);
+    $('#inroom-btn').prop('disabled', false);
     // 入室ボタン押下イベント
     $('#inroom-btn').click(function () {
         // フェードアウト後に遷移

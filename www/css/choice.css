@@ -52,7 +52,6 @@ button:disabled{
 
 h3{
     color: #000;
-    
     position: relative;
     text-align: center;
     font-size: 2.5em;
@@ -60,294 +59,111 @@ h3{
     padding: 0;
 }
 
-.content-box1 {
-  box-sizing: content-box;
-  position: relative;
-  width: 160px;
-  height: 160px;
+.select-btn{
+    box-sizing: content-box;
+    position: relative;
+    width: 160px;
+    height: 160px;
+    margin: 5px;
+    opacity: 1;
 }
 
-.content-box2 {
-  box-sizing: content-box;
-  position: relative;
-  width: 160px;
-  height: 160px;
-}
-
-.content-box3 {
-  box-sizing: content-box;
-  position: relative;
-  width: 160px;
-  height: 160px;
-}
-
-.content-box4 {
-  box-sizing: content-box;
-  position: relative;
-  width: 160px;
-  height: 160px;
-}
-
-.content-box5 {
-  box-sizing: content-box;
-  position: relative;
-  width: 160px;
-  height: 160px;
-}
-
-.content-box6 {
-  box-sizing: content-box;
-  position: relative;
-  width: 160px;
-  height: 160px;
-}
-
-
-
-.content-box8 {
-  box-sizing: content-box;
-  position: relative;
-  width: 160px;
-  height: 160px;
-}
-
-.content-box9 {
-  box-sizing: content-box;
-  position: relative;
-  width: 160px;
-  height: 160px;
-}
-
-.content-box10 {
-  box-sizing: content-box;
-  position: relative;
-  width: 160px;
-  height: 160px;
-}
-
-.content-box11 {
-  box-sizing: content-box;
-  position: relative;
-  width: 160px;
-  height: 160px;
-}
-.content-box11 .font{
-    padding: 29px 0px 0px;
-  font-size: 2.4em;
-}
-.content-box12 {
-  box-sizing: content-box;
-  position: relative;
-  width: 160px;
-  height: 160px;
-}
-
-.content-box13 {
-  box-sizing: content-box;
-  position: relative;
-  width: 160px;
-  height: 160px;
-}
-.content-box13 .font{
-    padding: 29px 0px 0px;
-  font-size: 1.6em;
-}
-
-.content-box1::before {
+.select-btn::before{
     content: '';
-    background-image: url('../img/buisiness.jpg');
     object-fit: cover;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    filter: blur(2px);
+    filter: blur(1px);
     z-index: -1;
     border-radius: 10px;
     border: 1px solid #000
+}
+
+.unselected-btn{
+    transform:scale(0.8);
+    opacity: 0.6;
+    transition-duration: 0.5s;
+}
+
+
+
+
+
+.content-box1::before {
+    background-image: url('../img/buisiness.jpg');
 }
 
 .content-box2::before {
-    content: '';
     background-image: url('../img/life.jpg');
-    object-fit: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    filter: blur(2px);
-    z-index: -1;
-    border-radius: 10px;
-    border: 1px solid #000
 }
 
 .content-box3::before {
-    content: '';
     background-image: url('../img/hobby.jpg');
-    object-fit: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    filter: blur(2px);
-    z-index: -1;
-    border-radius: 10px;
-    border: 1px solid #000
+    
 }
 
 .content-box4::before {
-    content: '';
     background-image: url('../img/talk.jpg');
-    object-fit: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    filter: blur(2px);
-    z-index: -1;
-    border-radius: 10px;
-    border: 1px solid #000
 }
 
 .content-box5::before {
-    content: '';
     background-image: url('../img/music.jpg');
-    object-fit: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    filter: blur(2px);
-    z-index: -1;
-    border-radius: 10px;
-    border: 1px solid #000
 }
 
 .content-box6::before {
-    content: '';
     background-image: url('../img/study.jpg');
-    object-fit: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    filter: blur(2px);
-    z-index: -1;
-    border-radius: 10px;
-    border: 1px solid #000
+    
 }
 
 .content-box8::before {
-    content: '';
     background-image: url('../img/match.jpg');
-    object-fit: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    filter: blur(2px);
-    z-index: -1;
-    border-radius: 10px;
-    border: 1px solid #000
+    
 }
 
 .content-box9::before {
-    content: '';
     background-image: url('../img/food.jpg');
-    object-fit: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    filter: blur(2px);
-    z-index: -1;
-    border-radius: 10px;
-    border: 1px solid #000
+    
 }
 
 .content-box10::before {
-    content: '';
     background-image: url('../img/trip.jpg');
-    object-fit: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    filter: blur(2px);
-    z-index: -1;
-    border-radius: 10px;
-    border: 1px solid #000
 }
 
 .content-box11::before {
-    content: '';
     background-image: url('../img/sports.jpg');
-    object-fit: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    filter: blur(2px);
-    z-index: -1;
-    border-radius: 10px;
-    border: 1px solid #000
 }
 .content-box12::before {
-    content: '';
     background-image: url('../img/beauty.jpg');
-    object-fit: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    filter: blur(2px);
-    z-index: -1;
-    border-radius: 10px;
-    border: 1px solid #000
+}
+.content-box12>.font{
+    font-size: 2.1em;
 }
 .content-box13::before {
-    content: '';
     background-image: url('../img/fashion.jpg');
-    object-fit: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    filter: blur(2px);
-    z-index: -1;
-    border-radius: 10px;
-    border: 1px solid #000
 }
 
+.content-box11>.font{
+    padding: 29px 0px 0px;
+    font-size: 2.4em;
+}
 
-
-.aria{
-    align-items: center;
-    max-width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+.content-box13>.font{
+    font-size: 1.9em;
 }
 
 .scroll {
-  width: 350px;
-  height: 535px;
-  overflow-y: scroll;
-  margin: 0 5%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 350px;
+    height: 535px;
+    overflow-y: scroll;
+    margin: 0 5%;
 }
 
 .scroll::-webkit-scrollbar{
-  display: none;
+    display: none;
 }

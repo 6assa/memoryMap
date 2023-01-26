@@ -1,16 +1,16 @@
 $(
     $('#search').click(function () {
-        $('#modal').fadeIn('fast');
+        $('#search-modal').fadeIn('fast');
     })
 )
 $(
     $('#close').click(function () {
-        $('#modal').fadeOut('fast');
+        $('#search-modal').fadeOut('fast');
     })
 )
 $(
-    $(document).on('click', '#modal-keyword', function () {
-        $('#modal').fadeOut('fast');
+    $(document).on('click', '#search-btn', function () {
+        $('#search-modal').fadeOut('fast');
 
         var search_word = $('#search-word').val();
         console.log(search_word);

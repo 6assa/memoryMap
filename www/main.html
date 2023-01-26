@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/board.css">
     <link rel="stylesheet" href="css/search.css">
+    <link rel="stylesheet" href="css/follow.css">
     <!-- <link rel="stylesheet" href="css/load.css"> -->
     <link rel="stylesheet" href="css/main_tabs.css">
     <link rel="stylesheet" href="css/pagetop.css">
@@ -21,6 +22,7 @@
     <link rel="stylesheet" href="css/main-head.css">
     <!-- フッターのCSS -->
     <link rel="stylesheet" href="css/main-foot.css">
+    
     <!-- アイコンの引用元リンク（FontAwesomeより） -->
     <script src="https://kit.fontawesome.com/37b3cc24f8.js" crossorigin="anonymous"></script>
 </head>
@@ -39,25 +41,33 @@
             $('#head-text').text(text);
         }
 
+        $('#search-modal').show();
+
     };
 </script>
 
 <body>
-    <div id="modal" class="modal-container">
-        <i class="fa-solid fa-xmark-large"></i>
+    <div id="search-modal" class="modal-container">
+        
         <div class="modal-body">
-            <div class="search-area1">
-                <span id="close">✕</span>
-                <span class="keyword-search" style="text">キーワード検索</span>
-            </div>
-            <div class="search-area2">
-                <input type="text"
-                id="search-word" name="search-word" placeholder="検索したいワードを入力">
-                <span id="modal-keyword" class="fa-solid fa-magnifying-glass"></span>
-            </div>
-            </div>
-
+            <i id="close" class="fa-sharp fa-solid fa-xmark close"></i>
+            <h5>キーワード検索</h5>
+            <hr>
+            <input id="search-word" type="text" placeholder="キーワード入力">
+            <button id="search-btn">検索</button>
         </div>
+    </div>
+    <div id="follow-modal" class="modal-container">
+        
+        <div class="follow-body">
+            <i class="fa-sharp fa-solid fa-xmark close"></i>
+            <img id="user-icon" src="img/search.svg">
+            <h5>username</h5>
+            <p>myself</p>
+            <hr>
+            <button id="follow-btn">フォローする</button>
+        </div>
+    </div>
         <div id="main">
             <header class="header">
                 <div class="header-img">
@@ -109,6 +119,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
 <script src="js/search.js"></script>
+<!-- <script src="js/follow.js"></script> -->
 <script src="js/good.js"></script>
 
 

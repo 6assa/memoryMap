@@ -8,9 +8,12 @@
     <link rel="stylesheet" href="components/loader.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/setting.css">
-    <link rel="stylesheet" href="css/footer.css">
+    <!-- フッターのCSS -->
+    <link rel="stylesheet" href="css/main-foot.css">
     <script src="components/loader.js"></script>
     <script src="js/setting.js"></script>
+    <!-- アイコンの引用元リンク（FontAwesomeより） -->
+    <script src="https://kit.fontawesome.com/37b3cc24f8.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -27,25 +30,23 @@
     <hr class="position">
     
     </div>
-    <footer>
-        <nav class="footer">
+    <div class="footer">
+                <li>
+                    <a class="foot-item" href="main.html">
+                        <i class="fa-sharp fa-solid fa-house"></i>
+                    </a>
+            </li>
             <li>
-                <a href="main.html">
-                    <img id="home" src="img/home.png" alt="home">
+                <a class="foot-item" href="nortice.html">
+                    <i class="fa-solid fa-bell"></i>
                 </a>
             </li>
             <li>
-                <a href="map.html">
-                    <img id="map" src="img/map.png" alt="map">
+                <a class="foot-item" href="profile.html">
+                    <i class="fa-solid fa-user"></i>
                 </a>
             </li>
-            <li>
-                <a href="profile.html">
-                    <img id="profile" src="img/profile.png" alt="profile">
-                </a>
-            </li>
-        </nav>
-    </footer>
+    </div>
 </body>
 
 </html>

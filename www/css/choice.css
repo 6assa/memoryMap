@@ -90,19 +90,7 @@ h3{
 
 
 
-.content-box11 .font{
-    padding: 29px 0px 0px;
-    font-size: 2.4em;
-}
 
-.content-box13 .font{
-    padding: 29px 0px 0px;
-<<<<<<< HEAD
-    font-size: 2.4em;
-=======
-  font-size: 1.6em;
->>>>>>> 48363fc429dd7a8cb6e2076909404927207566e8
-}
 
 .content-box1::before {
     background-image: url('../img/buisiness.jpg');

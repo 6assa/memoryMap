@@ -71,14 +71,14 @@ function update_name() {
     console.log(name);
 
     uesrs.fetchById(objectId).then(function (results) {
-            console.log(JSON.stringify(results));
-            results.set("displayName", name);
-            console.log("動いてるぞ");
-            return uesrs.update();
-        })
-        .catch(function(err){
-           alert(err);
-         });
+        console.log(JSON.stringify(results));
+        results.set("displayName", name);
+        console.log("動いてるぞ");
+        return uesrs.update();
+    })
+        .catch(function (err) {
+            alert(err);
+        });
 }
 
 // アカウント削除押下
@@ -100,26 +100,64 @@ function notification() {
 
 // 通知画面に遷移時の処理
 function load_boolean() {
-    // ↓初期の読み込み 将来的にDBからユーザごとに読み込む
-    document.getElementById("toggle").checked = true;
-    /**
-    document.getElementById("toggle1").checked = true;
-    document.getElementById("toggle2").checked = true;
-    document.getElementById("toggle3").checked = true;
-    */
-    let element = document.getElementById('toggle');
-    console.log(element.checked);
+    // DBから読み取る
+    var currentUser = ncmb.User.getCurrentUser();
+    var mail_address = currentUser.get("userName");
+    var Notification = ncmb.DataStore('notification');
 
-    // 通知を受け取るのcheckedがtrueなら他の項目を活性化
-    let elements = document.getElementById('toggle');
-    const activity_flg = elements.checked;
-    console.log(activity_flg);
-    if (activity_flg) {
-        const items = document.getElementsByName("item");
-        for (let j = 0; j < items.length; j++) {
-            items[j].removeAttribute("disabled");
-        }
-    }
+    // DBの値を入れる器を用意
+    var notificationFlg;
+    var reply;
+    var like;
+    var follow;
+    
+    // DBからデータ取得
+    Notification.equalTo("userName", mail_address)
+        .fetchAll()
+        .then(function (results) {
+            for (var i = 0; i < results.length; i++) {
+                var object = results[i];
+            }
+            console.log("ck:" + object.userName);
+
+            // 取得した値を用意しておいた器に入れる
+            notificationFlg = object.notificationFlg;
+            reply = object.reply;
+            like = object.like;
+            follow = document.follow;
+
+            // DBの項目で初期状態を設定
+            document.getElementById("toggle").checked = notificationFlg;
+            document.getElementById("toggle1").checked = reply;
+            document.getElementById("toggle2").checked = like;
+            document.getElementById("toggle3").checked = follow;
+
+            let element = document.getElementById('toggle');
+            console.log(element.checked);
+
+            // 通知を受け取るのcheckedがtrueなら他の項目を活性化
+            let elements = document.getElementById('toggle');
+            const activity_flg = elements.checked;
+            console.log(activity_flg);
+            if (activity_flg) {
+                const items = document.getElementsByName("item");
+                for (let j = 0; j < items.length; j++) {
+                    items[j].removeAttribute("disabled");
+                }
+            } else if (activity_flg == false) {
+                // 通知を受け取るのcheckedがfalseなら,他の項目のcheckedをfalseにして非活性にする
+                const item = document.getElementsByName("item");
+                for (let i = 0; i < item.length; i++) {
+                    item[i].checked = false;
+                    item[i].setAttribute("disabled", true);
+                }
+                // 非活性にした後に項目を非表示にする
+                invisible.hidden = true;
+            }
+        })
+        .catch(function (err) {
+            console.log("エラー:" + err);
+        });
 }
 
 // 通知画面の通知を受け取るのタグル押下
@@ -128,10 +166,20 @@ function all_false() {
     const flg = element.checked;
     console.log(element.checked);
 
+    var Notification = ncmb.DataStore('notification');
+    var currentUser = ncmb.User.getCurrentUser();
+    var mail_address = currentUser.get("userName");
+
     // 要素の非表示を管理するやつ
     const invisible = document.getElementById("invisible");
 
     if (flg == true) {
+        Notification.equalTo('userName', mail_address)
+        .fetch()
+        .then(function (result){
+            result.set('notificationFlg', 'true').update();
+        });
+
         // 通知を受け取るのcheckedがtrueなら他の項目を活性化
         const item = document.getElementsByName("item");
         for (let i = 0; i < item.length; i++) {
@@ -140,18 +188,17 @@ function all_false() {
         // 要素を表示
         invisible.hidden = false;
     } else if (flg == false) {
+        Notification.equalTo('userName', mail_address)
+        .fetch()
+        .then(function (result){
+            result.set('notificationFlg', 'false').update();
+        });
         // 通知を受け取るのcheckedがfalseなら,他の項目のcheckedをfalseにして非活性にする
         const item = document.getElementsByName("item");
         for (let i = 0; i < item.length; i++) {
-            item[i].checked = false;
             item[i].setAttribute("disabled", true);
         }
         // 非活性にした後に項目を非表示にする
         invisible.hidden = true;
     }
-}
-
-// 設定画面のその他押下
-function others() {
-    location.href = 'others.html';
 }

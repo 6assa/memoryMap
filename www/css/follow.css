@@ -1,9 +1,10 @@
+/* This is a CSS file */
 .main {
             position: relative;
             z-index: 1;
         }
         
-        .modal-container {
+        #follow-modal.modal-container {
             position: absolute;
             height: 60.5em;
             width: 100%;
@@ -14,7 +15,7 @@
             display: none;
         }
         
-        .modal-container i {
+        #follow-modal.modal-container> i {
             color: #000;
             position: absolute;
             top: 30%;
@@ -22,37 +23,37 @@
             font-family: Font Awesome\ 5 Free;
         }
         
-        .modal-body {
+        #follow-modal>.follow-body {
             padding: 10px;
             position: absolute;
             width: 60%;
-            height: 16%;
-            top: 35%;
+            height: 30%;
+            top: 27%;
             left: 20%;
             background-color: white;
             border-radius: 10px;
             text-align: center;
 
         }
-
-        
-        .modal-body>.close{
+        .follow-body>#user-icon{
+            margin: 10px;
+            border: 1px solid;
+            border-radius:50% ;
+            width: 30%;
+        }
+        #follow-btn{
+            font-weight: 800;
+            color: #FFF;
+            background-color: rgb(83, 226, 255);
+            height: 50px;
+            border-radius: 10px;
+        }
+        .follow-body>.close{
             margin: 5px;;
             font-size: 1.9em;
             top: 0;
             left: 0;
             z-index: 10;
         }
-        .modal-body>input{
-            height: 40px;
-            background-color: rgba(218, 214, 214, 0.3);
-            border: none;
-        }
-        #search-btn{
-            font-weight: 800;
-            color: #FFF;
-            background-color: rgb(83, 226, 255);
-            width: 70px;
-            height: 40px;
-            border-radius: 10px;
-        }
+
+        

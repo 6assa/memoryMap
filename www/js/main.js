@@ -16,11 +16,11 @@ $(window).on('load', async function () {
     post.fetchAll()
         // フォローの投稿を表示
         .then(function (result) {
-             console.log("取得成功:" + JSON.stringify(result));
+            console.log("取得成功:" + JSON.stringify(result));
             $.each(result, function (cnt, value_data) {
                 var object = result[cnt];
                 var content = document.getElementById('follow-content');
-                var add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon" id="image' + count +'" src="https://mbaas.api.nifcloud.com/2013-09-01/applications/dzkz4P3WqMDSGgc3/publicFiles/'+object.roleObjectId+'"width="50px" height="50px" /></div><div class="board-text"><p id="text"><span>' + object.displayName + '</span><br><span>' + object.postedMessage + '</span></p><div class="reaction"><div class="post-img"><img class="reply" src="img/reply.png"></div><div class="LikesIcon"><i class="far fa-heart LikesIcon-fa-heart"></i></div><div class="image"><i class="fa-regular fa-image"></i></div></div></div><div class="post-time"><p class="time">' + object.postedDate + '</p></div></div>'
+                var add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon" id="image' + count + '" src="https://mbaas.api.nifcloud.com/2013-09-01/applications/dzkz4P3WqMDSGgc3/publicFiles/' + object.roleObjectId + '"width="50px" height="50px" /></div><div class="board-text"><p id="text"><span>' + object.displayName + '</span><br><span>' + object.postedMessage + '</span></p><div class="reaction"><div class="post-img"><img class="reply" src="img/reply.png"></div><div class="LikesIcon"><i class="far fa-heart LikesIcon-fa-heart"></i></div><div class="image"><i class="fa-regular fa-image"></i></div></div></div><div class="post-time"><p class="time">' + object.postedDate + '</p></div></div>'
                 content.insertAdjacentHTML('beforeend', add_code);
             });
             return result;
@@ -30,7 +30,7 @@ $(window).on('load', async function () {
             $.each(result, function (cnt, value_data) {
                 var object = result[cnt];
                 var content = document.getElementById('open-content');
-                var add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon" id="image' + count +'" src="https://mbaas.api.nifcloud.com/2013-09-01/applications/dzkz4P3WqMDSGgc3/publicFiles/'+object.roleObjectId+'"width="50px" height="50px" /></div><div class="board-text"><p id="text"><span>' + object.displayName + '</span><br><span>' + object.postedMessage + '</span></p><div class="reaction"><div class="post-img"><img class="reply" src="img/reply.png"></div><div class="LikesIcon"><i class="far fa-heart LikesIcon-fa-heart"></i></div><div><i class="fa-regular fa-image"></i></div></div></div><div class="post-time"><p class="time">' + object.postedDate + '</p></div></div>'
+                var add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon" id="image' + count + '" src="https://mbaas.api.nifcloud.com/2013-09-01/applications/dzkz4P3WqMDSGgc3/publicFiles/' + object.roleObjectId + '"width="50px" height="50px" /></div><div class="board-text"><p id="text"><span>' + object.displayName + '</span><br><span>' + object.postedMessage + '</span></p><div class="reaction"><div class="post-img"><img class="reply" src="img/reply.png"></div><div class="LikesIcon"><i class="far fa-heart LikesIcon-fa-heart"></i></div><div><i class="fa-regular fa-image"></i></div></div></div><div class="post-time"><p class="time">' + object.postedDate + '</p></div></div>'
                 content.insertAdjacentHTML('beforeend', add_code);
             });
         })
@@ -39,10 +39,10 @@ $(window).on('load', async function () {
             $('#follow-content').show();
             $('#open-content').hide();
         });
-        setImg(count);
+    setImg(count);
 });
 
-$(document).on('change','.like',function(){
+$(document).on('change', '.like', function () {
     $(this).find('#svg').toggleClass('like');
 })
 
@@ -74,23 +74,26 @@ $(function () {
         }, 200);
     });
 
-    // $(document).on("click",".board-item",function() {
-    //     let cnt = localStorage.getItem("cntId");
-    //     let icon = document.getElementById(cnt).src;
-    //     let displayName = $(this).find('#displayName').text();
-    //     let message = $(this).find('#Message').text();
-    //     let time = $(this).find('.time').text();
-    //     console.log("aaaaaaaaaaaaaaaaaaaaaaaa");
-    //     console.log(icon);
-    //     console.log(displayName);
-    //     console.log(message);
-    //     console.log(time);
-    //     console.log("aaaaaaaaaaaaaaaaaaaaaaaa");
-    //     // localStorageに保存
-    //     localStorage.setItem('icon',icon);
-    //     localStorage.setItem('displayName', displayName);
-    //     localStorage.setItem('message', message);
-    //     localStorage.setItem('time', time);
-    //     document.location.href = 'reply.html';
-    // });
+    $(document).on("click", ".reply", function () {
+        console.log("aaaaaaaaaaaaaaaaaaaaaaaa");
+
+        let cnt = localStorage.getItem("cntId");
+        let icon = document.getElementById(cnt).src;
+        let displayName = $(this).find('#displayName').text();
+        let message = $(this).find('#Message').text();
+        let time = $(this).find('.time').text();
+        console.log("aaaaaaaaaaaaaaaaaaaaaaaa");
+        console.log(icon);
+        console.log(displayName);
+        console.log(message);
+        console.log(time);
+        console.log("aaaaaaaaaaaaaaaaaaaaaaaa");
+        // localStorageに保存
+        localStorage.setItem('icon', icon);
+        localStorage.setItem('displayName', displayName);
+        localStorage.setItem('message', message);
+        localStorage.setItem('time', time);
+        document.location.href = 'reply.html';
+    });
 });
+

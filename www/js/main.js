@@ -19,9 +19,14 @@ $(window).on('load', async function () {
              console.log("取得成功:" + JSON.stringify(result));
             $.each(result, function (cnt, value_data) {
                 var object = result[cnt];
-                var content = document.getElementById('follow-content');
-                var add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon" id="image' + count +'" src="https://mbaas.api.nifcloud.com/2013-09-01/applications/dzkz4P3WqMDSGgc3/publicFiles/'+object.roleObjectId+'"width="50px" height="50px" /></div><div class="board-text"><p id="text"><span>' + object.displayName + '</span><br><span>' + object.postedMessage + '</span></p><div class="reaction"><div class="post-img"><img src="img/share.png"></div><div class="LikesIcon"><i class="far fa-heart LikesIcon-fa-heart"></i></div></div></div><div class="post-time"><p class="time">' + object.postedDate + '</p></div></div>'
+                var cntId = "image" + cnt;
+                var content = document.getElementById
+                ('follow-content');
+                var imgurl = "https://mbaas.api.nifcloud.com/2013-09-01/applications/dzkz4P3WqMDSGgc3/publicFiles/" + ob0ject.roleObjectId;
+                console.log(imgurl);
+                var add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon" id="' + cntId +'" src="' + imgurl + '"width="50px" height="50px" /></div><div class="board-text"><p id="text"><span id="displayName">' + object.displayName + '</span><br><span id="Message">' + object.postedMessage + '</span></p><div class="reaction"><div class="post-img"><img src="img/share.png"></div><div class="LikesIcon"><i class="far fa-heart LikesIcon-fa-heart"></i></div></div></div><div class="post-time"><p class="time">' + object.postedDate + '</p></div></div>'
                 content.insertAdjacentHTML('beforeend', add_code);
+                localStorage.setItem("cntId",cntId);
             });
             return arr
         })
@@ -75,17 +80,21 @@ $(function () {
     });
 
     $(document).on("click",".board-item",function() {
-
-        let icon = $(this).find(.src).text();
-        let txt = $(this).find('#text').text();
+        let cnt = localStorage.getItem("cntId");
+        let icon = document.getElementById(cnt).src;
+        let displayName = $(this).find('#displayName').text();
+        let message = $(this).find('#Message').text();
         let time = $(this).find('.time').text();
         console.log("aaaaaaaaaaaaaaaaaaaaaaaa");
-        //console.log(icon);
-        console.log(txt);
+        console.log(icon);
+        console.log(displayName);
+        console.log(message);
         console.log(time);
         console.log("aaaaaaaaaaaaaaaaaaaaaaaa");
         // localStorageに保存
-        localStorage.setItem('txt', txt);
+        localStorage.setItem('icon',icon);
+        localStorage.setItem('displayName', displayName);
+        localStorage.setItem('message', message);
         localStorage.setItem('time', time);
         document.location.href = 'reply.html';
     });

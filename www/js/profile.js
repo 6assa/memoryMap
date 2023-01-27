@@ -54,4 +54,7 @@ $('#myself').click(function(){
         $(this).toggleClass('more');
     }
 })
-//かっしー
+
+$(document).on('click', '.icon-img', function (){
+    location.href = 'profile.html';
+})

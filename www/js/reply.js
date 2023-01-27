@@ -139,3 +139,7 @@ function removePreview(num) {
  * upload.htmlのclass="photo"
  * 投稿ボタン現状何も動作しないです
  */
+
+$(document).on('click','.reply',function(){
+    location.href = 'reply.html';
+})

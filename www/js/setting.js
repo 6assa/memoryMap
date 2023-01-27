@@ -72,7 +72,7 @@ function now_name() {
 
 // ユーザー名変更画面の登録押下
 function update_name() {
-    // ニフクラでデータストアに定義をしなければならない
+    // データストアを選択
     var Users = ncmb.DataStore("users");
 
     // ログイン中のユーザのメールアドレスを取得
@@ -82,16 +82,21 @@ function update_name() {
     // 入力したユーザ名を取得
     let getName = document.getElementById("new_name");
     let newName = getName.value;
-    console.log(newName);
+    var name = String(newName);
+    console.log(typeof(name));
+
 
     // ユーザ名を更新
     Users.equalTo("mailAddress", mail_address)
         .fetch()
         .then(function (results) {
-            results.set('displayName', String(newName)).update();
+            results.set('displayName', name).update();
             console.log("成功");
             alert('ユーザ名を変更しました');
             location.href = 'setting.html';
+        })
+        .catch(function(err){
+            console.log(err);
         });
 }
 

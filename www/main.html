@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/board.css">
     <link rel="stylesheet" href="css/search.css">
-    <link rel="stylesheet" href="css/follow.css">
+    <link rel="stylesheet" href="css/post-image.css">
     <!-- <link rel="stylesheet" href="css/load.css"> -->
     <link rel="stylesheet" href="css/main_tabs.css">
     <link rel="stylesheet" href="css/pagetop.css">
@@ -55,15 +55,26 @@
             <button id="search-btn">検索</button>
         </div>
     </div>
-    <div id="follow-modal" class="modal-container">
-        
-        <div class="follow-body">
-            <i class="fa-sharp fa-solid fa-xmark close"></i>
-            <img id="user-icon" src="img/search.svg">
-            <h5>username</h5>
-            <p>myself</p>
-            <hr>
-            <button id="follow-btn">フォローする</button>
+    <div id="image-modal" class="modal-container">
+        <div class="modal-body">
+            <i id="image-close" class="fa-sharp fa-solid fa-xmark close"></i>
+            <div id="flickscroll">
+          <ul>
+          <li><img src="img/food.jpg" width="300" height="400" alt="" /></li>
+          <li><img src="img/hobby.jpg" width="300" height="400" alt="" /></li>
+          <li><img src="img/life.jpg" width="300" height="400" alt="" /></li>
+          <li><img src="img/music.jpg" width="300" height="400" alt="" /></li>
+          </ul>
+          </div><!--/#flickscroll-->
+          
+          <div id="flickthumb">
+          <ul>
+          <li><img src="img/food.jpg" width="60" height="60" alt="" /></li>
+          <li><img src="img/hobby.jpg" width="60" height="60" alt="" /></li>
+          <li><img src="img/life.jpg" width="60" height="60" alt="" /></li>
+          <li><img src="img/music.jpg" width="60" height="60" alt="" /></li>
+          </ul>
+          </div>
         </div>
     </div>
         <div id="main">
@@ -117,9 +128,10 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
 <script src="js/search.js"></script>
-<!-- <script src="js/follow.js"></script> -->
+<script src="js/image.js"></script>
 <script src="js/good.js"></script>
 <script src="js/reply.js"></script>
+<script src="js/flick.js"></script>
 
 
 <!-- <script src="js/load.js"></script> -->

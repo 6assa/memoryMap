@@ -56,14 +56,16 @@ var post = ncmb.DataStore("post");
 
 $(window).on('load', function () {
         // localStorageから押下した投稿をもってくるんご
-        let text = localStorage.getItem("txt");
+        let icon = localStorage.getItem("icon");
+        let displayName = localStorage.getItem("displayName");
+        let message = localStorage.getItem("message");
         let date = localStorage.getItem("time");
-        var icon = 'image/home.svg';
+        // var icon = 'image/home.svg';
         //var userName = 'かしま';
         // var text = 'aaaaaaaaaaa';
         // var date = '16:00';
         var content = document.getElementById('follow-content');
-        var add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon" src="' + icon + '" width="50px" height="50px" ></div><div class="board-text"><p id="text"><span>' + text + '</span><br><span>' +  + '</span></p><div class="post-img"><img src="img/share.png"><img src="img/good.png"></div></div><div class="post-time"><p class="time">' + date + '</p></div></div>'
+        var add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon" src="' + icon + '" width="50px" height="50px" ></div><div class="board-text"><p id="text"><span>' + displayName + '</span><br><span>' + message + '</span></p><div class="post-img"><img src="img/share.png"><img src="img/good.png"></div></div><div class="post-time"><p class="time">' + date + '</p></div></div>'
         content.insertAdjacentHTML('beforeend', add_code);
 });
 

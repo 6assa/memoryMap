@@ -54,3 +54,4 @@ $('#myself').click(function(){
         $(this).toggleClass('more');
     }
 })
+//かっしー

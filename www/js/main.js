@@ -12,7 +12,6 @@ var image = [];
 var count = 0;
 
 
-
 $(window).on('load', async function () {
     post.fetchAll()
         // フォローの投稿を表示
@@ -76,17 +75,21 @@ $(function () {
     });
 
     $(document).on("click",".board-item",function() {
-
-        let icon = $(this).find(value_data[0]).text();
-        let txt = $(this).find('#text').text();
+        let cnt = localStorage.getItem("cntId");
+        let icon = document.getElementById(cnt).src;
+        let displayName = $(this).find('#displayName').text();
+        let message = $(this).find('#Message').text();
         let time = $(this).find('.time').text();
         console.log("aaaaaaaaaaaaaaaaaaaaaaaa");
         console.log(icon);
-        console.log(txt);
+        console.log(displayName);
+        console.log(message);
         console.log(time);
         console.log("aaaaaaaaaaaaaaaaaaaaaaaa");
         // localStorageに保存
-        localStorage.setItem('txt', txt);
+        localStorage.setItem('icon',icon);
+        localStorage.setItem('displayName', displayName);
+        localStorage.setItem('message', message);
         localStorage.setItem('time', time);
         document.location.href = 'reply.html';
     });

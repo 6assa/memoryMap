@@ -27,18 +27,30 @@ function account() {
 
 // アカウント画面のユーザ情報表示
 function user() {
+    // DB
+    var Users = ncmb.DataStore("users");
+
     // カレントユーザー情報の取得
     var currentUser = ncmb.User.getCurrentUser();
     var mail_address = currentUser.get("userName");
-    var user_name = currentUser.get("displayName");
-    if (currentUser) {
-        console.log("メールアドレス: " + mail_address);
-        console.log("ユーザ名: " + user_name);
-        document.getElementById("user_name").innerText = user_name;
-        document.getElementById("mail_address").innerText = mail_address;
-    } else {
-        console.log("未ログインまたは取得に失敗");
-    }
+
+    // 器を用意
+    var displayName;
+
+    Users.equalTo("mailAddress", mail_address)
+        .fetchAll()
+        .then(function (result) {
+            for (var i = 0; i < result.length; i++) {
+                var object = result[i];
+            }
+            displayName = object.displayName;
+            console.log("ck:" + displayName);
+            document.getElementById("user_name").innerText = displayName;
+            document.getElementById("mail_address").innerText = mail_address;
+        })
+        .catch(function (err){
+            console.log(err);
+        });
 }
 
 // ユーザ名の横の＞押下
@@ -61,23 +73,25 @@ function now_name() {
 // ユーザー名変更画面の登録押下
 function update_name() {
     // ニフクラでデータストアに定義をしなければならない
-    var uesrs = ncmb.DataStore("uesrs");
+    var Users = ncmb.DataStore("users");
 
+    // ログイン中のユーザのメールアドレスを取得
     var currentUser = ncmb.User.getCurrentUser();
-    var objectId = currentUser.get("objectId");
-    const text = document.getElementById("new_name");
-    const name = text.value;
-    console.log(objectId);
-    console.log(name);
+    var mail_address = currentUser.get("userName");
 
-    uesrs.fetchById(objectId).then(function (results) {
-        console.log(JSON.stringify(results));
-        results.set("displayName", name);
-        console.log("動いてるぞ");
-        return uesrs.update();
-    })
-        .catch(function (err) {
-            alert(err);
+    // 入力したユーザ名を取得
+    let getName = document.getElementById("new_name");
+    let newName = getName.value;
+    console.log(newName);
+
+    // ユーザ名を更新
+    Users.equalTo("mailAddress", mail_address)
+        .fetch()
+        .then(function (results) {
+            results.set('displayName', String(newName)).update();
+            console.log("成功");
+            alert('ユーザ名を変更しました');
+            location.href = 'setting.html';
         });
 }
 
@@ -110,7 +124,7 @@ function load_boolean() {
     var reply;
     var like;
     var follow;
-    
+
     // DBからデータ取得
     Notification.equalTo("userName", mail_address)
         .fetchAll()
@@ -121,10 +135,10 @@ function load_boolean() {
             console.log("ck:" + object.userName);
 
             // 取得した値を用意しておいた器に入れる
-            notificationFlg = object.notificationFlg;
-            reply = object.reply;
-            like = object.like;
-            follow = document.follow;
+            notificationFlg = JSON.parse(object.notificationFlg);
+            reply = JSON.parse(object.reply);
+            like = JSON.parse(object.like);
+            follow = JSON.parse(object.follow);
 
             // DBの項目で初期状態を設定
             document.getElementById("toggle").checked = notificationFlg;
@@ -175,10 +189,10 @@ function all_false() {
 
     if (flg == true) {
         Notification.equalTo('userName', mail_address)
-        .fetch()
-        .then(function (result){
-            result.set('notificationFlg', 'true').update();
-        });
+            .fetch()
+            .then(function (result) {
+                result.set('notificationFlg', 'true').update();
+            });
 
         // 通知を受け取るのcheckedがtrueなら他の項目を活性化
         const item = document.getElementsByName("item");
@@ -189,10 +203,10 @@ function all_false() {
         invisible.hidden = false;
     } else if (flg == false) {
         Notification.equalTo('userName', mail_address)
-        .fetch()
-        .then(function (result){
-            result.set('notificationFlg', 'false').update();
-        });
+            .fetch()
+            .then(function (result) {
+                result.set('notificationFlg', 'false').update();
+            });
         // 通知を受け取るのcheckedがfalseなら,他の項目のcheckedをfalseにして非活性にする
         const item = document.getElementsByName("item");
         for (let i = 0; i < item.length; i++) {
@@ -200,5 +214,89 @@ function all_false() {
         }
         // 非活性にした後に項目を非表示にする
         invisible.hidden = true;
+    }
+}
+
+// 返信のタグル押下
+function reply_flg(){
+    // 返信のトグルの状態を取得
+    let element = document.getElementById('toggle1');
+    const flg = element.checked;
+    console.log(element.checked);
+    console.log("動いてる"); 
+
+    // ログイン中のユーザを取得
+    var Notification = ncmb.DataStore('notification');
+    var currentUser = ncmb.User.getCurrentUser();
+    var mail_address = currentUser.get("userName");
+
+    if (flg == true) {
+        Notification.equalTo('userName', mail_address)
+            .fetch()
+            .then(function (result) {
+                result.set('reply', 'true').update();
+            });
+    } else if (flg == false) {
+        Notification.equalTo('userName', mail_address)
+            .fetch()
+            .then(function (result) {
+                result.set('reply', 'false').update();
+            });
+    }
+}
+
+// いいねのタグル押下
+function like_flg(){
+    // 返信のトグルの状態を取得
+    let element = document.getElementById('toggle2');
+    const flg = element.checked;
+    console.log(element.checked);
+    console.log("動いてる"); 
+
+    // ログイン中のユーザを取得
+    var Notification = ncmb.DataStore('notification');
+    var currentUser = ncmb.User.getCurrentUser();
+    var mail_address = currentUser.get("userName");
+
+    if (flg == true) {
+        Notification.equalTo('userName', mail_address)
+            .fetch()
+            .then(function (result) {
+                result.set('like', 'true').update();
+            });
+    } else if (flg == false) {
+        Notification.equalTo('userName', mail_address)
+            .fetch()
+            .then(function (result) {
+                result.set('like', 'false').update();
+            });
+    }
+}
+
+// フォローのタグル押下
+function follow_flg(){
+    // 返信のトグルの状態を取得
+    let element = document.getElementById('toggle3');
+    const flg = element.checked;
+    console.log(element.checked);
+    console.log("動いてる");
+
+    // ログイン中のユーザを取得
+    var Notification = ncmb.DataStore('notification');
+    var currentUser = ncmb.User.getCurrentUser();
+    var mail_address = currentUser.get("userName");
+
+    if (flg == true) {
+        Notification.equalTo('userName', mail_address)
+            .fetch()
+            .then(function (result) {
+                result.set('follow', 'true').update();
+            });
+    } else if (flg == false) {
+        Notification.equalTo('userName', mail_address)
+            .fetch()
+            .then(function (result) {
+                result.set('follow', 'false').update();
+            });
     }
 }

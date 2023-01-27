@@ -20,7 +20,7 @@ $(window).on('load', async function () {
             $.each(result, function (cnt, value_data) {
                 var object = result[cnt];
                 var content = document.getElementById('follow-content');
-                var add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon" id="image' + count +'" src="https://mbaas.api.nifcloud.com/2013-09-01/applications/dzkz4P3WqMDSGgc3/publicFiles/'+object.roleObjectId+'"width="50px" height="50px" /></div><div class="board-text"><p id="text"><span>' + object.displayName + '</span><br><span>' + object.postedMessage + '</span></p><div class="reaction"><div class="post-img"><img class="share" src="img/share.png"></div><div class="LikesIcon"><i class="far fa-heart LikesIcon-fa-heart"></i></div><div><i class="fa-regular fa-image"></i></div></div></div><div class="post-time"><p class="time">' + object.postedDate + '</p></div></div>'
+                var add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon" id="image' + count +'" src="https://mbaas.api.nifcloud.com/2013-09-01/applications/dzkz4P3WqMDSGgc3/publicFiles/'+object.roleObjectId+'"width="50px" height="50px" /></div><div class="board-text"><p id="text"><span>' + object.displayName + '</span><br><span>' + object.postedMessage + '</span></p><div class="reply"><div class="post-img"><img class="share" src="img/share.png"></div><div class="LikesIcon"><i class="far fa-heart LikesIcon-fa-heart"></i></div><div><i class="fa-regular fa-image"></i></div></div></div><div class="post-time"><p class="time">' + object.postedDate + '</p></div></div>'
                 content.insertAdjacentHTML('beforeend', add_code);
             });
             return result;

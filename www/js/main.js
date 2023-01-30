@@ -4,20 +4,31 @@ var clientKey = "05557971c5c7770f388a7c460cdaa0362d55ab58b08ac0e27ee8abcc86c22aa
 var ncmb = new NCMB(appKey, clientKey);
 
 // NCMB.Objectのサブクラスを生成
-var post = ncmb.DataStore("post");
+var post = ncmb.DataStore("post").fetchAll();
 var follow = ncmb.DataStore("follow");
 
 // ファイルストア読み取り用インスタンス生成
 var reader = new FileReader();
 var image = [];
 var count = 0;
+var followingArray = [];
 
+// function getCurrentUser() {
+//     // カレントユーザー情報の取得
+//     var currentUser = ncmb.User.getCurrentUser();
+//     var userName = currentUser.userName;
+//     if (currentUser != null) {
+//         console.log("ログイン中のユーザー: " + userName);
+//     } else {
+//         console.log("未ログインまたは取得に失敗");
+//     }
+//     return userName;
+// }
 
 $(window).on('load', async function () {
-    var followingArray = [];
     follow.fetchAll()
         // フォロー中のユーザの投稿を取得
-        .then(function(result) {
+        .then(function (result) {
             // カレントユーザー情報の取得
             var currentUser = ncmb.User.getCurrentUser();
             var userName = currentUser.userName;
@@ -30,39 +41,59 @@ $(window).on('load', async function () {
             $.each(result, function (cnt, value_data) {
                 var object = result[cnt];
                 if (object.userName == userName) {
-                    followingArray.push(object.followingUserName);
+                    followingArray.push(object);
                 }
             });
             console.log(followingArray);
-        });
-    post.fetchAll()
-        // フォローの投稿を表示
-        .then(function (result) {
-            console.log("取得成功:" + JSON.stringify(result));
-            $.each(result, function (cnt, value_data) {
-                var object = result[cnt];
-                var content = document.getElementById('follow-content');
-                var add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon" id="image' + count + '" src="https://mbaas.api.nifcloud.com/2013-09-01/applications/dzkz4P3WqMDSGgc3/publicFiles/' + object.roleObjectId + '"width="50px" height="50px" /></div><div class="board-text"><p id="text"><span>' + object.displayName + '</span><br><span>' + object.postedMessage + '</span></p><div class="reaction"><div class="post-img"><img class="reply" src="img/reply.png"></div><div class="LikesIcon"><i class="far fa-heart LikesIcon-fa-heart"></i></div><div class="image"><i class="fa-regular fa-image"></i></div></div></div><div class="post-time"><p class="time">' + object.postedDate + '</p></div></div>'
-                content.insertAdjacentHTML('beforeend', add_code);
-            });
-            return result;
         })
-        // オープンの投稿を表示
-        .then(function (result) {
-            $.each(result, function (cnt, value_data) {
-                var object = result[cnt];
-                var content = document.getElementById('open-content');
-                var add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon" id="image' + count + '" src="https://mbaas.api.nifcloud.com/2013-09-01/applications/dzkz4P3WqMDSGgc3/publicFiles/' + object.roleObjectId + '"width="50px" height="50px" /></div><div class="board-text"><p id="text"><span>' + object.displayName + '</span><br><span>' + object.postedMessage + '</span></p><div class="reaction"><div class="post-img"><img class="reply" src="img/reply.png"></div><div class="LikesIcon"><i class="far fa-heart LikesIcon-fa-heart"></i></div><div><i class="fa-regular fa-image"></i></div></div></div><div class="post-time"><p class="time">' + object.postedDate + '</p></div></div>'
-                content.insertAdjacentHTML('beforeend', add_code);
-            });
+        .then(function () {
+            console.log("aaaaaaaaaa");
+            followViewing();
+            openViewing();
         })
         // フォローの投稿を選択した状態にする
         .then(function () {
             $('#follow-content').show();
             $('#open-content').hide();
         });
-    setImg(count);
 });
+
+
+function followViewing() {
+    // フォローの投稿を表示
+    post.then(function (result) {
+        console.log("bbbbbbbbbbb");
+        console.log("取得成功:" + JSON.stringify(result));
+        $.each(result, function (cnt, value_data) {
+            var object = result[cnt];
+            $.each(followingArray, function (count, value_data) {
+                var arr = followingArray[count];
+                console.log(arr.followStatus);
+                console.log(object.userName);
+                if (arr.followingUserName == object.userName) {
+                    if (arr.followStatus) {
+                        var content = document.getElementById('follow-content');
+                        var add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon" id="image' + count + '" src="https://mbaas.api.nifcloud.com/2013-09-01/applications/dzkz4P3WqMDSGgc3/publicFiles/' + object.roleObjectId + '"width="50px" height="50px" /></div><div class="board-text"><p id="text"><span>' + object.displayName + '</span><br><span>' + object.postedMessage + '</span></p><div class="reaction"><div class="post-img"><img class="reply" src="img/reply.png"></div><div class="LikesIcon"><i class="far fa-heart LikesIcon-fa-heart"></i></div><div class="image"><i class="fa-regular fa-image"></i></div></div></div><div class="post-time"><p class="time">' + object.postedDate + '</p></div></div>'
+                        content.insertAdjacentHTML('beforeend', add_code);
+                    };
+                };
+            });
+        });
+        return result;
+    })
+}
+
+function openViewing() {
+    // オープンの投稿を表示
+    post.then(function (result) {
+        $.each(result, function (cnt, value_data) {
+            var object = result[cnt];
+            var content = document.getElementById('open-content');
+            var add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon" id="image' + count + '" src="https://mbaas.api.nifcloud.com/2013-09-01/applications/dzkz4P3WqMDSGgc3/publicFiles/' + object.roleObjectId + '"width="50px" height="50px" /></div><div class="board-text"><p id="text"><span>' + object.displayName + '</span><br><span>' + object.postedMessage + '</span></p><div class="reaction"><div class="post-img"><img class="reply" src="img/reply.png"></div><div class="LikesIcon"><i class="far fa-heart LikesIcon-fa-heart"></i></div><div><i class="fa-regular fa-image"></i></div></div></div><div class="post-time"><p class="time">' + object.postedDate + '</p></div></div>'
+            content.insertAdjacentHTML('beforeend', add_code);
+        });
+    });
+}
 
 $(document).on('change', '.like', function () {
     $(this).find('#svg').toggleClass('like');

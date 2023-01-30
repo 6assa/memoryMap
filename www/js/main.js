@@ -5,6 +5,7 @@ var ncmb = new NCMB(appKey, clientKey);
 
 // NCMB.Objectのサブクラスを生成
 var post = ncmb.DataStore("post");
+var follow = ncmb.DataStore("follow");
 
 // ファイルストア読み取り用インスタンス生成
 var reader = new FileReader();
@@ -13,6 +14,27 @@ var count = 0;
 
 
 $(window).on('load', async function () {
+    var followingArray = [];
+    follow.fetchAll()
+        // フォロー中のユーザの投稿を取得
+        .then(function(result) {
+            // カレントユーザー情報の取得
+            var currentUser = ncmb.User.getCurrentUser();
+            var userName = currentUser.userName;
+            if (currentUser != null) {
+                console.log("ログイン中のユーザー: " + userName);
+            } else {
+                console.log("未ログインまたは取得に失敗");
+            }
+
+            $.each(result, function (cnt, value_data) {
+                var object = result[cnt];
+                if (object.userName == userName) {
+                    followingArray.push(object.followingUserName);
+                }
+            });
+            console.log(followingArray);
+        });
     post.fetchAll()
         // フォローの投稿を表示
         .then(function (result) {

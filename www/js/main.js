@@ -12,7 +12,6 @@ var reader = new FileReader();
 var image = [];
 var count = 0;
 var followingArray = [];
-var followingTrue = [];
 
 // function getCurrentUser() {
 //     // カレントユーザー情報の取得
@@ -50,7 +49,7 @@ $(window).on('load', async function () {
         .then(function () {
             console.log("aaaaaaaaaa");
             followViewing();
-            // openViewing();
+            openViewing();
         })
         // フォローの投稿を選択した状態にする
         .then(function () {

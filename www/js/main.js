@@ -69,7 +69,8 @@ $(document).on('change', '.like', function () {
 })
 
 // タブ押下による投稿の表示・非表示
-function tabs() {
+$(
+  $(document).on('click','input[name=tab_item]',function(){
     if (document.getElementsByName('tab_item')[0].checked) {
         $('#follow-content').fadeIn();
         $('#open-content').hide();
@@ -77,7 +78,8 @@ function tabs() {
         $('#follow-content').hide();
         $('#open-content').fadeIn();
     }
-}
+})
+)
 
 $(function () {
     var btn = $('.post-btn');

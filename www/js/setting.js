@@ -60,14 +60,29 @@ function change_name() {
 
 // ユーザー名変更画面の現在の名前取得
 function now_name() {
+    // DB
+    var Users = ncmb.DataStore("users");
+
     // カレントユーザー情報の取得
     var currentUser = ncmb.User.getCurrentUser();
-    var user_name = currentUser.get("displayName");
+    var mail_address = currentUser.get("userName");
 
-    if (currentUser) {
-        console.log("ユーザ名" + user_name);
-        document.getElementById("user_name").innerText = user_name;
-    }
+    // 器を用意
+    var displayName;
+
+    Users.equalTo("mailAddress", mail_address)
+        .fetchAll()
+        .then(function (result) {
+            for (var i = 0; i < result.length; i++) {
+                var object = result[i];
+            }
+            displayName = object.displayName;
+            console.log("ck:" + displayName);
+            document.getElementById("user_name").innerText = displayName;
+        })
+        .catch(function (err) {
+            console.log(err);
+        });
 }
 
 // ユーザー名変更画面の登録押下
@@ -88,6 +103,7 @@ function update_name() {
         .fetch()
         .then(function (result) {
             result.set('displayName', newName).update();
+            alert('登録が完了しました。戻るを押してください');
         });
 }
 

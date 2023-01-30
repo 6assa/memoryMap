@@ -48,7 +48,7 @@ function user() {
             document.getElementById("user_name").innerText = displayName;
             document.getElementById("mail_address").innerText = mail_address;
         })
-        .catch(function (err){
+        .catch(function (err) {
             console.log(err);
         });
 }
@@ -82,21 +82,12 @@ function update_name() {
     // 入力したユーザ名を取得
     let getName = document.getElementById("new_name");
     let newName = getName.value;
-    var name = String(newName);
-    console.log(typeof(name));
-
 
     // ユーザ名を更新
-    Users.equalTo("mailAddress", mail_address)
+    Users.equalTo('mailAddress', mail_address)
         .fetch()
-        .then(function (results) {
-            results.set('displayName', name).update();
-            console.log("成功");
-            alert('ユーザ名を変更しました');
-            location.href = 'setting.html';
-        })
-        .catch(function(err){
-            console.log(err);
+        .then(function (result) {
+            result.set('displayName', newName).update();
         });
 }
 
@@ -223,12 +214,12 @@ function all_false() {
 }
 
 // 返信のタグル押下
-function reply_flg(){
+function reply_flg() {
     // 返信のトグルの状態を取得
     let element = document.getElementById('toggle1');
     const flg = element.checked;
     console.log(element.checked);
-    console.log("動いてる"); 
+    console.log("動いてる");
 
     // ログイン中のユーザを取得
     var Notification = ncmb.DataStore('notification');
@@ -251,12 +242,12 @@ function reply_flg(){
 }
 
 // いいねのタグル押下
-function like_flg(){
+function like_flg() {
     // 返信のトグルの状態を取得
     let element = document.getElementById('toggle2');
     const flg = element.checked;
     console.log(element.checked);
-    console.log("動いてる"); 
+    console.log("動いてる");
 
     // ログイン中のユーザを取得
     var Notification = ncmb.DataStore('notification');
@@ -279,7 +270,7 @@ function like_flg(){
 }
 
 // フォローのタグル押下
-function follow_flg(){
+function follow_flg() {
     // 返信のトグルの状態を取得
     let element = document.getElementById('toggle3');
     const flg = element.checked;

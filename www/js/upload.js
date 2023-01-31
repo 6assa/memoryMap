@@ -8,8 +8,47 @@ $('#addBtn').click(function () {
 });
 
 function onUploadBtn() {
+    // 投稿の入力文字取得
     var text = document.getElementById("area");
+    var texts = text.value;
+
+    // 投稿の画像取得（後に回す）
     var photo = document.getElementById("preview");
+
+    // DB
+    var Post = ncmb.DataStore("post");
+    var post = new Post();
+
+    // ログイン中のユーザ情報を取得
+    var currentUser = ncmb.User.getCurrentUser();
+    var mail = currentUser.get("userName");
+    var name = currentUser.get("displayName");
+
+    var category = localStorage.getItem('room');
+    
+    // 日付取得
+    var date = new Date();
+    console.log(date);
+
+    // ユーザの画像取得
+    // TODO
+
+    // DBに登録
+    
+    post.set('category', category)
+        .set('displayName', name)
+        .set('postedDate', date)
+        .set('postedMessage', texts)
+        .set('userName', mail)
+        .save()
+        .then(function(result){
+            //ここに処理書く
+            console.log('動いてる');
+            location.href = 'main.html';
+        })
+        .catch(function(err){
+            console.log(err);
+        });
 }
 
 function count_up(obj) {
@@ -66,7 +105,7 @@ function imgPreView(event, num) {
         img.setAttribute("id", "previewImage" + num);
         img.setAttribute("class", "previewImage");
         preview.appendChild(img);
-        
+
     };
 
     document.getElementById("btn" + num).innerHTML = '<img class="addBtn" id="remBtn"' + num + ' src="img/photoDelete.svg" onclick="removePreview(' + num + ')">';
@@ -74,8 +113,8 @@ function imgPreView(event, num) {
 
 
 
-    
-    
+
+
 
 
     reader.readAsDataURL(file);

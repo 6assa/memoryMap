@@ -70,6 +70,15 @@ function now_name() {
     // 器を用意
     var displayName;
 
+    // OKを非表示にする
+    invisible2.hidden = true;
+
+    // 戻ると登録の非活性を解除 
+    const item = document.getElementsByName("item");
+    for (let i = 0; i < item.length; i++) {
+        item[i].removeAttribute("disabled");
+    }
+
     Users.equalTo("mailAddress", mail_address)
         .fetchAll()
         .then(function (result) {
@@ -87,8 +96,6 @@ function now_name() {
 
 // ユーザー名変更画面の登録押下
 function update_name() {
-    // データストアを選択
-    var Users = ncmb.DataStore("users");
 
     // ログイン中のユーザのメールアドレスを取得
     var currentUser = ncmb.User.getCurrentUser();
@@ -98,13 +105,41 @@ function update_name() {
     let getName = document.getElementById("new_name");
     let newName = getName.value;
 
+    // データストアを選択
+    var Users = ncmb.DataStore("users");
+
     // ユーザ名を更新
     Users.equalTo('mailAddress', mail_address)
         .fetch()
         .then(function (result) {
             result.set('displayName', newName).update();
-            alert('登録が完了しました。戻るを押してください');
+            alert('登録が完了しました。\nOKを押してください。');
         });
+
+    // 戻ると登録を非表示にしてOKを表示する
+    setTimeout(function () {
+        invisible.hidden = true;
+        invisible2.hidden = false;
+        // 0.9秒後に発火
+    }, 900);
+
+
+    // 戻ると登録を非活性にする
+    const item = document.getElementsByName("item");
+    for (let i = 0; i < item.length; i++) {
+        item[i].setAttribute("disabled", true);
+    }
+
+    // OKを活性化
+    const regist = document.getElementsByName("regist");
+    for (let i = 0; i < regist.length; i++) {
+        regist[i].removeAttribute("disabled");
+    }
+}
+
+// ユーザ名変更画面の「設定画面に」ボタン押下
+function back_setting() {
+    location.href = 'setting.html';
 }
 
 // アカウント削除押下

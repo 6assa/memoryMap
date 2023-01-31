@@ -18,9 +18,7 @@
 
 <body onload="now_name()">
     <div class="flex">
-        <h6 class="left2" onclick="back()">戻る</h6>
         <h5 class="center">ユーザー名を変更</h5>
-        <h6 class="right" onclick="update_name()">登録</h6>
     </div>
     <hr>
     <div class="">
@@ -30,6 +28,15 @@
         <h6 class="left">新規</h6>
         <input type="text" class="left line size" id="new_name" placeholder="ユーザー名">
         <hr>
+        <div class="flex">
+            <div id="invisible">
+                <button class="backbtn" name="item" onclick="back()" disabled>戻る</button>
+                <button class="registerbtn" name="item" onclick="update_name()" disabled>登録</button>
+            </div>
+            <div id="invisible2">
+                <button class="registerbtn position" name="regist" onclick="back_setting()" disabled>OK</button>
+            </div>
+        </div>
     </div>
 
 </body>

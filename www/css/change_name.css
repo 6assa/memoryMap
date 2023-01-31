@@ -9,14 +9,8 @@
     white-space: nowrap;
 }
 
-.left2{
-    margin: 20px 20px;
-    padding: 0 20px;
-    white-space: nowrap;
-}
-
 .center{
-    margin: 20px 25px;
+    padding: 0% 32%;
     white-space: nowrap;
 }
 
@@ -36,4 +30,32 @@
 
 hr{
     margin: 3px auto;
+}
+
+.registerbtn{
+    background: #68CFFB;
+    color: #fff;
+}
+.backbtn{
+    color: black;
+    background-color: #D9D9D9;
+}
+
+.position{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+button{
+    appearance: none;
+    border: 0;
+    border-radius: 8px;
+    padding: 8px 16px;
+    margin-top: 10%;
+    font-size: 16px;
+    font-weight: bold;
+    min-width: 20%;
+    position: relative;
+    left: 100%;
 }

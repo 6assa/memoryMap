@@ -20,6 +20,11 @@ function onRegisterBtn() {
     // var secretpass = $("#secret_pass").val();
     console.log(username);
 
+    // ユーザネームを未入力の場合
+    if(!displayname){ //空文字とnull
+        displayname = "名無しのごんぞう";
+    }
+
     //mailaddressが被ってないかチェック
     if(badmailcheck){
         ncmb.User.equalTo("userName", username)

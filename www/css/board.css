@@ -1,8 +1,7 @@
 /* 掲示板 */
 .board-list{
     display: flex;
-    flex-direction:column-reverse;
-    justify-content: flex-start;
+    flex-direction: column;
     height:39.5em;
     width:100%;
     overflow:scroll;

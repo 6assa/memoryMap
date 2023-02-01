@@ -69,9 +69,7 @@ function followViewing() {
         $.each(result, function (cnt, value_data) {
             var object = result[cnt];
             $.each(followingArray, function (count, value_data) {
-                var arr = followingArray[count];
-                console.log(arr.followStatus);
-                console.log(object.userName);
+                var arr = followingArray[count];;
                 if (arr.followingUserName == object.userName) {
                     if (arr.followStatus) {
                         var content = document.getElementById('follow-content');

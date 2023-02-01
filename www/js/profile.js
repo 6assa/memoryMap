@@ -5,31 +5,39 @@ var ncmb = new NCMB(appKey, clientKey);
 
 // カレントユーザー情報の取得
 var currentUser = ncmb.User.getCurrentUser();
+// カレントユーザのユーザID
 var loginUserName = currentUser.userName;
-// 投稿全件取得
+// 投稿テーブル
 var post = ncmb.DataStore("post");
-
-
-
-// 自分の投稿を表示
+// ユーザ情報テーブル
+var user = ncmb.DataStore("users");
 
 
 
 $(window).on('load', function () {
 
-    $('#username').text(currentUser.displayName);
-    $('#post').css('border-bottom', '3px solid orange');
-    $('#post-content').show();
-    console.log(loginUserName);
-
+    // ユーザ名・自己紹介文適用
+    user.equalTo('mailAddress',loginUserName).fetch().then(result => {
+        $('#username').text(result['displayName']);
+        $('#myself').text(result['selfComment']);
+    });
+    
+    
+    // 変数定義
     var content = document.getElementById('open-content');
     var add_code='';
     
     
+    // 現在のユーザの投稿を取得
     post.equalTo('userName', loginUserName).fetchAll().then(results => {
+
+        // 取得した結果から1件ずつ処理
         $.each(results, function (index, value) {
             // 日時フォーマット
             formatedDate=dateformat(new Date(value['postedDate']['iso']));
+
+            // プロフィールアイコン画像の適用（暫定）
+            document.getElementById("icon-img").src="https://mbaas.api.nifcloud.com/2013-09-01/applications/dzkz4P3WqMDSGgc3/publicFiles/"+ value['roleObjectId'] ;
             
             // 投稿要素の組み立て
             add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon" id="image' + index + '" src="https://mbaas.api.nifcloud.com/2013-09-01/applications/dzkz4P3WqMDSGgc3/publicFiles/' + value['roleObjectId'] + '"width="50px" height="50px" /></div><div class="board-text"><p id="text"><span>' + value['displayName'] + '</span><br><span>' + value['postedMessage'] + '</span></p><div class="reaction"><div class="post-img"><img class="reply" src="img/reply.png"></div><div><i class="fa-regular fa-image"></i></div></div></div><div class="post-time"><p class="time">' + formatedDate + '</p></div></div>'
@@ -40,6 +48,10 @@ $(window).on('load', function () {
         });
 
     });
+
+    // 表示の初期設定
+    $('#post').css('border-bottom', '3px solid orange');
+    $('#post-content').show();
 });
 
 

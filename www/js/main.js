@@ -2,9 +2,11 @@ var appKey = "e8cc3024cb19c66f9cdfd61faabd73ff97ee0bf85377ff332e9dac1d8752b8d7";
 var clientKey = "05557971c5c7770f388a7c460cdaa0362d55ab58b08ac0e27ee8abcc86c22aaa";
 
 var ncmb = new NCMB(appKey, clientKey);
+let category = localStorage.getItem('room');
 
 // NCMB.Objectのサブクラスを生成
-var post = ncmb.DataStore("post").fetchAll();
+var postFollow = ncmb.DataStore("post").equalTo("category", category).order("postedDate",true).fetchAll();
+var postOpen = ncmb.DataStore("post").equalTo("category", category).order("postedDate",true).fetchAll();
 var follow = ncmb.DataStore("follow");
 
 // ファイルストア読み取り用インスタンス生成
@@ -61,15 +63,13 @@ $(window).on('load', async function () {
 
 function followViewing() {
     // フォローの投稿を表示
-    post.then(function (result) {
+    postFollow.then(function (result) {
         console.log("bbbbbbbbbbb");
         console.log("取得成功:" + JSON.stringify(result));
         $.each(result, function (cnt, value_data) {
             var object = result[cnt];
             $.each(followingArray, function (count, value_data) {
-                var arr = followingArray[count];
-                console.log(arr.followStatus);
-                console.log(object.userName);
+                var arr = followingArray[count];;
                 if (arr.followingUserName == object.userName) {
                     if (arr.followStatus) {
                         var content = document.getElementById('follow-content');
@@ -85,7 +85,7 @@ function followViewing() {
 
 function openViewing() {
     // オープンの投稿を表示
-    post.then(function (result) {
+    postOpen.then(function (result) {
         $.each(result, function (cnt, value_data) {
             var object = result[cnt];
             var content = document.getElementById('open-content');

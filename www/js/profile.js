@@ -58,7 +58,7 @@ $(window).on('load', function () {
 function dateformat(source_date){
 
     // 日時フォーマット（YYYY年MM月dd日 hh:mm）
-    let formated_date=source_date.getFullYear()+'年'+source_date.getMonth()+'月'+source_date.getDate()+'日 '+source_date.getHours()+':'+source_date.getMinutes();
+    let formated_date=source_date.getFullYear()+'/'+source_date.getMonth()+'/'+source_date.getDate()+' '+source_date.getHours()+':'+source_date.getMinutes();
 
     return formated_date
 }

@@ -11,6 +11,12 @@ function onUploadBtn() {
     // 投稿の入力文字取得
     var text = document.getElementById("area");
     var texts = text.value;
+    console.log(texts);
+
+    if(texts === ""){
+        alert("文字が入力されていません");
+        return false;
+    }
 
     // 投稿の画像取得（後に回す）
     var photo = document.getElementById("preview");

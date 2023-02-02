@@ -10,9 +10,6 @@ function onRegisterBtn() {
     //ニフクラの仕組みでusernameにメアドを入れてる
     var username = $("#reg_mailaddres").val();
     var displayname = $("#reg_username").val();
-    // var obj = document.getElementById("area");
-    // var idx = obj.selectedIndex;
-    // var area = obj.options[idx].text;  //ラベルを取得
     var password = $("#reg_password").val();
     var checkpassword = $("#regcheck_password").val();
     var passcheck = true;

@@ -141,19 +141,19 @@ $(function () {
     $(document).on("click", ".reply", function () {
         console.log("aaaaaaaaaaaaaaaaaaaaaaaa");
 
-        let cnt = localStorage.getItem("cntId");
-        let icon = document.getElementById(cnt).src;
-        let displayName = $(this).find('#displayName').text();
+        // let cnt = localStorage.getItem("cntId");
+        // let icon = document.getElementById(cnt).src;
+        let displayName = $(this).find(".displayName").text();
         let message = $(this).find('#Message').text();
         let time = $(this).find('.time').text();
-        console.log("aaaaaaaaaaaaaaaaaaaaaaaa");
-        console.log(icon);
+        console.log("あいうえお");
+        // console.log(icon);
         console.log(displayName);
         console.log(message);
         console.log(time);
         console.log("aaaaaaaaaaaaaaaaaaaaaaaa");
         // localStorageに保存
-        localStorage.setItem('icon', icon);
+        // localStorage.setItem('icon', icon);
         localStorage.setItem('displayName', displayName);
         localStorage.setItem('message', message);
         localStorage.setItem('time', time);

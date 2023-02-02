@@ -3,11 +3,11 @@ var clientKey = "05557971c5c7770f388a7c460cdaa0362d55ab58b08ac0e27ee8abcc86c22aa
 
 var ncmb = new NCMB(appKey, clientKey);
 // NCMB.Objectのサブクラスを生成
-var post = ncmb.DataStore("post");
+// var post = ncmb.DataStore("post");
 
-// $('#addBtn').click(function () {
-//     $(this).find('.img-input').click();
-// });
+$('#addBtn').click(function () {
+    $(this).find('.img-input').click();
+});
 
 // function count_up(obj) {
 //     var element = document.getElementById('inputlength');
@@ -21,53 +21,68 @@ var post = ncmb.DataStore("post");
 //     }
 // }
 
-// $(window).on('load', function () {
-//     console.log("チェック");
-//     var arr = [];
-//     post.fetchAll()
-//         // ニフクラからデータを取得
-//         .then(function(results) {
-//             console.log("取得成功:" + JSON.stringify(results));
-//             var tempArray = [];
-            
-//             $.each(results, function(cnt, value_data){
-//                 // 一次元配列に格納
-//                 tempArray = ['img/home.svg', value_data.userName, value_data.    postedMessage, value_data.postedDate];
-
-//                 // 二次元配列に格納
-//                 arr.push(tempArray);
-//             });
-//             console.log(arr);
-//             return arr
-//         })
-//         .catch(function(error) {
-//             console.log("取得失敗:" + JSON.stringify(error))
-//         })
-//         // フォローの投稿を表示
-//         .then(function(arr) {
-//             $.each(arr, function(cnt, value_data){
-//                 var content = document.getElementById('follow-content');
-//                 var add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon" src="' + value_data[0] + '" width="50px" height="50px" ></div><div class="board-text"><p id="text"><span>' + value_data[1] + '</span><br><span>' + value_data[2] + '</span></p><div class="post-img"><img src="img/share.png"><img src="img/good.png"></div></div><div class="post-time"><p class="time">' + value_data[3] + '</p></div></div>'
-//                 content.insertAdjacentHTML('beforeend', add_code);
-//             });
-//             return arr
-//         })
-// });
-
 $(window).on('load', function () {
         // localStorageから押下した投稿をもってくるんご
-        let icon = localStorage.getItem("icon");
-        let displayName = localStorage.getItem("displayName");
-        let message = localStorage.getItem("message");
-        let date = localStorage.getItem("time");
-        // var icon = 'image/home.svg';
-        //var userName = 'かしま';
-        // var text = 'aaaaaaaaaaa';
-        // var date = '16:00';
+        // let icon = localStorage.getItem("icon");
+        // let displayName = localStorage.getItem("displayName");
+        // let message = localStorage.getItem("message");
+        // let date = localStorage.getItem("time");
+        var icon = 'image/home.svg';
+        var displayName = 'かしま';
+        var message = 'aaaaaaaaaaa';
+        var date = '16:00';
         var content = document.getElementById('follow-content');
         var add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon" src="' + icon + '" width="50px" height="50px" ></div><div class="board-text"><p id="text"><span>' + displayName + '</span><br><span>' + message + '</span></p><div class="post-img"><img src="img/share.png"><img src="img/good.png"></div></div><div class="post-time"><p class="time">' + date + '</p></div></div>'
         content.insertAdjacentHTML('beforeend', add_code);
 });
+
+function onReplyBtn() {
+    // 投稿の入力文字取得
+    var area = $("#area").val();
+
+    // 未入力チェック
+    if(!area){
+        alert("文字が入力されていません");
+        return false;
+    }
+
+    // 投稿の画像取得（後に回す）
+    var photo = document.getElementById("preview");
+
+    // DB
+    var ReplyMessage = ncmb.DataStore("replymessage");
+    var replymessage = new ReplyMessage();
+
+    // ログイン中のユーザ情報を取得
+    var currentUser = ncmb.User.getCurrentUser();
+    var mail = currentUser.get("userName");
+    var name = currentUser.get("displayName");
+
+    //var category = localStorage.getItem('room');
+    
+    // 日付取得
+    var date = new Date();
+    console.log(date);
+
+    // ユーザの画像取得
+    // TODO
+
+    // DBに登録
+    
+    replymessage.set('displayName', name)
+        .set('replyedDate', date)
+        .set('replyedMessage', area)
+        .set('userName', mail)
+        .save()
+        .then(function(result){
+            //ここに処理書く
+            console.log('動いてる');
+            location.href = 'main.html';
+        })
+        .catch(function(err){
+            console.log(err);
+        });
+}
 
 function disp() {
 

@@ -68,14 +68,14 @@ function followViewing() {
         console.log("取得成功:" + JSON.stringify(result));
         $.each(result, function (cnt, value_data) {
             var object = result[cnt];
+            console.log(object.createDate);
+            var formatedDate = dateFormat(new Date(object.createDate));
             $.each(followingArray, function (count, value_data) {
-                var arr = followingArray[count];
-                console.log(arr.followStatus);
-                console.log(object.userName);
+                var arr = followingArray[count];;
                 if (arr.followingUserName == object.userName) {
                     if (arr.followStatus) {
                         var content = document.getElementById('follow-content');
-                        var add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon" id="image' + count + '" src="https://mbaas.api.nifcloud.com/2013-09-01/applications/dzkz4P3WqMDSGgc3/publicFiles/' + object.roleObjectId + '"width="50px" height="50px" /></div><div class="board-text"><p id="text"><span class="displayName" id="displayName">' + object.displayName + '</span><br><span id="Message">' + object.postedMessage + '</span></p><div class="reaction"><div class="post-img"><img class="reply" src="img/reply.png"></div><div class="LikesIcon"><i class="far fa-heart LikesIcon-fa-heart"></i></div><div class="image"><i class="fa-regular fa-image"></i></div></div></div><div class="post-time"><p class="time">' + object.postedDate + '</p></div></div>'
+                        var add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon" id="image' + count + '" src="https://mbaas.api.nifcloud.com/2013-09-01/applications/dzkz4P3WqMDSGgc3/publicFiles/' + object.roleObjectId + '"width="50px" height="50px" /></div><div class="board-text"><p id="text"><span>' + object.displayName + '</span><br><span>' + object.postedMessage + '</span></p><div class="reaction"><div class="post-img"><img class="reply" src="img/reply.png"></div><div class="LikesIcon"><i class="far fa-heart LikesIcon-fa-heart"></i></div><div class="image"><i class="fa-regular fa-image"></i></div></div></div><div class="post-time"><p class="time">' + formatedDate + '</p></div></div>'
                         content.insertAdjacentHTML('beforeend', add_code);
                     };
                 };
@@ -90,8 +90,9 @@ function openViewing() {
     postOpen.then(function (result) {
         $.each(result, function (cnt, value_data) {
             var object = result[cnt];
+            var formatedDate = dateFormat(new Date(object.createDate));
             var content = document.getElementById('open-content');
-            var add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon" id="image' + count + '" src="https://mbaas.api.nifcloud.com/2013-09-01/applications/dzkz4P3WqMDSGgc3/publicFiles/' + object.roleObjectId + '"width="50px" height="50px" /></div><div class="board-text"><p id="text"><span>' + object.displayName + '</span><br><span>' + object.postedMessage + '</span></p><div class="reaction"><div class="post-img"><img class="reply" src="img/reply.png"></div><div class="LikesIcon"><i class="far fa-heart LikesIcon-fa-heart"></i></div><div><i class="fa-regular fa-image"></i></div></div></div><div class="post-time"><p class="time">' + object.postedDate + '</p></div></div>'
+            var add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon" id="image' + count + '" src="https://mbaas.api.nifcloud.com/2013-09-01/applications/dzkz4P3WqMDSGgc3/publicFiles/' + object.roleObjectId + '"width="50px" height="50px" /></div><div class="board-text"><p id="text"><span>' + object.displayName + '</span><br><span>' + object.postedMessage + '</span></p><div class="reaction"><div class="post-img"><img class="reply" src="img/reply.png"></div><div class="LikesIcon"><i class="far fa-heart LikesIcon-fa-heart"></i></div><div><i class="fa-regular fa-image"></i></div></div></div><div class="post-time"><p class="time">' + formatedDate + '</p></div></div>'
             content.insertAdjacentHTML('beforeend', add_code);
         });
     });
@@ -100,6 +101,12 @@ function openViewing() {
 $(document).on('change', '.like', function () {
     $(this).find('#svg').toggleClass('like');
 })
+
+function dateFormat(postedDate) {
+    var formated_date = postedDate.getFullYear() + "/" + postedDate.getMonth() + "/" + postedDate.getDate() + " " + postedDate.getHours() + ":" + postedDate.getMinutes();
+    console.log(formated_date);
+    return formated_date;
+};
 
 // タブ押下による投稿の表示・非表示
 $(

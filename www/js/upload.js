@@ -13,13 +13,34 @@ function onUploadBtn() {
     var texts = text.value;
     console.log(texts);
 
-    if(texts === ""){
+    if (texts === "") {
         alert("文字が入力されていません");
         return false;
     }
 
     // 投稿の画像取得（後に回す）
-    var photo = document.getElementById("preview");
+    var list = [];
+    // 名前変更しなきゃダメ
+    var random_name = Math.random().toString(32).substring(2);
+    var photoname = random_name + ".svg";
+    var imageData = '/img/home.svg';
+    list.push(imageData);
+    console.log(list);
+
+    const blob = new Blob(list, {
+        type: 'image/svg+xml'
+    });
+    console.log(blob);
+
+    // TODO
+    ncmb.File.upload(photoname, blob)
+        .then(function (res) {
+            // アップロード後処理
+            console.log('表示できた');
+        })
+        .catch(function (err) {
+            console.log("エラー" + err);
+        });
 
     // DB
     var Post = ncmb.DataStore("post");
@@ -31,7 +52,7 @@ function onUploadBtn() {
     var name = currentUser.get("displayName");
 
     var category = localStorage.getItem('room');
-    
+
     // 日付取得
     var date = new Date();
     console.log(date);
@@ -40,19 +61,19 @@ function onUploadBtn() {
     // TODO
 
     // DBに登録
-    
+
     post.set('category', category)
         .set('displayName', name)
         .set('postedDate', date)
         .set('postedMessage', texts)
         .set('userName', mail)
         .save()
-        .then(function(result){
+        .then(function (result) {
             //ここに処理書く
             console.log('動いてる');
             location.href = 'main.html';
         })
-        .catch(function(err){
+        .catch(function (err) {
             console.log(err);
         });
 }

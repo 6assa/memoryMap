@@ -59,6 +59,10 @@ function post_output() {
     var content = document.getElementById('open-content');
     // 現在のユーザの投稿を取得
     post.equalTo('userName', loginUserName).fetchAll().then(results => {
+
+        if(results.length===0){
+            $('.no-post').show();
+        }
         // 取得した結果から1件ずつ処理
         $.each(results, function (index, value) {
             // 日時フォーマット
@@ -106,7 +110,7 @@ function follower_output() {
             user.equalTo('mailAddress', followeruser).fetch().then(result => {
 
                 // フォロワー要素の組み立て
-                    add_code = '<div class="follow-item" id="follow-item"><div class="icon-img" id="follow-icon"><img class="board-icon" src="https://mbaas.api.nifcloud.com/2013-09-01/applications/dzkz4P3WqMDSGgc3/publicFiles/' + result['iconUrl'] + '" width="50px" height="50px" id="follow-icon"></div><p id="follow-name"><b>' + result['displayName'] + '</b></p><div class="follow-text"><button id="follower-btn"><span>フォロー</span></button></div></div>';
+                    add_code = '<div class="follow-item" id="follow-item"><div class="icon-img" id="follow-icon"><img class="board-icon" src="https://mbaas.api.nifcloud.com/2013-09-01/applications/dzkz4P3WqMDSGgc3/publicFiles/' + result['iconUrl'] + '" width="50px" height="50px" id="follow-icon"></div><p id="follow-name"><b>' + result['displayName'] + '</b></p><div class="follow-text"><button id="follower-btn"><span>プロフィール</span></button></div></div>';
 
                 // フォロワーエリアに挿入
                 content.insertAdjacentHTML('afterbegin', add_code);

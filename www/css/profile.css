@@ -59,6 +59,9 @@ main::-webkit-scrollbar {
     text-overflow: clip;
 }
 
+.header-tab{
+    border-bottom:1px solid rgb(230, 230, 230);
+}
 
 /*タブ切り替え全体のスタイル*/
 .tabs {
@@ -129,6 +132,30 @@ input[name="tab_item"] {
 .tab_content::-webkit-scrollbar {
     display: none;
 }
+
+.no-post{
+    position: fixed;
+    top: 50%;
+    left: 17%;
+    width: 250px;
+    height: 250px;
+    text-align: center;
+    display: none;
+    
+}
+#no-post-img{
+    position: fixed;
+    font-size: 8.5em;
+    top: 52%;
+    left: 37%;
+    color: rgb(172, 172, 172);
+    z-index: -1000;
+    opacity: 0.4;
+}
+.no-post h4,.no-post h5{
+    z-index: 1;
+}
+
 
 /* フォロー・フォロワー */
 .follow-item{

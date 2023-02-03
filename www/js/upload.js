@@ -19,6 +19,7 @@ function onUploadBtn() {
     }
 
     // TODO srcに画像のデータ取得してぶち込んでくれ
+    var imageData = document.getElementById("previewImage");
     var src = previewImage.getAttribute('src');
     // 先行して画像をアップロード。画像の名前を返す
     var item_image = imgUpload(src);
@@ -66,6 +67,8 @@ function onUploadBtn() {
     var Post = ncmb.DataStore("post");
     var post = new Post();
 
+    var Users = ncmb.DataStore("users");
+
     // ログイン中のユーザ情報を取得
     var currentUser = ncmb.User.getCurrentUser();
     var mail = currentUser.get("userName");
@@ -77,13 +80,28 @@ function onUploadBtn() {
     var date = new Date();
     console.log(date);
 
-    // ユーザの画像取得
-    // TODO
+    // ユーザのアイコン画像取得
+
+    var icon;
+
+    Users.equalTo("mailAddress", mail)
+        .fetchAll()
+        .then(function (result) {
+            for (var i = 0; i < result.length; i++) {
+                var object = result[i];
+            }
+            icon = object.iconUrl;
+        })
+        .catch(function (err){
+            console.log(err);
+        });
 
     // DBに登録
 
     post.set('category', category)
         .set('displayName', name)
+        .set('roleObjectId', icon)
+        .set('photo', item_image)
         .set('postedDate', date)
         .set('postedMessage', texts)
         .set('userName', mail)

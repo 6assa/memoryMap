@@ -1,0 +1,80 @@
+/* This is a CSS file */
+.main {
+            position: relative;
+            z-index: 1;
+        }
+#head-img{
+    left:7px;
+    width: 95%;
+    position:absolute;
+}
+#icon-follow{
+    top:130px;
+    left:120px;
+    position:absolute;
+}
+        
+        #follow-modal.modal-container {
+            position: absolute;
+            height: 60.5em;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            background-color: rgba(128, 128, 128, 0.5);
+            display: none;
+        }
+        
+        #follow-modal.modal-container> i {
+            color: #000;
+            position: absolute;
+            top: 30%;
+            content: '\f00c';
+            font-family: Font Awesome\ 5 Free;
+        }
+        #follow-modal>.modal-body{
+            top:20%;
+            left: 10%;
+            width: 300px;
+            height: 450px;
+        }
+        #follow-modal>.modal-body>.follow-text{
+            text-align: center;
+            position: fixed;
+            top:50%;
+            left: 38%;
+            
+        }
+        #follow-modal>.modal-body>button{
+            position: fixed;
+            left: 31%;
+            top:70%;
+            
+        }
+        .follow-btn.follow{
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: 600;
+            white-space: nowrap;
+            width: 150px;
+            height: 50px;
+            border-radius: 10px;
+            background-color: rgb(108, 221, 255);
+            color: white;
+            display: none;
+
+        }
+        .follow-btn.follow-out{
+            font-size: 1.2em;
+            font-weight: 600;
+            white-space: nowrap;
+            text-align: center;
+            width: 150px;
+            height: 50px;
+            border-radius: 10px;
+            background-color: gray;
+            color: white;
+        }
+
+
+        

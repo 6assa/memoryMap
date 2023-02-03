@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="css/board.css">
     <link rel="stylesheet" href="css/search.css">
     <link rel="stylesheet" href="css/post-image.css">
+    <link rel="stylesheet" href="css/follow-modal.css">
     <!-- <link rel="stylesheet" href="css/load.css"> -->
     <link rel="stylesheet" href="css/main_tabs.css">
     <link rel="stylesheet" href="css/pagetop.css">
@@ -22,7 +23,7 @@
     <link rel="stylesheet" href="css/main-head.css">
     <!-- フッターのCSS -->
     <link rel="stylesheet" href="css/main-foot.css">
-    
+
     <!-- アイコンの引用元リンク（FontAwesomeより） -->
     <script src="https://kit.fontawesome.com/37b3cc24f8.js" crossorigin="anonymous"></script>
 </head>
@@ -46,7 +47,7 @@
 
 <body>
     <div id="search-modal" class="modal-container">
-        
+
         <div class="modal-body">
             <i id="close" class="fa-sharp fa-solid fa-xmark close"></i>
             <h5>キーワード検索</h5>
@@ -59,64 +60,79 @@
         <div class="modal-body">
             <i id="image-close" class="fa-sharp fa-solid fa-xmark close"></i>
             <div id="flickscroll">
-          <ul>
-          <li><img src="img/food.jpg" width="300" height="400" alt="" /></li>
-          <li><img src="img/hobby.jpg" width="300" height="400" alt="" /></li>
-          <li><img src="img/life.jpg" width="300" height="400" alt="" /></li>
-          <li><img src="img/music.jpg" width="300" height="400" alt="" /></li>
-          </ul>
-          </div><!--/#flickscroll-->
-          
-          <div id="flickthumb">
-          <ul>
-          <li><img src="img/food.jpg" width="60" height="60" alt="" /></li>
-          <li><img src="img/hobby.jpg" width="60" height="60" alt="" /></li>
-          <li><img src="img/life.jpg" width="60" height="60" alt="" /></li>
-          <li><img src="img/music.jpg" width="60" height="60" alt="" /></li>
-          </ul>
-          </div>
+                <ul>
+                    <li><img src="img/food.jpg" width="300" height="400" alt="" /></li>
+                    <li><img src="img/hobby.jpg" width="300" height="400" alt="" /></li>
+                    <li><img src="img/life.jpg" width="300" height="400" alt="" /></li>
+                    <li><img src="img/music.jpg" width="300" height="400" alt="" /></li>
+                </ul>
+            </div>
+            <!--/#flickscroll-->
+
+            <div id="flickthumb">
+                <ul>
+                    <li><img src="img/food.jpg" width="60" height="60" alt="" /></li>
+                    <li><img src="img/hobby.jpg" width="60" height="60" alt="" /></li>
+                    <li><img src="img/life.jpg" width="60" height="60" alt="" /></li>
+                    <li><img src="img/music.jpg" width="60" height="60" alt="" /></li>
+                </ul>
+            </div>
         </div>
     </div>
-        <div id="main">
-            <header class="header">
-                <div class="header-img">
-                    <a id="roomout" class="fa-sharp fa-solid fa-solid fa-arrow-left" onclick="localStorage.setItem('room','unselected');" href="choice.html"></a>
-                    <p id="head-text">header</p>
-                    <i id="search" class="fa-solid fa-magnifying-glass "></i>
-                </div>
-                <div class="header-tab">
-                    <div class="tabs">
-                        <input id="follow" type="radio" name="tab_item" checked>
-                        <label class="tab_item" for="follow">フォロー</label>
-                        <input id="follower" type="radio" name="tab_item">
-                        <label class="tab_item" for="follower">オープン</label>
-                    </div>
-                </div>
-            </header>
-            <main id="container">
-                <a class="post-btn is-active" href="upload.html"><img class="post" src="img/post.svg"></a>
-                <div id="follow-content" class="board-list"></div>
-                <div id="open-content" class="board-list"></div>
-            </main>
-            <div class="footer">
-                <li>
-                    <a class="foot-item" href="main.html">
-                        <i class="fa-sharp fa-solid fa-house"></i>
-                    </a>
-                </li>
-                <li>
-                    <a class="foot-item" href="nortice.html">
-                        <i class="fa-solid fa-bell"></i>
-                    </a>
-                </li>
-                <li>
-                    <a class="foot-item" href="profile.html">
-                        <i class="fa-solid fa-user"></i>
-                    </a>
-                </li>
+    <div id="follow-modal" class="modal-container">
+        <div class="modal-body">
+            <i id="follow-close" class="fa-sharp fa-solid fa-xmark close"></i>
+            <img id="head-img" src="img/profileimage.png">
+            <img id="icon-follow" src="img/usericon.png" width="80px" height="80px">
+            <div class="follow-text">
+                <p id="display-name">ユーザー</p>
+            <p id="user-name">username</p>
+            <p>yourself</p>
             </div>
-            <script src="js/load.js"></script>
+            <button class="follow-btn follow">フォロー</button>
+            <button class="follow-btn follow-out">フォロー外す</button>
         </div>
+    </div>
+    <div id="main">
+        <header class="header">
+            <div class="header-img">
+                <a id="roomout" class="fa-sharp fa-solid fa-solid fa-arrow-left" onclick="localStorage.setItem('room','unselected');" href="choice.html"></a>
+                <p id="head-text">header</p>
+                <i id="search" class="fa-solid fa-magnifying-glass "></i>
+            </div>
+            <div class="header-tab">
+                <div class="tabs">
+                    <input id="follow" type="radio" name="tab_item" checked>
+                    <label class="tab_item" for="follow">フォロー</label>
+                    <input id="follower" type="radio" name="tab_item">
+                    <label class="tab_item" for="follower">オープン</label>
+                </div>
+            </div>
+        </header>
+        <main id="container">
+            <a class="post-btn is-active" href="upload.html"><img class="post" src="img/post.svg"></a>
+            <div id="follow-content" class="board-list"></div>
+            <div id="open-content" class="board-list"></div>
+        </main>
+        <div class="footer">
+            <li>
+                <a class="foot-item" href="main.html">
+                    <i class="fa-sharp fa-solid fa-house"></i>
+                </a>
+            </li>
+            <li>
+                <a class="foot-item" href="nortice.html">
+                    <i class="fa-solid fa-bell"></i>
+                </a>
+            </li>
+            <li>
+                <a class="foot-item" href="profile.html">
+                    <i class="fa-solid fa-user"></i>
+                </a>
+            </li>
+        </div>
+        <script src="js/load.js"></script>
+    </div>
 
 </body>
 
@@ -131,6 +147,8 @@
 <script src="js/image.js"></script>
 <script src="js/good.js"></script>
 <script src="js/flick.js"></script>
+<script src="js/follow.js"></script>
+
 <!-- <script src="js/profile.js"></script> -->
 
 

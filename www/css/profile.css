@@ -59,6 +59,9 @@ main::-webkit-scrollbar {
     text-overflow: clip;
 }
 
+.header-tab{
+    border-bottom:1px solid rgb(230, 230, 230);
+}
 
 /*タブ切り替え全体のスタイル*/
 .tabs {
@@ -130,36 +133,61 @@ input[name="tab_item"] {
     display: none;
 }
 
+.no-post{
+    position: fixed;
+    top: 50%;
+    left: 17%;
+    width: 250px;
+    height: 250px;
+    text-align: center;
+    display: none;
+    
+}
+#no-post-img{
+    position: fixed;
+    font-size: 8.5em;
+    top: 52%;
+    left: 37%;
+    color: rgb(172, 172, 172);
+    z-index: -1000;
+    opacity: 0.4;
+}
+.no-post h4,.no-post h5{
+    z-index: 1;
+}
+
+
 /* フォロー・フォロワー */
 .follow-item{
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
 }
 .follow-item img{
-    float: left;
     width: 50px;
     height: 50px;
+}
 
-}
-.follow-item p{
-    float: left;
-    margin-left: 10px;
-}
-.follow-text{
-    margin-left: 120px;
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-}
+
           
 .follow-item button{
-    float: right;
     height:30px;
     color: #fff;
-    background-color: #68CFFB;
+    white-space: nowrap;
+    font-weight: 800;
     border-radius: 5px;
+    background-color: #68CFFB;
+}
+#follow-btn{
+    background-color: #646464;
+}
+
+
+#follow-name,#follower-name{
+    padding-right: 10%;
+    white-space: nowrap;
 }
  
 footer{

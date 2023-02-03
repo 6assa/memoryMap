@@ -17,13 +17,13 @@ function onUploadBtn() {
         alert("文字が入力されていません");
         return false;
     }
-
-    // TODO srcに画像のデータ取得してぶち込んでくれ
-    var imageData = document.getElementById("previewImage");
-    var src = previewImage.getAttribute('src');
-    // 先行して画像をアップロード。画像の名前を返す
-    var item_image = imgUpload(src);
-    console.log(item_image);
+    /*
+        // TODO srcに画像のデータ取得してぶち込んでくれ
+        var imageData = document.getElementById("previewImage");
+        var src = previewImage.getAttribute('src');
+        // 先行して画像をアップロード。画像の名前を返す
+        var item_image = imgUpload(src);
+        console.log(item_image);*/
 
     // 画像アップロード用スクリプト
     function imgUpload(imageData) {
@@ -82,7 +82,7 @@ function onUploadBtn() {
 
     // ユーザのアイコン画像取得
 
-    var icon;
+    var icon
 
     Users.equalTo("mailAddress", mail)
         .fetchAll()
@@ -91,29 +91,32 @@ function onUploadBtn() {
                 var object = result[i];
             }
             icon = object.iconUrl;
-        })
-        .catch(function (err){
-            console.log(err);
-        });
+            console.log('アイコン' + icon);
 
-    // DBに登録
-
-    post.set('category', category)
-        .set('displayName', name)
-        .set('roleObjectId', icon)
-        .set('photo', item_image)
-        .set('postedDate', date)
-        .set('postedMessage', texts)
-        .set('userName', mail)
-        .save()
-        .then(function (result) {
-            //ここに処理書く
-            console.log('動いてる');
-            location.href = 'main.html';
+            post.set('category', category)
+                .set('displayName', name)
+                .set('roleObjectId', icon)
+                .set('postedDate', date)
+                .set('postedMessage', texts)
+                .set('userName', mail)
+                .save()
+                .then(function (result) {
+                    //ここに処理書く
+                    console.log('動いてる');
+                    location.href = 'main.html';
+                })
+                .catch(function (err) {
+                    console.log(err);
+                });
         })
         .catch(function (err) {
             console.log(err);
         });
+    console.log('icon' + icon);
+
+    // DBに登録
+
+
 }
 
 function count_up(obj) {

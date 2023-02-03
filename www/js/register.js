@@ -2,6 +2,8 @@ var appKey = "e8cc3024cb19c66f9cdfd61faabd73ff97ee0bf85377ff332e9dac1d8752b8d7";
 var clientKey = "05557971c5c7770f388a7c460cdaa0362d55ab58b08ac0e27ee8abcc86c22aaa";
 
 var ncmb = new NCMB(appKey, clientKey);
+var Users = ncmb.DataStore("users");
+var users = new Users();
 
 //var currentLoginUser; //現在ログイン中ユーザー
 
@@ -14,16 +16,17 @@ function onRegisterBtn() {
     var checkpassword = $("#regcheck_password").val();
     var passcheck = true;
     var badmailcheck = true;
+    var selfComment = "初めまして！よろしくお願いします！";
     // var secretpass = $("#secret_pass").val();
     console.log(username);
 
     // ユーザネームを未入力の場合
-    if(!displayname){ //空文字とnull
+    if (!displayname) { //空文字とnull
         displayname = "名無しのごんぞう";
     }
 
     //mailaddressが被ってないかチェック
-    if(badmailcheck){
+    if (badmailcheck) {
         ncmb.User.equalTo("userName", username)
             .fetchAll()
             .then(function (results) {
@@ -63,21 +66,30 @@ function onRegisterBtn() {
                 console.log(error);
                 if (!username) {
                     alert("新規登録に失敗しました\nメールアドレスが入力されていません");
-                } else if(mailcheck) {
+                } else if (mailcheck) {
                     alert("新規登録に失敗しました\nメールアドレスが既に使用されています");
                 } else {
                     alert("新規登録に失敗しました");
-                // } else {
-                //     alert("新規登録に失敗しました");
-                //     console.log(error)
+                    // } else {
+                    //     alert("新規登録に失敗しました");
+                    //     console.log(error)
                 }
             })
     }
 
     // ユーザネームを未入力の場合
-    if(!displayname){ //空文字とnull
+    if (!displayname) { //空文字とnull
         displayname = "none";
     }
+
+    users.set('displayName',displayname)
+        .set('iconUrl','tYEjUYeTHvCN3HaK.svg')
+        .set('mailAddress',username)
+        .set('password',password)
+        .set('selfComment',selfComment)
+        .save()
+
+
 }
 
 // function changeColor(hoge){

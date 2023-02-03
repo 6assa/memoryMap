@@ -163,7 +163,3 @@ $('#myself').click(function () {
     }
 })
 
-$(document).on('click', '.icon-img', function () {
-    location.href = 'profile.html';
-
-})

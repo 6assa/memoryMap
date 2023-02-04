@@ -1,5 +1,5 @@
 // This is a JavaScript file
-$(function () {
+$(document).on('focus','#image-modal',function () {
     var $setMainId = $('#flickscroll');
     var $setThumbId = $('#flickthumb');
     var scrollSpeed = 300;

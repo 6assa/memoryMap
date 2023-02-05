@@ -21,9 +21,9 @@ var user = ncmb.DataStore("users");
 $(document).on('click', '.icon-img', function () {
     $('#follow-modal').find('.follow-btn').hide();
     // 投稿したユーザのメールアドレスを取得
-    var select_user=$(this).find('#userId').val();
+    var select_user = $(this).find('#userId').val();
     console.log($(this).find('#userId').val());
-    
+
     user.equalTo('mailAddress', select_user).fetch().then(result => {
 
         $('#display-name').text(result['displayName']);
@@ -43,10 +43,10 @@ $(document).on('click', '.icon-img', function () {
             console.log(results.count);
 
 
-             if (results.count === 0) {
+            if (results.count === 0) {
                 // まだフォローしていない時
                 $('#follow-modal').find('.follow').show();
-                
+
             } else if (results.count > 0) {
                 // フォロー中の時
                 $('#follow-modal').find('.follow-out').show();
@@ -57,9 +57,52 @@ $(document).on('click', '.icon-img', function () {
         });
 
         $('#follow-modal').show();
-    }else{
+    } else {
         console.log("同じユーザ");
     }
+})
+
+// フォロー
+$(document).on('click', '.follow', function () {
+    var Follow = ncmb.DataStore("follow");
+    var follow = new Follow();
+    
+    follow.set('followingUserName', loginUserName)
+        .set('followStatus', true)
+        .set('userName', $('#user-name').text())
+        .save()
+        .then(function (result) {
+            //ここに処理書く
+            console.log('動いてる');
+
+            $('#follow-modal').find('.follow').hide();
+            $('#follow-modal').find('.follow-out').show();
+            
+        })
+        .catch(function (err) {
+            console.log(err);
+        });
+})
+
+// フォロー解除
+$(document).on('click', '.follow-out', function () {
+    
+   if(window.confirm("フォローを解除しますか？")){
+        follow.equalTo('followingUserName',loginUserName)
+    .equalTo('userName',$('#user-name').text())
+    .fetch()
+        .then(function (result) {
+            //ここに処理書く
+            console.log('動いてる');
+            result.delete();
+            $('#follow-modal').find('.follow-out').hide();
+            $('#follow-modal').find('.follow').show();
+            
+        })
+        .catch(function (err) {
+            console.log(err);
+        });
+   }
 })
 
 

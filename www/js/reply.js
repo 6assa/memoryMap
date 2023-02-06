@@ -65,13 +65,58 @@ function onReplyBtn() {
     console.log(date);
 
     // ユーザの画像取得
-    // TODO
+    var item_image = [];
+    $('.previewImage').each(function () {
+        img_src = $(this).attr('src');
+        item_image.push(imgUpload(img_src));
+        console.log($(this).attr('id') + ':' + item_image)
+    })
+
+
+    // 画像アップロード用スクリプト
+    function imgUpload(imageData) {
+        // ncmbに画像をアップロード
+        var fileName = makeUUID() + ".jpg";
+        var fileData = toBlob(imageData, "image/jpeg");
+        ncmb.File.upload(fileName, fileData);
+        return fileName;
+    }
+
+    // Blob作成
+    function toBlob(base64, mime_type) {
+        var bin = atob(base64.replace(/^.*,/, ''));
+        var buffer = new Uint8Array(bin.length);
+        for (var i = 0; i < bin.length; i++) {
+            buffer[i] = bin.charCodeAt(i);
+        }
+
+        try {
+            var blob = new Blob([buffer.buffer], {
+                type: mime_type
+            });
+        } catch (e) {
+            return false;
+        }
+        return blob;
+    }
+
+    //UUID生成
+    function makeUUID() {
+        var d = +new Date();
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'
+            .replace(/[xy]/g, function (c) {
+                var r = (d + Math.random() * 16) % 16 | 0;
+                return (c == 'X' ? r : (r & 0x3 | 0x8)).toString(16);
+
+            });
+    }
 
     // DBに登録
     
     replymessage.set('displayName', name)
         .set('replyedDate', date)
         .set('replyedMessage', area)
+        .set('replyPhoto', item_image)
         .set('userName', mail)
         .save()
         .then(function(result){

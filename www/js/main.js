@@ -79,6 +79,10 @@ function followViewing() {
                         } else {
                             var add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon" id="image' + count + '" src="https://mbaas.api.nifcloud.com/2013-09-01/applications/dzkz4P3WqMDSGgc3/publicFiles/' + object.roleObjectId + '"width="50px" height="50px" /><input type="hidden" id="userId" value=' + object.userName + '></div><div class="board-text"><p id="text"><span>' + object.displayName + '</span><br><span>' + object.postedMessage + '</span></p><div class="reaction"><div class="post-img"><img class="reply" src="img/reply.png"><input type="hidden" id="rep_src" value='+object.postId+'></div><div class="LikesIcon"><i class="far fa-heart LikesIcon-fa-heart"></i></div><div class="image"><i class="fa-regular fa-image"></i><input type="hidden" id="img-postid" value=' + object.photo + '></div></div></div><div class="post-time"><p class="time">' + formatedDate + '</p></div></div>'
                         }
+                        // postId取得
+                        
+
+                        localStorage.setItem('displayName', displayName);
                         content.insertAdjacentHTML('beforeend', add_code);
                     };
                 };
@@ -146,24 +150,11 @@ $(function () {
     });
 
     $(document).on("click", ".post-img", function () {
-        console.log("aaaaaaaaaaaaaaaaaaaaaaaa");
 
-        // let cnt = localStorage.getItem("cntId");
-        // let icon = document.getElementById(cnt).src;
-        let displayName = $(this).find(".displayName").text();
-        let message = $(this).find('#Message').text();
-        let time = $(this).find('.time').text();
-        console.log("あいうえお");
-        // console.log(icon);
-        console.log(displayName);
-        console.log(message);
-        console.log(time);
-        console.log("aaaaaaaaaaaaaaaaaaaaaaaa");
-        // localStorageに保存
-        // localStorage.setItem('icon', icon);
-        localStorage.setItem('displayName', displayName);
-        localStorage.setItem('message', message);
-        localStorage.setItem('time', time);
+        // postIdを取得、ローカルストレージに保存
+        var rep=$(this).find('#rep_src').val();
+        console.log(rep);
+        localStorage.setItem('postId', rep);
         document.location.href = 'reply.html';
     });
 });

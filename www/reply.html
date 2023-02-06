@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
     <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/mordal-common.css">
+    <link rel="stylesheet" href="css/rep-image.css">
     <!-- <link rel="stylesheet" href="css/board.css"> -->
     <!-- <link rel="stylesheet" href="css/load.css"> -->
     <!-- アイコンの引用元リンク（FontAwesomeより） -->
@@ -37,7 +39,24 @@
  </script>
 
 <body style="text-align:center">
+    <div id="image-modal" class="modal-container">
+        <div class="modal-body">
+            <i id="image-close" class="fa-sharp fa-solid fa-xmark close"></i>
+            <div id="flickscroll">
+                <img id="image-pre" src="" width="300" height="400" alt="" />
+            </div>
+            <!--/#flickscroll-->
 
+            <div id="flickthumb">
+                <ul id="modal-thumb">
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="main">
+    
     <header>
         <a href="main.html" class="fa-solid fa-xmark"></a>
         
@@ -50,8 +69,13 @@
     <main id="container">
         <a class="post-btn is-active" href="reply.html"></a>
         <div id="follow-content" class="board-list"></div>
+        <h4>返信</h4>
+         <div id="reply-content" class="board-list">
+        
+    </div>
     </main>
-
+   
+    <div class="post-container">
     <div class="post" id="post-container">
         <textarea class="textAreaFont" id="area" placeholder="テキストを入力" onkeyup="count_up(this);"></textarea>
     </div>
@@ -60,11 +84,15 @@
             <div id="photo5" class="photo"><div id="preview5"></div><div id="btn5"><label id="label5"><img class="addBtn" id="addBtn5" src="img/photoUpload.svg"><input id="input5" class="img-input" onchange="imgPreView(event,5)" type="file"></label></div></div>
             <div id="photo6" class="photo"><div id="preview6"></div><div id="btn6"><label id="label6"><img class="addBtn" id="addBtn6" src="img/photoUpload.svg"><input id="input6" class="img-input" onchange="imgPreView(event,6)" type="file"></label></div></div>
         </div>
+        </div>
+    </div>
+
 </body>
 
 <!-- javaScriptの読み込み -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script src="js/reply.js"></script>
+<script src="js/image.js"></script>
 <!-- <script src="js/load.js"></script> -->
 
 </html>

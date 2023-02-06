@@ -25,10 +25,11 @@ header {
         font-size: 20px
     }
     
+    
     textarea {
         margin-top: 5%;
         width: 92%;
-        height: 500px;
+        height: 50px;
         border: none;
     }
 
@@ -137,6 +138,20 @@ header {
     justify-content: flex-start;
     /* border-bottom: 1px solid rgba(0, 0, 0, 0.1); */
 }
+#reply-content{
+    max-height:250px ;
+        flex-direction: column;
+        overflow-y:scroll ;
+        overflow-x:hidden;
+    }
+h4{
+        margin:0;
+        position: sticky;
+        background-color: #e3e3e3;
+    }
+    #reply-content>.board-item{
+        margin-top: 0;
+    }
 .icon-img{
     margin: 15px;
     margin-top: 15px;

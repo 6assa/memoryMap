@@ -5,6 +5,8 @@ var ncmb = new NCMB(appKey, clientKey);
 // NCMB.Objectのサブクラスを生成
 var post = ncmb.DataStore("post");
 
+
+
 $('#addBtn').click(function () {
     $(this).find('.img-input').click();
 });
@@ -24,28 +26,50 @@ $('#addBtn').click(function () {
 
 
 $(window).on('load', function () {
-        // localStorageからpostId持ってくる
-        var postId = localStorage.getItem("postId");
-        console.log("ちぇっく");
-        console.log(postId);
+    var Reply = ncmb.DataStore("replymessage");
+    var users = ncmb.DataStore("users");
 
-        // DBのpostIdに対応する情報を取得
-        post.equalTo("postId", Number(postId))
-            .fetch()
-            .then(result=>{
-                console.log('res:'+JSON.stringify(result))
-                // 日時フォーマット
+    // localStorageからpostId持ってくる
+    var postId = localStorage.getItem("postId");
+    console.log("ちぇっく");
+    console.log(postId);
+
+    // DBのpostIdに対応する情報を取得
+    post.equalTo("postId", Number(postId))
+        .fetch()
+        .then(result => {
+            console.log('res:' + JSON.stringify(result))
+            // 日時フォーマット
             formatedDate = dateformat(new Date(result['postedDate']['iso']));
-                var icon = result['roleObjectId'];
-                var displayName = result['displayName'];
-                var message = result['postedMessage'];
-                var content = document.getElementById('follow-content');
-                var add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon" src="https://mbaas.api.nifcloud.com/2013-09-01/applications/dzkz4P3WqMDSGgc3/publicFiles/' + icon + '" width="50px" height="50px" ></div><div class="board-text"><p id="text"><span>' + displayName + '</span><br><span>' + message + '</span></p><div class="reaction"><div class="image"><i class="fa-regular fa-image"></i><input type="hidden" id="img-postid" value=' + result['photo'] + '></div></div></div><div class="post-time"><p class="time">' + formatedDate + '</p></div></div>'
-                content.insertAdjacentHTML('beforeend', add_code);  
+            var icon = result['roleObjectId'];
+            var displayName = result['displayName'];
+            var message = result['postedMessage'];
+            var content = document.getElementById('follow-content');
+            var add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon" src="https://mbaas.api.nifcloud.com/2013-09-01/applications/dzkz4P3WqMDSGgc3/publicFiles/' + icon + '" width="50px" height="50px" ></div><div class="board-text"><p id="text"><span>' + displayName + '</span><br><span>' + message + '</span></p><div class="reaction"><div class="image"><i class="fa-regular fa-image"></i><input type="hidden" id="img-postid" value=' + result['photo'] + '></div></div></div><div class="post-time"><p class="time">' + formatedDate + '</p></div></div>'
+            content.insertAdjacentHTML('beforeend', add_code);
+        })
+        .catch(function (err) {
+            console.log(err);
+        });
+
+    var content_r = document.getElementById('reply-content');
+    Reply.equalTo('replySourceId', localStorage.getItem('postId')).fetchAll().then(results => {
+
+        $.each(results, function (index, result) {
+            users.equalTo('mailAddress', result['userName']).fetch().then(res => {
+
+                formatedDate = dateformat(new Date(result['replyedDate']['iso']));
+                if (result['replyPhoto'].length == 0) {
+                    var add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon" src="https://mbaas.api.nifcloud.com/2013-09-01/applications/dzkz4P3WqMDSGgc3/publicFiles/' + res['iconUrl'] + '" width="50px" height="50px" ></div><div class="board-text"><p id="text"><span>' + result['displayName'] + '</span><br><span>' + result['replyMessage'] + '</span></p><div class="reaction"></div></div><div class="post-time"><p class="time">' + formatedDate + '</p></div></div>'
+                } else {
+                    var add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon" src="https://mbaas.api.nifcloud.com/2013-09-01/applications/dzkz4P3WqMDSGgc3/publicFiles/' + res['iconUrl'] + '" width="50px" height="50px" ></div><div class="board-text"><p id="text"><span>' + result['displayName'] + '</span><br><span>' + result['replyMessage'] + '</span></p><div class="reaction"><div class="image"><i class="fa-regular fa-image"></i><input type="hidden" id="img-postid" value=' + result['replyPhoto'] + '></div></div></div><div class="post-time"><p class="time">' + formatedDate + '</p></div></div>'
+
+                }
+                content_r.insertAdjacentHTML('beforeend', add_code);
             })
-            .catch(function(err){
-                console.log(err);
-            });      
+
+        })
+    });
 });
 
 function dateformat(source_date) {
@@ -62,7 +86,7 @@ function onReplyBtn() {
     var area = $("#area").val();
 
     // 未入力チェック
-    if(!area){
+    if (!area) {
         alert("文字が入力されていません");
         return false;
     }
@@ -80,7 +104,7 @@ function onReplyBtn() {
     var name = currentUser.get("displayName");
 
     //var category = localStorage.getItem('room');
-    
+
     // 日付取得
     var date = new Date();
     console.log(date);
@@ -141,13 +165,13 @@ function onReplyBtn() {
         .set('userName', mail)
         .set('replySourceId', postId)
         .save()
-        .then(function(result){
+        .then(function (result) {
             //ここに処理書く
             console.log('動いてる');
             window.alert('返信されました');
             location.href = 'main.html';
         })
-        .catch(function(err){
+        .catch(function (err) {
             console.log(err);
         });
 }

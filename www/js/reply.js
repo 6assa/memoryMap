@@ -3,7 +3,7 @@ var clientKey = "05557971c5c7770f388a7c460cdaa0362d55ab58b08ac0e27ee8abcc86c22aa
 
 var ncmb = new NCMB(appKey, clientKey);
 // NCMB.Objectのサブクラスを生成
-// var post = ncmb.DataStore("post");
+var post = ncmb.DataStore("post");
 
 $('#addBtn').click(function () {
     $(this).find('.img-input').click();
@@ -21,21 +21,42 @@ $('#addBtn').click(function () {
 //     }
 // }
 
+
+
 $(window).on('load', function () {
-        // localStorageから押下した投稿をもってくるんご
-        // let icon = localStorage.getItem("icon");
-        // let displayName = localStorage.getItem("displayName");
-        // let message = localStorage.getItem("message");
-        // let date = localStorage.getItem("time");
-        var icon = 'image/home.svg';
-        var displayName = 'かしま';
-        var message = 'aaaaaaaaaaa';
-        var date = '16:00';
-        var content = document.getElementById('follow-content');
-        var add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon" src="' + icon + '" width="50px" height="50px" ></div><div class="board-text"><p id="text"><span>' + displayName + '</span><br><span>' + message + '</span></p><div class="post-img"><img src="img/share.png"><img src="img/good.png"></div></div><div class="post-time"><p class="time">' + date + '</p></div></div>'
-        content.insertAdjacentHTML('beforeend', add_code);
+        // localStorageからpostId持ってくる
+        var postId = localStorage.getItem("postId");
+        console.log("ちぇっく");
+        console.log(postId);
+
+        // DBのpostIdに対応する情報を取得
+        post.equalTo("postId", Number(postId))
+            .fetch()
+            .then(result=>{
+                console.log('res:'+JSON.stringify(result))
+                // 日時フォーマット
+            formatedDate = dateformat(new Date(result['postedDate']['iso']));
+                var icon = result['roleObjectId'];
+                var displayName = result['displayName'];
+                var message = result['postedMessage'];
+                var content = document.getElementById('follow-content');
+                var add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon" src="https://mbaas.api.nifcloud.com/2013-09-01/applications/dzkz4P3WqMDSGgc3/publicFiles/' + icon + '" width="50px" height="50px" ></div><div class="board-text"><p id="text"><span>' + displayName + '</span><br><span>' + message + '</span></p><div class="reaction"><div class="image"><i class="fa-regular fa-image"></i><input type="hidden" id="img-postid" value=' + result['photo'] + '></div></div></div><div class="post-time"><p class="time">' + formatedDate + '</p></div></div>'
+                content.insertAdjacentHTML('beforeend', add_code);  
+            })
+            .catch(function(err){
+                console.log(err);
+            });      
 });
 
+function dateformat(source_date) {
+
+    // 日時フォーマット（YYYY年MM月dd日 hh:mm）
+    let formated_date = source_date.getFullYear() + '/' + source_date.getMonth() + '/' + source_date.getDate() + ' ' + source_date.getHours() + ':' + source_date.getMinutes();
+
+    return formated_date
+}
+
+// 返信ボタン押下
 function onReplyBtn() {
     // 投稿の入力文字取得
     var area = $("#area").val();
@@ -112,16 +133,18 @@ function onReplyBtn() {
     }
 
     // DBに登録
-    
+    var postId = localStorage.getItem("postId");
     replymessage.set('displayName', name)
         .set('replyedDate', date)
-        .set('replyedMessage', area)
+        .set('replyMessage', area)
         .set('replyPhoto', item_image)
         .set('userName', mail)
+        .set('replySourceId', postId)
         .save()
         .then(function(result){
             //ここに処理書く
             console.log('動いてる');
+            window.alert('返信されました');
             location.href = 'main.html';
         })
         .catch(function(err){
@@ -159,8 +182,6 @@ function imgPreView(event, num) {
     var preview = document.getElementById("preview" + num);
     var previewImg = document.getElementById("previewImage" + num);
 
-
-
     if (previewImg != null) {
         preview.removeChild(previewImg);
     }
@@ -174,8 +195,6 @@ function imgPreView(event, num) {
     };
 
     document.getElementById("btn" + num).innerHTML = '<img class="addBtn" id="remBtn"' + num + ' src="img/photoDelete.svg" onclick="removePreview(' + num + ')">';
-
-
 
     reader.readAsDataURL(file);
     files.push(document.getElementById("previewImage" + num).getAttribute("src"));

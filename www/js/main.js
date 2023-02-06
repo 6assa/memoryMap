@@ -70,7 +70,7 @@ function followViewing() {
             console.log(object.createDate);
             var formatedDate = dateFormat(new Date(object.createDate));
             $.each(followingArray, function (count, value_data) {
-                var arr = followingArray[count];;
+                var arr = followingArray[count];
                 if (arr.followingUserName == object.userName || loginUserName == object.userName) {
                     if (arr.followStatus) {
                         var content = document.getElementById('follow-content');
@@ -79,10 +79,6 @@ function followViewing() {
                         } else {
                             var add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon" id="image' + count + '" src="https://mbaas.api.nifcloud.com/2013-09-01/applications/dzkz4P3WqMDSGgc3/publicFiles/' + object.roleObjectId + '"width="50px" height="50px" /><input type="hidden" id="userId" value=' + object.userName + '></div><div class="board-text"><p id="text"><span>' + object.displayName + '</span><br><span>' + object.postedMessage + '</span></p><div class="reaction"><div class="post-img"><img class="reply" src="img/reply.png"><input type="hidden" id="rep_src" value='+object.postId+'></div><div class="LikesIcon"><i class="far fa-heart LikesIcon-fa-heart"></i></div><div class="image"><i class="fa-regular fa-image"></i><input type="hidden" id="img-postid" value=' + object.photo + '></div></div></div><div class="post-time"><p class="time">' + formatedDate + '</p></div></div>'
                         }
-                        // postId取得
-                        
-
-                        localStorage.setItem('displayName', displayName);
                         content.insertAdjacentHTML('beforeend', add_code);
                     };
                 };

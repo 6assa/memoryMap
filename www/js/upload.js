@@ -2,6 +2,9 @@ var appKey = "e8cc3024cb19c66f9cdfd61faabd73ff97ee0bf85377ff332e9dac1d8752b8d7";
 var clientKey = "05557971c5c7770f388a7c460cdaa0362d55ab58b08ac0e27ee8abcc86c22aaa";
 
 var ncmb = new NCMB(appKey, clientKey);
+var max_id;
+
+
 
 $('#addBtn').click(function () {
     $(this).find('.img-input').click();
@@ -18,11 +21,13 @@ function onUploadBtn() {
         return false;
     }
 
-    // TODO srcに画像のデータ取得してぶち込んでくれ
-    var src = previewImage.getAttribute('src');
-    // 先行して画像をアップロード。画像の名前を返す
-    var item_image = imgUpload(src);
-    console.log(item_image);
+    var item_image = [];
+    $('.previewImage').each(function () {
+        img_src = $(this).attr('src');
+        item_image.push(imgUpload(img_src));
+        console.log($(this).attr('id') + ':' + item_image)
+    })
+
 
     // 画像アップロード用スクリプト
     function imgUpload(imageData) {
@@ -66,6 +71,11 @@ function onUploadBtn() {
     var Post = ncmb.DataStore("post");
     var post = new Post();
 
+    var Users = ncmb.DataStore("users");
+
+    
+
+
     // ログイン中のユーザ情報を取得
     var currentUser = ncmb.User.getCurrentUser();
     var mail = currentUser.get("userName");
@@ -77,25 +87,49 @@ function onUploadBtn() {
     var date = new Date();
     console.log(date);
 
-    // ユーザの画像取得
-    // TODO
+    // ユーザのアイコン画像取得
 
-    // DBに登録
+    var icon
 
-    post.set('category', category)
-        .set('displayName', name)
-        .set('postedDate', date)
-        .set('postedMessage', texts)
-        .set('userName', mail)
-        .save()
+    
+    
+    Post.order('postId',true).fetch().then(function(res){
+    Users.equalTo("mailAddress", mail)
+        .fetchAll()
         .then(function (result) {
-            //ここに処理書く
-            console.log('動いてる');
-            location.href = 'main.html';
+            for (var i = 0; i < result.length; i++) {
+                var object = result[i];
+            }
+            icon = object.iconUrl;
+            console.log('アイコン' + icon);
+
+
+            post.set('category', category)
+                .set('displayName', name)
+                .set('postId',res['postId']+1)
+                .set('photo', item_image)
+                .set('roleObjectId', icon)
+                .set('postedDate', date)
+                .set('postedMessage', texts)
+                .set('userName', mail)
+                .save()
+                .then(function (result) {
+                    //ここに処理書く
+                    console.log('動いてる');
+                    location.href = 'main.html';
+                })
+                .catch(function (err) {
+                    console.log(err);
+                });
         })
         .catch(function (err) {
             console.log(err);
-        });
+        });});
+    console.log('icon' + icon);
+    
+    // DBに登録
+
+
 }
 
 function count_up(obj) {

@@ -69,7 +69,7 @@ function followViewing() {
             var object = result[cnt];
             console.log(object.createDate);
             var formatedDate = dateFormat(new Date(object.createDate));
-                if ($.inArray(object.userName, followingArray) || loginUserName == object.userName) {
+                if ($.inArray(object.userName, followingArray)!=-1 || loginUserName == object.userName) {
                     console.log(object.userName);
                         var content = document.getElementById('follow-content');
                         if (object.photo.length == 0) {

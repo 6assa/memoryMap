@@ -5,7 +5,6 @@
     height:39.5em;
     width:100%;
     overflow:scroll;
-
 }
 .board-list::-webkit-scrollbar {
     display: none;
@@ -16,18 +15,31 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 .icon-img{
-    margin: 15px;
-    margin-top: 15px;
-    margin-right: 50px;
+    margin: 0.625em;
+    margin-right: 0.9375em;
+}
+.board-text{
+    width: 100%;
+    padding-right: 0.3125em;
+}
+#text{
+    display: flex;
+    padding-top: 0.3125em;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.time{
+    margin-top: auto;
+    margin-bottom: auto;
 }
 .post-img{
     flex-direction: row;
-    margin-right: 50px;
+    margin-right: 3.125em;
 }
 
 .post-time{
     margin-left: auto;
-    margin-right: 10px;
+    margin-right: 0.625em;
     white-space: nowrap;
     font-size: 0.7em;
 }
@@ -38,7 +50,7 @@
 
 .LikesIcon{
    flex-direction: row;
-    margin-right: 50px; 
+    margin-right: 3.125em; 
 }
 
 

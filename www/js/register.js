@@ -55,7 +55,12 @@ function onRegisterBtn() {
                 ncmb.User.login(user)
                     .then(function (user) {
                         alert("新規登録とログイン成功");
-                        //currentLoginUser = ncmb.User.getCurrentUser();
+                        users.set('displayName',displayname)
+                            .set('iconUrl','tYEjUYeTHvCN3HaK.svg')
+                            .set('mailAddress',username)
+                            .set('password',password)
+                            .set('selfComment',selfComment)
+                            .save()
                         document.location.href = 'index.html';
                     })
                     .catch(function (error) {
@@ -81,15 +86,6 @@ function onRegisterBtn() {
     if (!displayname) { //空文字とnull
         displayname = "none";
     }
-
-    users.set('displayName',displayname)
-        .set('iconUrl','tYEjUYeTHvCN3HaK.svg')
-        .set('mailAddress',username)
-        .set('password',password)
-        .set('selfComment',selfComment)
-        .save()
-
-
 }
 
 // function changeColor(hoge){

@@ -22,12 +22,13 @@
 .name-position{
     position: relative;
     left: -75px;
+    margin: 20px 60px 20px 150px;
 }
 
 .transition{
     position: relative;
     left: -90px;
-    margin: 20px;
+    margin: 20px 20px 20px 0px;
 }
 
 .address-position{
@@ -37,4 +38,8 @@
 
 .text-color{
     color: red;
+}
+
+body{
+   overflow: hidden;
 }

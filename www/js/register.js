@@ -60,8 +60,10 @@ function onRegisterBtn() {
                             .set('mailAddress',username)
                             .set('password',password)
                             .set('selfComment',selfComment)
-                            .save()
-                        document.location.href = 'choice.html';
+                            .save().then(function(result){
+                                document.location.href = 'choice.html';
+                            })
+                        
                     })
                     .catch(function (error) {
                         alert("ログイン失敗！次のエラー発生: " + error);

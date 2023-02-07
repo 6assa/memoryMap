@@ -108,7 +108,7 @@ $(document).on('change', '.like', function () {
 })
 
 function dateFormat(postedDate) {
-    var formated_date = postedDate.getFullYear() + "/" + postedDate.getMonth() + "/" + postedDate.getDate() + " " + postedDate.getHours() + ":" + postedDate.getMinutes();
+    var formated_date = postedDate.getFullYear() + "/" + postedDate.getMonth() + "/" + postedDate.getDate() + " " + postedDate.getHours() + ":" + (postedDate.getMinutes()<10?'0':'') + postedDate.getMinutes();
     console.log(formated_date);
     return formated_date;
 };

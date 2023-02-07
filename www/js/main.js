@@ -42,8 +42,8 @@ $(window).on('load', async function () {
 
             $.each(result, function (cnt, value_data) {
                 var object = result[cnt];
-                if (object.userName == userName) {
-                    followingArray.push(object.followingUserName);
+                if (object.followingUserName == userName) {
+                    followingArray.push(object.userName);
                 }
             });
             console.log(followingArray);

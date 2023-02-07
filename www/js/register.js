@@ -61,7 +61,7 @@ function onRegisterBtn() {
                             .set('password',password)
                             .set('selfComment',selfComment)
                             .save()
-                        document.location.href = 'index.html';
+                        document.location.href = 'choice.html';
                     })
                     .catch(function (error) {
                         alert("ログイン失敗！次のエラー発生: " + error);

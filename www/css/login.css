@@ -55,10 +55,15 @@
     background: #68CFFB;
     color: #fff;
     padding: 8px 16px;
-    margin-top: 5%;
+    /* margin-top: 5%; */
     font-size: 16px;
     font-weight: bold;
     min-width: 85%;
+
+    /* 撮影用 */
+    margin-top: 10%;
+    margin-bottom: 50%;
+
 }
 .loginbtn:focus {
   outline: 0;

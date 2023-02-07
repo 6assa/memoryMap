@@ -69,6 +69,7 @@ function followViewing() {
             var object = result[cnt];
             console.log(object.createDate);
             var formatedDate = dateFormat(new Date(object.createDate));
+            // フォロー確認
                 if ($.inArray(object.userName, followingArray)!=-1 || loginUserName == object.userName) {
                     console.log(object.userName);
                         var content = document.getElementById('follow-content');

@@ -1,4 +1,4 @@
-// Likeボタンクリック
+// いいね機能
 $(document).on('click','.LikesIcon', function() {
     let $btn = $(this);
     // Likeボタンがonクラス持っていたら
@@ -8,11 +8,7 @@ $(document).on('click','.LikesIcon', function() {
       $btn.children("i").attr('class', 'far fa-heart LikesIcon-fa-heart');
     } else {
       $btn.addClass('on');
-      // ポイントは2つ！！
-      // ①アイコンを変更する
-      // far fa-heart（白抜きアイコン）
-      // ⇒ fas fa-heart（背景色つきアイコン）
-      // ②アニメーション+アイコン色変更用のheartクラスを付与する
+    //   アイコンをアニメーションを作動させながら変更
       $btn.children("i").attr('class', 'fas fa-heart LikesIcon-fa-heart heart');
     }
   })

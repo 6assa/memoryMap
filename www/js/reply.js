@@ -1,26 +1,17 @@
+// リプライ機能
+
 var appKey = "e8cc3024cb19c66f9cdfd61faabd73ff97ee0bf85377ff332e9dac1d8752b8d7";
 var clientKey = "05557971c5c7770f388a7c460cdaa0362d55ab58b08ac0e27ee8abcc86c22aaa";
 
 var ncmb = new NCMB(appKey, clientKey);
-// NCMB.Objectのサブクラスを生成
 var post = ncmb.DataStore("post");
 
 
+// 画像アップロードボタンクリック
 $('#addBtn').click(function () {
     $(this).find('.img-input').click();
 });
 
-// function count_up(obj) {
-//     var element = document.getElementById('inputlength');
-//     var area = document.getElementById('area');
-//     element.innerHTML = obj.value.length + "/300";
-
-//     if (obj.value.length > 300) {
-//         element.style.color = 'red';
-//     } else {
-//         element.style.color = 'grey';
-//     }
-// }
 
 $(window).on('load', function () {
     var Reply = ncmb.DataStore("replymessage");
@@ -36,17 +27,26 @@ $(window).on('load', function () {
             console.log('res:' + JSON.stringify(result))
             // 日時フォーマット
             formatedDate = dateformat(new Date(result['postedDate']['iso']));
+            // ユーザアイコン
             var icon = result['roleObjectId'];
+            // ユーザ表示名
             var displayName = result['displayName'];
+            // 投稿テキスト
             var message = result['postedMessage'];
+            // リプライ元投稿エリア
             var content = document.getElementById('follow-content');
+
+            // リプライ元投稿組み立て
             var add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon" src="https://mbaas.api.nifcloud.com/2013-09-01/applications/dzkz4P3WqMDSGgc3/publicFiles/' + icon + '" width="50px" height="50px" ></div><div class="board-text"><p id="text"><span>' + displayName + '</span><br><span>' + message + '</span></p><div class="reaction"><div class="image"><i class="fa-regular fa-image"></i><input type="hidden" id="img-postid" value=' + result['photo'] + '></div></div></div><div class="post-time"><p class="time">' + formatedDate + '</p></div></div>'
+
+            // リプライ元投稿エリアに挿入
             content.insertAdjacentHTML('beforeend', add_code);
         })
         .catch(function (err) {
             console.log(err);
         });
 
+        // リプライ一覧エリア
     var content_r = document.getElementById('reply-content');
     Reply.equalTo('replySourceId', localStorage.getItem('postId')).fetchAll().then(results => {
 
@@ -55,11 +55,14 @@ $(window).on('load', function () {
 
                 formatedDate = dateformat(new Date(result['replyedDate']['iso']));
                 if (result['replyPhoto'].length == 0) {
+                    // リプライ画像がない時のリプライ組み立て
                     var add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon" src="https://mbaas.api.nifcloud.com/2013-09-01/applications/dzkz4P3WqMDSGgc3/publicFiles/' + res['iconUrl'] + '" width="50px" height="50px" ></div><div class="board-text"><p id="text"><span>' + result['displayName'] + '</span><br><span>' + result['replyMessage'] + '</span></p><div class="reaction"></div></div><div class="post-time"><p class="time">' + formatedDate + '</p></div></div>'
                 } else {
+                    // リプライ画像がない時のリプライ組み立て
                     var add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon" src="https://mbaas.api.nifcloud.com/2013-09-01/applications/dzkz4P3WqMDSGgc3/publicFiles/' + res['iconUrl'] + '" width="50px" height="50px" ></div><div class="board-text"><p id="text"><span>' + result['displayName'] + '</span><br><span>' + result['replyMessage'] + '</span></p><div class="reaction"><div class="image"><i class="fa-regular fa-image"></i><input type="hidden" id="img-postid" value=' + result['replyPhoto'] + '></div></div></div><div class="post-time"><p class="time">' + formatedDate + '</p></div></div>'
 
                 }
+                // リプライ一覧エリアに挿入
                 content_r.insertAdjacentHTML('beforeend', add_code);
             })
 

@@ -1,3 +1,5 @@
+// プロフィール機能
+
 var appKey = "e8cc3024cb19c66f9cdfd61faabd73ff97ee0bf85377ff332e9dac1d8752b8d7";
 var clientKey = "05557971c5c7770f388a7c460cdaa0362d55ab58b08ac0e27ee8abcc86c22aaa";
 
@@ -16,7 +18,7 @@ var follow = ncmb.DataStore("follow");
 var user = ncmb.DataStore("users");
 
 
-
+// プロフィール画面ロードイベント
 $(window).on('load', function () {
 
     // ユーザ名・自己紹介文適用
@@ -30,23 +32,12 @@ $(window).on('load', function () {
         document.getElementById("icon-img").src = "https://mbaas.api.nifcloud.com/2013-09-01/applications/dzkz4P3WqMDSGgc3/publicFiles/" + icon_url;
     });
 
-    // 投稿
+    // 投稿表示
     post_output();
-    // フォロー中
+    // フォロー中表示
     follow_output();
-    // フォロワー
+    // フォロワー表示
     follower_output();
-
-
-
-
-
-
-
-
-
-
-
 
     // 表示の初期設定
     $('#post').css('border-bottom', '3px solid orange');
@@ -87,7 +78,7 @@ function follow_output() {
             user.equalTo('mailAddress', followuser).fetch().then(result => {
 
                 // フォロー要素の組み立て
-                add_code = '<div class="follow-item" id="follow-item"><div class="icon-img" id="follow-icon"><img class="board-icon" src="https://mbaas.api.nifcloud.com/2013-09-01/applications/dzkz4P3WqMDSGgc3/publicFiles/' + result['iconUrl'] + '" width="50px" height="50px" id="follow-icon"></div><p id="follow-name"><b>' + result['displayName'] + '</b></p><div class="follow-text"><button id="follow-btn"><span>はずす</span></button></div></div>';
+                add_code = '<div class="follow-item" id="follow-item"><div class="icon-img" id="follow-icon"><img class="board-icon" src="https://mbaas.api.nifcloud.com/2013-09-01/applications/dzkz4P3WqMDSGgc3/publicFiles/' + result['iconUrl'] + '" width="50px" height="50px" id="follow-icon"></div><p id="follow-name"><b>' + result['displayName'] + '</b></p><div class="follow-text"></div></div>';
 
                 // フォローエリアに挿入
                 content.insertAdjacentHTML('afterbegin', add_code);
@@ -110,7 +101,7 @@ function follower_output() {
             user.equalTo('mailAddress', followeruser).fetch().then(result => {
 
                 // フォロワー要素の組み立て
-                    add_code = '<div class="follow-item" id="follow-item"><div class="icon-img" id="follow-icon"><img class="board-icon" src="https://mbaas.api.nifcloud.com/2013-09-01/applications/dzkz4P3WqMDSGgc3/publicFiles/' + result['iconUrl'] + '" width="50px" height="50px" id="follow-icon"></div><p id="follow-name"><b>' + result['displayName'] + '</b></p><div class="follow-text"><button id="follower-btn"><span>プロフィール</span></button></div></div>';
+                    add_code = '<div class="follow-item" id="follow-item"><div class="icon-img" id="follow-icon"><img class="board-icon" src="https://mbaas.api.nifcloud.com/2013-09-01/applications/dzkz4P3WqMDSGgc3/publicFiles/' + result['iconUrl'] + '" width="50px" height="50px" id="follow-icon"></div><p id="follow-name"><b>' + result['displayName'] + '</b></p><div class="follow-text"></div></div>';
 
                 // フォロワーエリアに挿入
                 content.insertAdjacentHTML('afterbegin', add_code);
@@ -151,7 +142,6 @@ function tabs() {
     }
 }
 
-// 上記の動きをページが読み込まれたらすぐに動かす
 
 
 //自己紹介詳細表示

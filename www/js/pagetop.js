@@ -4,7 +4,7 @@ var timer;
 $(window).scroll(function() {
   //スクロール開始するとボタンを非表示
   btn.removeClass('is-active');
-  console.log('あああああああああああああ')
+
   
   //スクロール中はイベントの発火をキャンセルする
   clearTimeout(timer);

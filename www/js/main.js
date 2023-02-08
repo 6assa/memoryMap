@@ -15,8 +15,6 @@ var image = [];
 var count = 0;
 var followingArray = [];
 
-
-
 $(window).on('load', async function () {
     follow.fetchAll()
         // フォロー中のユーザの投稿を取得
@@ -24,7 +22,6 @@ $(window).on('load', async function () {
             // カレントユーザー情報の取得
             var currentUser = ncmb.User.getCurrentUser();
             var userName = currentUser.userName;
-            
 
             $.each(result, function (cnt, value_data) {
                 var object = result[cnt];
@@ -44,26 +41,23 @@ $(window).on('load', async function () {
         });
 });
 
-
 function followViewing() {
     // フォローの投稿を表示
     postFollow.then(function (result) {
-        
+
         $.each(result, function (cnt, value_data) {
             var object = result[cnt];
             var formatedDate = dateFormat(new Date(object.postedDate["iso"]));
             // フォロー確認
-                if ($.inArray(object.userName, followingArray)!=-1 || loginUserName == object.userName) {
-                        var content = document.getElementById('follow-content');
-                        if (object.photo.length == 0) {
-                            var add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon" id="image' + count + '" src="https://mbaas.api.nifcloud.com/2013-09-01/applications/dzkz4P3WqMDSGgc3/publicFiles/' + object.roleObjectId + '"width="50px" height="50px" /><input type="hidden" id="userId" value=' + object.userName + '></div><div class="board-text"><div id="text">' + object.displayName + '<div class="post-time"><p class="time">' + formatedDate + '</p></div></div><div>' + object.postedMessage + '</div><div class="reaction"><div class="post-img"><img class="reply" src="img/reply.png"><input type="hidden" id="rep_src" value='+object.postId+'></div><div class="LikesIcon"><i class="far fa-heart LikesIcon-fa-heart"></i></div></div></div></div>'
-                        } else {
-                            var add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon" id="image' + count + '" src="https://mbaas.api.nifcloud.com/2013-09-01/applications/dzkz4P3WqMDSGgc3/publicFiles/' + object.roleObjectId + '"width="50px" height="50px" /><input type="hidden" id="userId" value=' + object.userName + '></div><div class="board-text"><div id="text">' + object.displayName + '<div class="post-time"><p class="time">' + formatedDate + '</p></div></div><div>' + object.postedMessage + '</div><div class="reaction"><div class="post-img"><img class="reply" src="img/reply.png"><input type="hidden" id="rep_src" value='+object.postId+'></div><div class="LikesIcon"><i class="far fa-heart LikesIcon-fa-heart"></i></div><div class="image"><i class="fa-regular fa-image"></i><input type="hidden" id="img-postid" value=' + object.photo + '></div></div></div></div>'
-                        }
-                        content.insertAdjacentHTML('beforeend', add_code);
-                
-                };
-            
+            if ($.inArray(object.userName, followingArray) != -1 || loginUserName == object.userName) {
+                var content = document.getElementById('follow-content');
+                if (object.photo.length == 0) {
+                    var add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon" id="image' + count + '" src="https://mbaas.api.nifcloud.com/2013-09-01/applications/dzkz4P3WqMDSGgc3/publicFiles/' + object.roleObjectId + '"width="50px" height="50px" /><input type="hidden" id="userId" value=' + object.userName + '></div><div class="board-text"><div id="text">' + object.displayName + '<div class="post-time"><p class="time">' + formatedDate + '</p></div></div><div>' + object.postedMessage + '</div><div class="reaction"><div class="post-img"><img class="reply" src="img/reply.png"><input type="hidden" id="rep_src" value=' + object.postId + '></div><div class="LikesIcon"><i class="far fa-heart LikesIcon-fa-heart"></i></div></div></div></div>'
+                } else {
+                    var add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon" id="image' + count + '" src="https://mbaas.api.nifcloud.com/2013-09-01/applications/dzkz4P3WqMDSGgc3/publicFiles/' + object.roleObjectId + '"width="50px" height="50px" /><input type="hidden" id="userId" value=' + object.userName + '></div><div class="board-text"><div id="text">' + object.displayName + '<div class="post-time"><p class="time">' + formatedDate + '</p></div></div><div>' + object.postedMessage + '</div><div class="reaction"><div class="post-img"><img class="reply" src="img/reply.png"><input type="hidden" id="rep_src" value=' + object.postId + '></div><div class="LikesIcon"><i class="far fa-heart LikesIcon-fa-heart"></i></div><div class="image"><i class="fa-regular fa-image"></i><input type="hidden" id="img-postid" value=' + object.photo + '></div></div></div></div>'
+                }
+                content.insertAdjacentHTML('beforeend', add_code);
+            };
         });
         return result;
     })
@@ -77,9 +71,9 @@ function openViewing() {
             var formatedDate = dateFormat(new Date(object.postedDate["iso"]));
             var content = document.getElementById('open-content');
             if (object.photo.length == 0) {
-                var add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon" id="image' + count + '" src="https://mbaas.api.nifcloud.com/2013-09-01/applications/dzkz4P3WqMDSGgc3/publicFiles/' + object.roleObjectId + '"width="50px" height="50px" /><input type="hidden" id="userId" value=' + object.userName + '></div><div class="board-text"><div id="text">' + object.displayName + '<div class="post-time"><p class="time">' + formatedDate + '</p></div></div><div>' + object.postedMessage + '</div><div class="reaction"><div class="post-img"><img class="reply" src="img/reply.png"><input type="hidden" id="rep_src" value='+object.postId+'></div><div class="LikesIcon"><i class="far fa-heart LikesIcon-fa-heart"></i></div></div></div></div>'
+                var add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon" id="image' + count + '" src="https://mbaas.api.nifcloud.com/2013-09-01/applications/dzkz4P3WqMDSGgc3/publicFiles/' + object.roleObjectId + '"width="50px" height="50px" /><input type="hidden" id="userId" value=' + object.userName + '></div><div class="board-text"><div id="text">' + object.displayName + '<div class="post-time"><p class="time">' + formatedDate + '</p></div></div><div>' + object.postedMessage + '</div><div class="reaction"><div class="post-img"><img class="reply" src="img/reply.png"><input type="hidden" id="rep_src" value=' + object.postId + '></div><div class="LikesIcon"><i class="far fa-heart LikesIcon-fa-heart"></i></div></div></div></div>'
             } else {
-                var add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon" id="image' + count + '" src="https://mbaas.api.nifcloud.com/2013-09-01/applications/dzkz4P3WqMDSGgc3/publicFiles/' + object.roleObjectId + '"width="50px" height="50px" /><input type="hidden" id="userId" value=' + object.userName + '></div><div class="board-text"><div id="text">' + object.displayName + '<div class="post-time"><p class="time">' + formatedDate + '</p></div></div><div>' + object.postedMessage + '</div><div class="reaction"><div class="post-img"><img class="reply" src="img/reply.png"><input type="hidden" id="rep_src" value='+object.postId+'></div><div class="LikesIcon"><i class="far fa-heart LikesIcon-fa-heart"></i></div><div class="image"><i class="fa-regular fa-image"></i><input type="hidden" id="img-postid" value=' + object.photo + '></div></div></div></div>'
+                var add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon" id="image' + count + '" src="https://mbaas.api.nifcloud.com/2013-09-01/applications/dzkz4P3WqMDSGgc3/publicFiles/' + object.roleObjectId + '"width="50px" height="50px" /><input type="hidden" id="userId" value=' + object.userName + '></div><div class="board-text"><div id="text">' + object.displayName + '<div class="post-time"><p class="time">' + formatedDate + '</p></div></div><div>' + object.postedMessage + '</div><div class="reaction"><div class="post-img"><img class="reply" src="img/reply.png"><input type="hidden" id="rep_src" value=' + object.postId + '></div><div class="LikesIcon"><i class="far fa-heart LikesIcon-fa-heart"></i></div><div class="image"><i class="fa-regular fa-image"></i><input type="hidden" id="img-postid" value=' + object.photo + '></div></div></div></div>'
             }
             content.insertAdjacentHTML('beforeend', add_code);
         });
@@ -91,7 +85,7 @@ $(document).on('change', '.like', function () {
 })
 
 function dateFormat(postedDate) {
-    var formated_date = postedDate.getFullYear() + "/" + postedDate.getMonth() + "/" + postedDate.getDate() + " " + postedDate.getHours() + ":" + (postedDate.getMinutes()<10?'0':'') + postedDate.getMinutes();
+    var formated_date = postedDate.getFullYear() + "/" + postedDate.getMonth() + "/" + postedDate.getDate() + " " + postedDate.getHours() + ":" + (postedDate.getMinutes() < 10 ? '0' : '') + postedDate.getMinutes();
     return formated_date;
 };
 
@@ -128,7 +122,7 @@ $(function () {
     $(document).on("click", ".post-img", function () {
 
         // postIdを取得、ローカルストレージに保存
-        var rep=$(this).find('#rep_src').val();
+        var rep = $(this).find('#rep_src').val();
         localStorage.setItem('postId', rep);
         document.location.href = 'reply.html';
     });

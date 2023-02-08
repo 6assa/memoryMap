@@ -6,7 +6,6 @@ var ncmb = new NCMB(appKey, clientKey);
 var post = ncmb.DataStore("post");
 
 
-
 $('#addBtn').click(function () {
     $(this).find('.img-input').click();
 });
@@ -23,18 +22,14 @@ $('#addBtn').click(function () {
 //     }
 // }
 
-
-
 $(window).on('load', function () {
     var Reply = ncmb.DataStore("replymessage");
     var users = ncmb.DataStore("users");
 
     // localStorageからpostId持ってくる
     var postId = localStorage.getItem("postId");
-    console.log("ちぇっく");
-    console.log(postId);
 
-    // DBのpostIdに対応する情報を取得
+    // DBのpostIdに対応する情報を取得、表示
     post.equalTo("postId", Number(postId))
         .fetch()
         .then(result => {
@@ -103,8 +98,6 @@ function onReplyBtn() {
     var mail = currentUser.get("userName");
     var name = currentUser.get("displayName");
 
-    //var category = localStorage.getItem('room');
-
     // 日付取得
     var date = new Date();
     console.log(date);
@@ -116,7 +109,6 @@ function onReplyBtn() {
         item_image.push(imgUpload(img_src));
         console.log($(this).attr('id') + ':' + item_image)
     })
-
 
     // 画像アップロード用スクリプト
     function imgUpload(imageData) {
@@ -177,25 +169,18 @@ function onReplyBtn() {
 }
 
 function disp() {
-
     // 「OK」時の処理開始 ＋ 確認ダイアログの表示
     if (window.confirm('投稿しますか？')) {
-
         location.href = "main.html"; // example_confirm.html へジャンプ
-
     }
     // 「OK」時の処理終了
 
     // 「キャンセル」時の処理開始
     else {
-
         window.alert('キャンセルされました'); // 警告ダイアログを表示
-
     }
     // 「キャンセル」時の処理終了
-
 }
-
 
 var files = new Array();
 

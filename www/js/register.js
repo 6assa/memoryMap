@@ -5,8 +5,6 @@ var ncmb = new NCMB(appKey, clientKey);
 var Users = ncmb.DataStore("users");
 var users = new Users();
 
-//var currentLoginUser; //現在ログイン中ユーザー
-
 function onRegisterBtn() {
     //入力フォームから変数をセット
     //ニフクラの仕組みでusernameにメアドを入れてる
@@ -15,25 +13,32 @@ function onRegisterBtn() {
     var password = $("#reg_password").val();
     var checkpassword = $("#regcheck_password").val();
     var passcheck = true;
-    var badmailcheck = true;
+    var mailcheck = true;
     var selfComment = "初めまして！よろしくお願いします！";
-    // var secretpass = $("#secret_pass").val();
-    console.log(username);
 
-    // ユーザネームを未入力の場合
+    //ユーザネームを未入力の場合
     if (!displayname) { //空文字とnull
         displayname = "名無しのごんぞう";
     }
 
+    //必須項目のアラート
+    if (!username) { //空文字とnull
+        alert("メールアドレスが入力されていません");
+        mailcheck = false;
+    } else if (!password){
+        alert("パスワードが入力されていません");
+        passcheck = false;
+    }
+
     //mailaddressが被ってないかチェック
-    if (badmailcheck) {
+    if (username) {
         ncmb.User.equalTo("userName", username)
             .fetchAll()
             .then(function (results) {
-                mailcheck = true;
+                mailcheck = false;
             })
             .catch(function (error) {
-                mailcheck = false;
+                mailcheck = true;
             });
     }
 
@@ -43,10 +48,15 @@ function onRegisterBtn() {
         passcheck = false;
     }
 
-    if (passcheck) {
+    if (passcheck == true && mailcheck == true) {
+        //初期アイコン
+        var items = ['icon-gray.svg', 'lightblue-icon.svg', 'lightred-icon.svg', 'skyblue-icon.svg', 'pink-icon.svg', 'orange-icon.svg', 'yellowgreen-icon.svg', 'yellow-icon.svg', 'red-icon.svg', 'blue-icon.svg', 'purple-icon.svg', 'green-icon.svg'];
+ 
+        //最大値は配列の「要素数」にする
+        var randomIconNo = Math.floor(Math.random() * items.length);
+
         var user = new ncmb.User();
         user.set("userName", username)
-            // .set("area", area)
             .set("displayName", displayname)
             .set("password", password)
             .signUpByAccount() //ここでニフクラに登録される
@@ -56,44 +66,22 @@ function onRegisterBtn() {
                     .then(function (user) {
                         alert("新規登録とログイン成功");
                         users.set('displayName',displayname)
-                            .set('iconUrl','tYEjUYeTHvCN3HaK.svg')
+                            .set('iconUrl',items[randomIconNo])
                             .set('mailAddress',username)
                             .set('password',password)
                             .set('selfComment',selfComment)
                             .save().then(function(result){
                                 document.location.href = 'choice.html';
                             })
-                        
                     })
                     .catch(function (error) {
                         alert("ログイン失敗！次のエラー発生: " + error);
                     });
             })
             .catch(function (error) {
+                console.log(error);               
+                alert("新規登録に失敗しました");
                 console.log(error);
-                if (!username) {
-                    alert("新規登録に失敗しました\nメールアドレスが入力されていません");
-                } else if (mailcheck) {
-                    alert("新規登録に失敗しました\nメールアドレスが既に使用されています");
-                } else {
-                    alert("新規登録に失敗しました");
-                    // } else {
-                    //     alert("新規登録に失敗しました");
-                    //     console.log(error)
-                }
             })
     }
-
-    // ユーザネームを未入力の場合
-    if (!displayname) { //空文字とnull
-        displayname = "none";
-    }
 }
-
-// function changeColor(hoge){
-//     if( hoge.value == 0 ){
-//         hoge.style.color = '';
-//     }else{
-//         hoge.style.color = 'black';
-//     }
-// }

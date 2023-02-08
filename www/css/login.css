@@ -2,7 +2,7 @@
     position: relative;
 }
 #title {
-    margin-top: 20%;
+    margin-top: 30%;
     text-align: center;
     left: -20%;
     z-index: 100;
@@ -10,17 +10,18 @@
 #logo-img{
     left: 25%;
     position: fixed;
+
 }
 
 #title-text{
-    top: 18%;
+    top: 22%;
     left: 10%;
     position: fixed;
 }
 
 #main-content {
     position: fixed;
-    top:30%;
+    top:40%;
     left: 19%;
 
     text-align: center;

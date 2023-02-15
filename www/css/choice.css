@@ -49,6 +49,10 @@ button{
 button:disabled{
     opacity: 0.3;
 }
+#inroom-btn:active{
+    transform:scale(0.8);
+
+    }
 
 h3{
     color: #000;

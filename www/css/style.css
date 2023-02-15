@@ -1,6 +1,10 @@
 body {
   color: #3d3d3d;
-  background-color: white; }
+  background-color: white; 
+  font-family: "Arial", "メイリオ";
+  font-weight: 400;
+}
+  
 
 #main {
   color: black; }

@@ -70,6 +70,13 @@
   outline: 0;
   border: 2px solid #68CFFB;
 }
+.loginbtn:active{
+    -webkit-transform: translate(0,2px);
+	-moz-transform: translate(0,2px);
+	transform: translate(0,2px);
+	border-bottom:none;
+
+    }
 
 a {
     color: #68CFFB;

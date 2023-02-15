@@ -59,7 +59,7 @@ function post_output() {
             // 日時フォーマット
             formatedDate = dateformat(new Date(value['postedDate']['iso']));
             // 投稿要素の組み立て
-            add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon" id="image' + index + '" src="https://mbaas.api.nifcloud.com/2013-09-01/applications/dzkz4P3WqMDSGgc3/publicFiles/' + value['roleObjectId'] + '"width="50px" height="50px" /></div><div class="board-text"><p id="text"><b>' + value['displayName'] + '</b><br><span>' + value['postedMessage'] + '</span></p><div class="reaction"><div class="post-img"><img class="reply" src="img/reply.png"></div><div><i class="fa-regular fa-image"></i></div></div></div><div class="post-time"><p class="time">' + formatedDate + '</p></div></div>'
+            add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon" id="image' + index + '" src="https://mbaas.api.nifcloud.com/2013-09-01/applications/dzkz4P3WqMDSGgc3/publicFiles/' + value['roleObjectId'] + '"width="50px" height="50px" /><input type="hidden" id="userId" value=' + value['displayName'] + '></div><div class="board-text"><div id="text">' + value['displayName'] + '<div class="post-time"><p class="time">' + formatedDate + '</p></div></div><div>' + value['postedMessage'] + '</div><div class="reaction"><div class="post-img"><img class="reply" src="img/reply.png"><input type="hidden" id="rep_src" value=' + value['postId'] + '></div></div></div></div>'
 
 
             // 投稿エリアに挿入

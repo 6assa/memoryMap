@@ -114,11 +114,16 @@ header {
     font-weight: bold;
     min-width: 25%;
     margin-right: -40px;
+    cursor:pointer;
     }
-    .replybtn:focus {
-    outline: 0;
-    border: 2px solid #68CFFB;
+    .replybtn:active{
+    -webkit-transform: translate(0,2px);
+	-moz-transform: translate(0,2px);
+	transform: translate(0,2px);
+	border-bottom:none;
+
     }
+    
 
     /* 掲示板 */
 .board-list{
@@ -139,7 +144,7 @@ header {
     /* border-bottom: 1px solid rgba(0, 0, 0, 0.1); */
 }
 #reply-content{
-    max-height:250px ;
+    max-height:300px ;
         flex-direction: column;
         overflow-y:scroll ;
         overflow-x:hidden;
@@ -167,4 +172,13 @@ h4{
 .post-time{
     margin-left: auto;
     margin-right: 10px;
+}
+#text{
+    text-align: left;
+}
+.time{
+    text-align: right;
+}
+#follow-content>.board-item{
+    width: 100%;
 }

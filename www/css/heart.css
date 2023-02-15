@@ -1,4 +1,7 @@
 /* This is a CSS file */
+#good-cnt{
+    margin:0 5px;
+}
 .LikesIcon-fa-heart{
     font-size: 20px;
   }

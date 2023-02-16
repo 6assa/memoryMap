@@ -70,7 +70,8 @@ main::-webkit-scrollbar {
   padding-bottom: 0;
   background-color: #fff;
   width: 100%;
-  margin: 0 auto;}
+  margin: 0 auto;
+  box-shadow: 0 3px 3px 3px rgba(0, 0, 0, 0.22);}
 
 /*タブのスタイル*/
 .tab_item {
@@ -131,6 +132,10 @@ input[name="tab_item"] {
 }
 .tab_content::-webkit-scrollbar {
     display: none;
+}
+.postMessage{
+    font-size: 0.9em;
+    white-space: nowrap;
 }
 
 .no-post{

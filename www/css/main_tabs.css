@@ -4,7 +4,8 @@
   padding-bottom: 40px;
   background-color: #fff;
   width: 100%;
-  margin: 0 auto;}
+  margin: 0 auto;
+  box-shadow: 0 3px 3px 3px rgba(0, 0, 0, 0.22);}
 
 /*タブのスタイル*/
 .tab_item {
@@ -19,6 +20,7 @@
   font-weight: bold;
   transition: all 0.2s ease;
   margin: auto;
+  
 }
 .tab_item:hover {
   opacity: 0.75;

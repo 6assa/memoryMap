@@ -14,25 +14,29 @@ $(
 $(
     $(document).on('click', '#search-btn', function () {
         $('#search-modal').fadeOut('fast');
+        $('#search').hide();
+        $('#search-reset').show();
 
-        検索キーワード
+
+        // 検索キーワード
         var search_word = $('#search-word').val();
 
-
-        if ($('#follow-content').css('display') != 'none') {
-            // フォロー投稿の検索
-            $('#follow-content .board-item').each(function () {
-                $(this).toggle(
-                    ($(this).find('.board-text').text().indexOf(search_word)) >= 0
-                );
+            $('#post-content .board-item').each(function () {
+                if($(this).find('.board-text').text().indexOf(search_word) < 0){
+                    $(this).addClass('unselect');
+                }
             });
-        } else {
-            $('#open-content .board-item').each(function () {
-                // オープン投稿の検索
-                $(this).toggle(
-                    ($(this).find('.board-text').text().indexOf(search_word)) >= 0
-                );
-            });
-        }
+        
     })
 )
+$(document).on('click', '#search-reset', function () {
+        $('#search').show();
+        $('#search-reset').hide();
+        document.getElementById('search-word').value='';
+            $('#post-content .board-item').each(function () {
+                if($(this).hasClass('unselect')){
+                    $(this).removeClass('unselect');
+                }
+            });
+        
+    })

@@ -37,9 +37,11 @@ $(document).on('click', '.LikesIcon', function () {
 
         Post.equalTo('postId', Number(likePost)).fetch().then(function (rest) {
 
-            console.log(JSON.stringify(rest));
-            rest.set('goodCount', rest.goodCount - 1).update();
-            console.log(JSON.stringify(rest));
+            if(rest.goodCount-1<=0){
+                rest.set('goodCount', 0).update();
+            }else{
+                rest.set('goodCount', rest.goodCount - 1).update();
+            }
             likeCnt.text(rest.goodCount)
         })
     } else {

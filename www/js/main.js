@@ -5,10 +5,6 @@ var ncmb = new NCMB(appKey, clientKey);
 let category = localStorage.getItem('room');
 
 // NCMB.Objectのサブクラスを生成
-// フォロー中の投稿
-var postFollow = ncmb.DataStore("post").equalTo("category", category).order("postedDate", true).fetchAll();
-// 全投稿
-var postOpen = ncmb.DataStore("post").equalTo("category", category).order("postedDate", true).fetchAll();
 // フォロー状態
 var follow = ncmb.DataStore("follow");
 
@@ -20,6 +16,14 @@ var reader = new FileReader();
 var image = [];
 var count = 0;
 var followingArray = [];
+
+function resetBoard() {
+    var board = document.getElementById('post-content');
+
+    while (board.firstChild) {
+        board.removeChild(board.firstChild);
+    }
+}
 
 
 $(window).on('load', async function () {
@@ -39,18 +43,18 @@ $(window).on('load', async function () {
 
         })
         .then(function () {
-
-            followViewing();
+            resetBoard();
             openViewing();
         })
         // フォローの投稿を選択した状態にする
         .then(function () {
-            $('#follow-content').show();
-            $('#open-content').hide();
+            $('#post-content').show();
         });
 });
 
 function followViewing() {
+    // フォロー中の投稿
+    var postFollow = ncmb.DataStore("post").equalTo("category", category).order("postedDate", true).fetchAll();
 
     // フォローの投稿を表示
     Good.equalTo('goodingUserName', loginUserName).fetchAll().then(function (results) {
@@ -67,10 +71,10 @@ function followViewing() {
                 var formatedDate = dateFormat(new Date(object.postedDate["iso"]));
                 // フォロー確認
                 if ($.inArray(object.userName, followingArray) != -1 || loginUserName == object.userName) {
-                    var content = document.getElementById('follow-content');
+                    var content = document.getElementById('post-content');
                     // いいね確認
                     if ($.inArray(object.postId, likingPost) != -1) {
-                        
+
                         // いいねした投稿
                         if (object.photo.length == 0) {
                             // 画像なし
@@ -99,8 +103,8 @@ function followViewing() {
 }
 
 function openViewing() {
-
-
+    // 全投稿
+    var postOpen = ncmb.DataStore("post").equalTo("category", category).order("postedDate", true).fetchAll();
 
     // オープンの投稿を表示
     Good.equalTo('goodingUserName', loginUserName).fetchAll().then(function (results) {
@@ -114,10 +118,10 @@ function openViewing() {
                 // 投稿を1件ずつ表示
                 var object = result[cnt];
                 var formatedDate = dateFormat(new Date(object.postedDate["iso"]));
-                var content = document.getElementById('open-content');
+                var content = document.getElementById('post-content');
                 // いいね確認
                 if ($.inArray(object.postId, likingPost) != -1) {
-                    
+
                     // いいねした投稿
                     if (object.photo.length == 0) {
                         // 画像なし
@@ -127,7 +131,7 @@ function openViewing() {
                         var add_code = '<div class="board-item"><div class="icon-img"><img class="board-icon" id="image' + count + '" src="https://mbaas.api.nifcloud.com/2013-09-01/applications/dzkz4P3WqMDSGgc3/publicFiles/' + object.roleObjectId + '"width="50px" height="50px" /><input type="hidden" id="userId" value=' + object.userName + '></div><div class="board-text"><div id="text">' + object.displayName + '<div class="post-time"><p class="time">' + formatedDate + '</p></div></div><div>' + object.postedMessage + '</div><div class="reaction"><div class="post-img"><img class="reply" src="img/reply.png"><input type="hidden" id="rep_src" value=' + object.postId + '></div><div class="LikesIcon on"><i class="fas fa-heart LikesIcon-fa-heart heart"></i><span id="good-cnt">' + object.goodCount + '</span><input type="hidden" id="like-postid" value=' + object.postId + '></div><div class="image"><i class="fa-regular fa-image"></i><input type="hidden" id="img-postid" value=' + object.photo + '></div></div></div></div>'
                     }
                 } else {
-                    
+
                     // いいねしていない投稿
                     if (object.photo.length == 0) {
                         // 画像なし
@@ -154,11 +158,11 @@ function dateFormat(postedDate) {
 $(
     $(document).on('click', 'input[name=tab_item]', function () {
         if (document.getElementsByName('tab_item')[0].checked) {
-            $('#follow-content').fadeIn();
-            $('#open-content').hide();
+            resetBoard();
+            openViewing();
         } else {
-            $('#follow-content').hide();
-            $('#open-content').fadeIn();
+            resetBoard();
+            followViewing();
         }
     })
 )

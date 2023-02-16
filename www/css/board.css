@@ -4,7 +4,10 @@
     flex-direction: column;
     height:39.5em;
     width:100%;
-    overflow:scroll;
+    overflow-y:scroll;
+    overflow-x:hidden;
+    background-color: rgb(245, 245, 245);
+
 }
 .board-list::-webkit-scrollbar {
     display: none;
@@ -12,7 +15,14 @@
 .board-item{
     display: flex;
     justify-content: flex-start;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin:5px 5px;
+    background-color: rgb(250, 250, 250);
+    box-shadow: 1px 3px 3px 3px rgba(0, 0, 0, 0.22);
+    opacity: 1.0;
+}
+.board-item.unselect{
+    opacity: 0.6;
 }
 .icon-img{
     margin: 0.625em;

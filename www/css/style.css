@@ -9,6 +9,7 @@ body {
 #main {
   color: black; }
   #main .header {
+      
     position: sticky;
     top: 0px;
     margin-top: 50px;

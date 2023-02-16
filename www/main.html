@@ -91,20 +91,20 @@
                 <a id="roomout" class="fa-sharp fa-solid fa-solid fa-arrow-left" onclick="localStorage.setItem('room','unselected');" href="choice.html"></a>
                 <p id="head-text">header</p>
                 <i id="search" class="fa-solid fa-magnifying-glass "></i>
+                <i id="search-reset" class="fa-solid fa-rotate-right"></i>
             </div>
             <div class="header-tab">
                 <div class="tabs">
                     <input id="follow" type="radio" name="tab_item" checked>
-                    <label class="tab_item" for="follow">フォロー</label>
+                    <label class="tab_item" for="follow">オープン</label>
                     <input id="follower" type="radio" name="tab_item">
-                    <label class="tab_item" for="follower">オープン</label>
+                    <label class="tab_item" for="follower">フォロー</label>
                 </div>
             </div>
         </header>
         <main id="container">
             <a class="post-btn is-active" href="upload.html"><img class="post" src="img/post.svg"></a>
-            <div id="follow-content" class="board-list"></div>
-            <div id="open-content" class="board-list"></div>
+            <div id="post-content" class="board-list"></div>
         </main>
         <div class="footer">
             <li>

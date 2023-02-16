@@ -23,4 +23,10 @@
     padding: 10px;
     font-size: 1.5em;
 }
+#search-reset{
+    /* キーワード検索アイコン */
+    padding: 10px;
+    font-size: 1.5em;
+    display: none;
+}
 

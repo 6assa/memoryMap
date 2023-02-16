@@ -108,6 +108,7 @@ function onUploadBtn() {
 
             post.set('category', category)
                 .set('displayName', name)
+                .set('goodCount', 0)
                 .set('postId',res['postId']+1)
                 .set('photo', item_image)
                 .set('roleObjectId', icon)

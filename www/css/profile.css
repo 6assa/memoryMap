@@ -163,7 +163,11 @@ input[name="tab_item"] {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
+    width: 95%;
+    border-radius: 10px;
+    margin:7px 7px;
+    background-color: rgb(250, 250, 250);
+    box-shadow: 1px 3px 3px 3px rgba(0, 0, 0, 0.22);
 }
 .follow-item img{
     width: 50px;

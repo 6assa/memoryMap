@@ -31,12 +31,14 @@
 .board-text{
     width: 100%;
     padding-right: 0.3125em;
+    
 }
 #text{
     display: flex;
     padding-top: 0.3125em;
     margin-top: auto;
     margin-bottom: auto;
+    white-space: nowrap;
 }
 .time{
     margin-top: auto;
